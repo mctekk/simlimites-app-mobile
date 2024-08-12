@@ -32,7 +32,7 @@
 		00E356EE1AD99517003FC87E /* kanvas_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kanvas_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* kanvas_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kanvas_appTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Kanvas App Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kanvas App Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* SimLimites Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimLimites Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = kanvas_app/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = kanvas_app/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = kanvas_app/Images.xcassets; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Kanvas App Dev.app */,
+				13B07F961A680F5B00A75B9A /* SimLimites Dev.app */,
 				00E356EE1AD99517003FC87E /* kanvas_appTests.xctest */,
 			);
 			name = Products;
@@ -217,7 +217,7 @@
 			);
 			name = kanvas_app;
 			productName = kanvas_app;
-			productReference = 13B07F961A680F5B00A75B9A /* Kanvas App Dev.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* SimLimites Dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -237,7 +237,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "kanvas_app" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "sim_limites" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -523,7 +523,7 @@
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Kanvas App";
+				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -536,8 +536,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.kanvasDev;
-				PRODUCT_NAME = "Kanvas App Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.simlimites.dev;
+				PRODUCT_NAME = "SimLimites Dev";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanvas_app-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -559,7 +559,7 @@
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Kanvas App";
+				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -572,8 +572,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.kanvas;
-				PRODUCT_NAME = "Kanvas App";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.simlimites;
+				PRODUCT_NAME = "Sim Limites";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanvas_app-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -652,10 +652,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -725,10 +722,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -807,10 +801,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -831,7 +822,7 @@
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Kanvas App";
+				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -844,8 +835,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.kanvas;
-				PRODUCT_NAME = "Kanvas App";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.simlimites;
+				PRODUCT_NAME = "Sim Limites";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanvas_app-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -953,10 +944,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -977,7 +965,7 @@
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Kanvas App";
+				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -990,8 +978,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.kanvasDev;
-				PRODUCT_NAME = "Kanvas App Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.simlimites.dev;
+				PRODUCT_NAME = "SimLimites Dev";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanvas_app-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1091,10 +1079,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -1115,7 +1100,7 @@
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Kanvas App";
+				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1128,8 +1113,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.kanvas;
-				PRODUCT_NAME = "Kanvas App";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.simlimites;
+				PRODUCT_NAME = "Sim Limites";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanvas_app-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1225,10 +1210,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -1249,7 +1231,7 @@
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Kanvas App";
+				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1262,8 +1244,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.kanvasDev;
-				PRODUCT_NAME = "Kanvas App Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mctekk.simlimites.dev;
+				PRODUCT_NAME = "SimLimites Dev";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanvas_app-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1325,7 +1307,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "kanvas_app" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "sim_limites" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
