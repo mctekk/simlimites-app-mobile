@@ -15,7 +15,11 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+<<<<<<< HEAD
                      BuildableName = "Kanvas App.app"
+=======
+                     BuildableName = "Sim Limites.app"
+>>>>>>> 17615a6 (Scheme ios changed)
                      BlueprintName = "kanvas_app"
                      ReferencedContainer = "container:kanvas_app.xcodeproj">
                   </BuildableReference>
@@ -31,7 +35,11 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+<<<<<<< HEAD
                      BuildableName = "Kanvas App.app"
+=======
+                     BuildableName = "Sim Limites.app"
+>>>>>>> 17615a6 (Scheme ios changed)
                      BlueprintName = "kanvas_app"
                      ReferencedContainer = "container:kanvas_app.xcodeproj">
                   </BuildableReference>
@@ -58,7 +66,11 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+<<<<<<< HEAD
                BuildableName = "Kanvas App.app"
+=======
+               BuildableName = "Sim Limites.app"
+>>>>>>> 17615a6 (Scheme ios changed)
                BlueprintName = "kanvas_app"
                ReferencedContainer = "container:kanvas_app.xcodeproj">
             </BuildableReference>
@@ -87,7 +99,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+<<<<<<< HEAD
             BuildableName = "Kanvas App.app"
+=======
+            BuildableName = "Sim Limites.app"
+>>>>>>> 17615a6 (Scheme ios changed)
             BlueprintName = "kanvas_app"
             ReferencedContainer = "container:kanvas_app.xcodeproj">
          </BuildableReference>
@@ -104,7 +120,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+<<<<<<< HEAD
             BuildableName = "Kanvas App.app"
+=======
+            BuildableName = "Sim Limites.app"
+>>>>>>> 17615a6 (Scheme ios changed)
             BlueprintName = "kanvas_app"
             ReferencedContainer = "container:kanvas_app.xcodeproj">
          </BuildableReference>
