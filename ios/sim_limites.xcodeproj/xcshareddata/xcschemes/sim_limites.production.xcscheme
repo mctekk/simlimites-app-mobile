@@ -16,8 +16,8 @@
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                      BuildableName = "Sim Limites.app"
-                     BlueprintName = "kanvas_app"
-                     ReferencedContainer = "container:kanvas_app.xcodeproj">
+                     BlueprintName = "sim_limites"
+                     ReferencedContainer = "container:sim_limites.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
             </ActionContent>
@@ -32,8 +32,8 @@
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                      BuildableName = "Sim Limites.app"
-                     BlueprintName = "kanvas_app"
-                     ReferencedContainer = "container:kanvas_app.xcodeproj">
+                     BlueprintName = "sim_limites"
+                     ReferencedContainer = "container:sim_limites.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
             </ActionContent>
@@ -59,8 +59,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "Sim Limites.app"
-               BlueprintName = "kanvas_app"
-               ReferencedContainer = "container:kanvas_app.xcodeproj">
+               BlueprintName = "sim_limites"
+               ReferencedContainer = "container:sim_limites.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -88,8 +88,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "Sim Limites.app"
-            BlueprintName = "kanvas_app"
-            ReferencedContainer = "container:kanvas_app.xcodeproj">
+            BlueprintName = "sim_limites"
+            ReferencedContainer = "container:sim_limites.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -105,8 +105,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "Sim Limites.app"
-            BlueprintName = "kanvas_app"
-            ReferencedContainer = "container:kanvas_app.xcodeproj">
+            BlueprintName = "sim_limites"
+            ReferencedContainer = "container:sim_limites.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
