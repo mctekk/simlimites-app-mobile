@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* kanvas_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* kanvas_appTests.m */; };
+		0FE576B97B30FE96655811A7 /* libPods-sim_limites-sim_limitesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F11C066E4C905A2E61EA3267 /* libPods-sim_limites-sim_limitesTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		72E790AC854CE7C33471CFF3 /* libPods-kanvas_app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0BA3B0A73109E378AFBEC6 /* libPods-kanvas_app.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		8B09BF19B3CE2D36CF1448AC /* libPods-kanvas_app-kanvas_appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4328A6AC4FB81339FBE4DCD /* libPods-kanvas_app-kanvas_appTests.a */; };
+		9A575FF88A94B4122FB88B62 /* libPods-sim_limites.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 887138B512CF686D80DD3C3E /* libPods-sim_limites.a */; };
 		F6F6F8532BE13F7000021CB1 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = F6F6F8522BE13F7000021CB1 /* Fonts */; };
 		F6F6F8562BE1480F00021CB1 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6F8552BE1480F00021CB1 /* File.swift */; };
 /* End PBXBuildFile section */
@@ -39,25 +39,37 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = kanvas_app/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = kanvas_app/main.m; sourceTree = "<group>"; };
 		164C87B4B0D2F8F96CD5EE64 /* Pods-kanvas_app-kanvas_appTests.prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app-kanvas_appTests.prod.release.xcconfig"; path = "Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests.prod.release.xcconfig"; sourceTree = "<group>"; };
+		1A3D9C44288FD8B5993EDE91 /* Pods-sim_limites.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites.release.xcconfig"; path = "Target Support Files/Pods-sim_limites/Pods-sim_limites.release.xcconfig"; sourceTree = "<group>"; };
 		291B805E1973D29C8ED27FC8 /* Pods-kanvas_app.prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app.prod.release.xcconfig"; path = "Target Support Files/Pods-kanvas_app/Pods-kanvas_app.prod.release.xcconfig"; sourceTree = "<group>"; };
+		2FE75AA39B611B09A6220394 /* Pods-sim_limites.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites.debug.xcconfig"; path = "Target Support Files/Pods-sim_limites/Pods-sim_limites.debug.xcconfig"; sourceTree = "<group>"; };
 		33834A4FF8A5DDDA469D5D28 /* Pods-kanvas_app-kanvas_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app-kanvas_appTests.debug.xcconfig"; path = "Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4A023A2238A502BE3AFF07C3 /* Pods-sim_limites-sim_limitesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.debug.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		51EF70C7534D67A3E6E938A7 /* Pods-kanvas_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app.debug.xcconfig"; path = "Target Support Files/Pods-kanvas_app/Pods-kanvas_app.debug.xcconfig"; sourceTree = "<group>"; };
-		6F0BA3B0A73109E378AFBEC6 /* libPods-kanvas_app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kanvas_app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5770CBF835189D73F6B3139B /* Pods-sim_limites.dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites.dev.release.xcconfig"; path = "Target Support Files/Pods-sim_limites/Pods-sim_limites.dev.release.xcconfig"; sourceTree = "<group>"; };
 		7B5CB5AC400D957B5C9BC635 /* Pods-kanvas_app-kanvas_appTests.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app-kanvas_appTests.dev.debug.xcconfig"; path = "Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests.dev.debug.xcconfig"; sourceTree = "<group>"; };
 		806D5EA840743024519FF7F1 /* Pods-kanvas_app-kanvas_appTests.prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app-kanvas_appTests.prod.debug.xcconfig"; path = "Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests.prod.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = kanvas_app/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		887138B512CF686D80DD3C3E /* libPods-sim_limites.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sim_limites.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C52A149C9F41D220F3399D4 /* Pods-sim_limites-sim_limitesTests.dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.dev.release.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.dev.release.xcconfig"; sourceTree = "<group>"; };
 		9A37A3D9CFE00A07621EEB90 /* Pods-kanvas_app.dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app.dev.release.xcconfig"; path = "Target Support Files/Pods-kanvas_app/Pods-kanvas_app.dev.release.xcconfig"; sourceTree = "<group>"; };
 		9C0E6FF163A5E243C2F8B1F4 /* Pods-kanvas_app-kanvas_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app-kanvas_appTests.release.xcconfig"; path = "Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		9D0CC2243CBB22B9D0B0C6B3 /* Pods-kanvas_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app.release.xcconfig"; path = "Target Support Files/Pods-kanvas_app/Pods-kanvas_app.release.xcconfig"; sourceTree = "<group>"; };
+		ACBB5979C2666A45801114C3 /* Pods-sim_limites-sim_limitesTests.prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.prod.release.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.prod.release.xcconfig"; sourceTree = "<group>"; };
 		ACFF47A1B30BBD813B3E9E32 /* Pods-kanvas_app-kanvas_appTests.dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app-kanvas_appTests.dev.release.xcconfig"; path = "Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests.dev.release.xcconfig"; sourceTree = "<group>"; };
-		D4328A6AC4FB81339FBE4DCD /* libPods-kanvas_app-kanvas_appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kanvas_app-kanvas_appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0E3C81ECEEA4AC2CA0235DE /* Pods-sim_limites-sim_limitesTests.prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.prod.debug.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.prod.debug.xcconfig"; sourceTree = "<group>"; };
+		B7AA872180EEA26FF7BBE3A5 /* Pods-sim_limites.prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites.prod.release.xcconfig"; path = "Target Support Files/Pods-sim_limites/Pods-sim_limites.prod.release.xcconfig"; sourceTree = "<group>"; };
+		C5197F5765AD5E6E4EBA5836 /* Pods-sim_limites.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites.dev.debug.xcconfig"; path = "Target Support Files/Pods-sim_limites/Pods-sim_limites.dev.debug.xcconfig"; sourceTree = "<group>"; };
 		D7F612707722E817EFE9EBF2 /* Pods-kanvas_app.prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app.prod.debug.xcconfig"; path = "Target Support Files/Pods-kanvas_app/Pods-kanvas_app.prod.debug.xcconfig"; sourceTree = "<group>"; };
+		DC6629F6BF202997A98B1E24 /* Pods-sim_limites-sim_limitesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.release.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.release.xcconfig"; sourceTree = "<group>"; };
+		DFEC6961EAE4E3C7E5AE6F70 /* Pods-sim_limites-sim_limitesTests.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.dev.debug.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.dev.debug.xcconfig"; sourceTree = "<group>"; };
 		E38DB4BB030D8CF920EF6CE6 /* Pods-kanvas_app.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app.dev.debug.xcconfig"; path = "Target Support Files/Pods-kanvas_app/Pods-kanvas_app.dev.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F11C066E4C905A2E61EA3267 /* libPods-sim_limites-sim_limitesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sim_limites-sim_limitesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F6F8522BE13F7000021CB1 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		F6F6F8542BE1480E00021CB1 /* kanvas_app-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kanvas_app-Bridging-Header.h"; sourceTree = "<group>"; };
 		F6F6F8552BE1480F00021CB1 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		F6F6F8572BE177EE00021CB1 /* kanvas_app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = kanvas_app.entitlements; path = kanvas_app/kanvas_app.entitlements; sourceTree = "<group>"; };
+		FA0E2C41B0BE6EDB0EDC39C0 /* Pods-sim_limites.prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites.prod.debug.xcconfig"; path = "Target Support Files/Pods-sim_limites/Pods-sim_limites.prod.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B09BF19B3CE2D36CF1448AC /* libPods-kanvas_app-kanvas_appTests.a in Frameworks */,
+				0FE576B97B30FE96655811A7 /* libPods-sim_limites-sim_limitesTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72E790AC854CE7C33471CFF3 /* libPods-kanvas_app.a in Frameworks */,
+				9A575FF88A94B4122FB88B62 /* libPods-sim_limites.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,8 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				6F0BA3B0A73109E378AFBEC6 /* libPods-kanvas_app.a */,
-				D4328A6AC4FB81339FBE4DCD /* libPods-kanvas_app-kanvas_appTests.a */,
+				887138B512CF686D80DD3C3E /* libPods-sim_limites.a */,
+				F11C066E4C905A2E61EA3267 /* libPods-sim_limites-sim_limitesTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,6 +182,18 @@
 				806D5EA840743024519FF7F1 /* Pods-kanvas_app-kanvas_appTests.prod.debug.xcconfig */,
 				ACFF47A1B30BBD813B3E9E32 /* Pods-kanvas_app-kanvas_appTests.dev.release.xcconfig */,
 				164C87B4B0D2F8F96CD5EE64 /* Pods-kanvas_app-kanvas_appTests.prod.release.xcconfig */,
+				2FE75AA39B611B09A6220394 /* Pods-sim_limites.debug.xcconfig */,
+				C5197F5765AD5E6E4EBA5836 /* Pods-sim_limites.dev.debug.xcconfig */,
+				FA0E2C41B0BE6EDB0EDC39C0 /* Pods-sim_limites.prod.debug.xcconfig */,
+				1A3D9C44288FD8B5993EDE91 /* Pods-sim_limites.release.xcconfig */,
+				5770CBF835189D73F6B3139B /* Pods-sim_limites.dev.release.xcconfig */,
+				B7AA872180EEA26FF7BBE3A5 /* Pods-sim_limites.prod.release.xcconfig */,
+				4A023A2238A502BE3AFF07C3 /* Pods-sim_limites-sim_limitesTests.debug.xcconfig */,
+				DFEC6961EAE4E3C7E5AE6F70 /* Pods-sim_limites-sim_limitesTests.dev.debug.xcconfig */,
+				B0E3C81ECEEA4AC2CA0235DE /* Pods-sim_limites-sim_limitesTests.prod.debug.xcconfig */,
+				DC6629F6BF202997A98B1E24 /* Pods-sim_limites-sim_limitesTests.release.xcconfig */,
+				8C52A149C9F41D220F3399D4 /* Pods-sim_limites-sim_limitesTests.dev.release.xcconfig */,
+				ACBB5979C2666A45801114C3 /* Pods-sim_limites-sim_limitesTests.prod.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -308,7 +332,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-kanvas_app-kanvas_appTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-sim_limites-sim_limitesTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -321,15 +345,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3CC42F1A2C01895E10C81099 /* [CP] Embed Pods Frameworks */ = {
@@ -338,15 +362,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanvas_app/Pods-kanvas_app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-sim_limites/Pods-sim_limites-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanvas_app/Pods-kanvas_app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-sim_limites/Pods-sim_limites-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kanvas_app/Pods-kanvas_app-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sim_limites/Pods-sim_limites-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		57EC30F28B2B5C5114361ECB /* [CP] Copy Pods Resources */ = {
@@ -355,15 +379,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanvas_app/Pods-kanvas_app-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-sim_limites/Pods-sim_limites-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanvas_app/Pods-kanvas_app-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-sim_limites/Pods-sim_limites-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kanvas_app/Pods-kanvas_app-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sim_limites/Pods-sim_limites-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7DFE10F9015B8C1B94E6801D /* [CP] Check Pods Manifest.lock */ = {
@@ -381,7 +405,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-kanvas_app-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-sim_limites-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -394,15 +418,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -458,7 +482,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 33834A4FF8A5DDDA469D5D28 /* Pods-kanvas_app-kanvas_appTests.debug.xcconfig */;
+			baseConfigurationReference = 4A023A2238A502BE3AFF07C3 /* Pods-sim_limites-sim_limitesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -486,7 +510,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C0E6FF163A5E243C2F8B1F4 /* Pods-kanvas_app-kanvas_appTests.release.xcconfig */;
+			baseConfigurationReference = DC6629F6BF202997A98B1E24 /* Pods-sim_limites-sim_limitesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -511,7 +535,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51EF70C7534D67A3E6E938A7 /* Pods-kanvas_app.debug.xcconfig */;
+			baseConfigurationReference = 2FE75AA39B611B09A6220394 /* Pods-sim_limites.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDev;
 				CLANG_ENABLE_MODULES = YES;
@@ -548,7 +572,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D0CC2243CBB22B9D0B0C6B3 /* Pods-kanvas_app.release.xcconfig */;
+			baseConfigurationReference = 1A3D9C44288FD8B5993EDE91 /* Pods-sim_limites.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -652,7 +676,10 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -722,7 +749,10 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -801,7 +831,10 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -810,7 +843,7 @@
 		};
 		F69F42AE2C5AF23700580BE8 /* Prod.Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7F612707722E817EFE9EBF2 /* Pods-kanvas_app.prod.debug.xcconfig */;
+			baseConfigurationReference = FA0E2C41B0BE6EDB0EDC39C0 /* Pods-sim_limites.prod.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -847,7 +880,7 @@
 		};
 		F69F42AF2C5AF23700580BE8 /* Prod.Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 806D5EA840743024519FF7F1 /* Pods-kanvas_app-kanvas_appTests.prod.debug.xcconfig */;
+			baseConfigurationReference = B0E3C81ECEEA4AC2CA0235DE /* Pods-sim_limites-sim_limitesTests.prod.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -944,7 +977,10 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -953,7 +989,7 @@
 		};
 		F69F42B12C5AF24300580BE8 /* Dev.Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E38DB4BB030D8CF920EF6CE6 /* Pods-kanvas_app.dev.debug.xcconfig */;
+			baseConfigurationReference = C5197F5765AD5E6E4EBA5836 /* Pods-sim_limites.dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDev;
 				CLANG_ENABLE_MODULES = YES;
@@ -990,7 +1026,7 @@
 		};
 		F69F42B22C5AF24300580BE8 /* Dev.Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B5CB5AC400D957B5C9BC635 /* Pods-kanvas_app-kanvas_appTests.dev.debug.xcconfig */;
+			baseConfigurationReference = DFEC6961EAE4E3C7E5AE6F70 /* Pods-sim_limites-sim_limitesTests.dev.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1079,7 +1115,10 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -1089,7 +1128,7 @@
 		};
 		F69F42B42C5AF24D00580BE8 /* Prod.Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 291B805E1973D29C8ED27FC8 /* Pods-kanvas_app.prod.release.xcconfig */;
+			baseConfigurationReference = B7AA872180EEA26FF7BBE3A5 /* Pods-sim_limites.prod.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1124,7 +1163,7 @@
 		};
 		F69F42B52C5AF24D00580BE8 /* Prod.Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 164C87B4B0D2F8F96CD5EE64 /* Pods-kanvas_app-kanvas_appTests.prod.release.xcconfig */;
+			baseConfigurationReference = ACBB5979C2666A45801114C3 /* Pods-sim_limites-sim_limitesTests.prod.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1210,7 +1249,10 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -1220,7 +1262,7 @@
 		};
 		F69F42B72C5AF25600580BE8 /* Dev.Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A37A3D9CFE00A07621EEB90 /* Pods-kanvas_app.dev.release.xcconfig */;
+			baseConfigurationReference = 5770CBF835189D73F6B3139B /* Pods-sim_limites.dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDev;
 				CLANG_ENABLE_MODULES = YES;
@@ -1255,7 +1297,7 @@
 		};
 		F69F42B82C5AF25600580BE8 /* Dev.Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ACFF47A1B30BBD813B3E9E32 /* Pods-kanvas_app-kanvas_appTests.dev.release.xcconfig */;
+			baseConfigurationReference = 8C52A149C9F41D220F3399D4 /* Pods-sim_limites-sim_limitesTests.dev.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
