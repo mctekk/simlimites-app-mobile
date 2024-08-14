@@ -7,7 +7,7 @@ require Pod::Executable.execute_command('node', ['-p',
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
-project 'kanvas_app',
+project 'sim_limites',
   'Dev.Debug' => :debug,
   'Dev.Release' => :release, 
   'Prod.Debug' => :debug, 
@@ -19,7 +19,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'kanvas_app' do
+target 'sim_limites' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -34,7 +34,7 @@ target 'kanvas_app' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'kanvas_appTests' do
+  target 'sim_limitesTests' do
     inherit! :complete
     # Pods for testing
   end
