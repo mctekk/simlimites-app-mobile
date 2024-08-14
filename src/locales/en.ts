@@ -43,4 +43,9 @@ export default {
   savingChanges: 'Saving changes...',
   saveChanges: 'Save changes',
   notification: 'Notification',
+  welcomeTitle: 'Welcome to\nSimlimites',
+  welcomeSubtitle: 'Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.',
+  skipText: 'Skip, and go to see the plans',
+  login: 'login',
+  register: 'register',
 };
