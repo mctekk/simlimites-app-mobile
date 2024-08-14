@@ -10,6 +10,7 @@ interface ColorTheme {
   placeHolderText: string;
   black: string;
   white: string;
+  secondaryButton: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.PRIMARY,
@@ -21,4 +22,5 @@ export const DEFAULT_THEME: ColorTheme = {
   placeHolderText: Colors.PLACEHOLDER_TEXT,
   black: Colors.BLACK,
   white: Colors.WHITE,
+  secondaryButton: Colors.LIGHT_GRAY,
 };

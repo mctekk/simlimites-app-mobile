@@ -80,6 +80,7 @@ export enum ZillaSlabFont {
 export const LINE_HEIGHT_24 = scaleFont(24);
 export const LINE_HEIGHT_20 = scaleFont(20);
 export const LINE_HEIGHT_16 = scaleFont(16);
+export const LINE_HEIGHT_48 = scaleFont(48);
 
 // FONT STYLE
 export const FONT_REGULAR = {
