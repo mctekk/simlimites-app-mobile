@@ -74,3 +74,7 @@ export function isIphoneSE() {
     dimen.width <= 375
   );
 }
+
+export function isAndroid() {
+  return (Platform.OS === 'android');
+}

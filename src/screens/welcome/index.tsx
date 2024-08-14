@@ -20,6 +20,9 @@ import CustomText from 'atoms/text';
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
+// Utils
+import { isAndroid } from 'utils/iphone-helpers';
+
 // Interfaces
 interface ISignInProps {
   navigation: any;
@@ -32,18 +35,18 @@ const Container = styled.View`
 `;
 
 const BottomContainer = styled.View`
-  padding-bottom: 50px;
+  padding-bottom: ${isAndroid() ? '40' : '90'}px;
   justify-content: space-between;
   padding-horizontal: 16px;
   margin-top: 28px;
-  flex: 0.9;
+  flex: 1;
 `;
 
 const Image = styled(FastImage)``;
 
 const ImageContainer = styled.View`
   width: 100%;
-  height: 390px;
+  height: 43%;
   background-color: ${DEFAULT_THEME.secondaryButton};
 `;
 
