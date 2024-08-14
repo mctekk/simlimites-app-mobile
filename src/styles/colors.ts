@@ -11,3 +11,4 @@ export const BUTTON_GAP_COLOR = '#1D1D1D1A';
 export const FACEBOOK = '#4267B2';
 export const TRANSPARENT = 'rgba(52, 52, 52, 0)';
 export const PLACEHOLDER_TEXT = '#5E5E5E';
+export const LIGHT_GRAY = '#D9D9D9';
