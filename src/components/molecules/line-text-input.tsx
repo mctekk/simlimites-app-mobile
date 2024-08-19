@@ -1,5 +1,5 @@
 // Modules
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components/native';
 import is from 'styled-is';
 
@@ -13,20 +13,26 @@ import IconButton from 'components/atoms/icon-button';
 
 const Container = styled.View`
   border-width: 1px;
-  height: 42px;
   border-width: 1px;
-  border-color: ${props => props.isFocused ? DEFAULT_THEME.black : DEFAULT_THEME.boderColor};
+  border-color: ${props => props.isFocused ? DEFAULT_THEME.black : DEFAULT_THEME.borderColor};
   border-radius: 4px;
   padding-horizontal: 10px;
   background-color: ${DEFAULT_THEME.inputBg};
-  justify-content: center;
-  flex-direction: row;
   ${is('error')`
     border-color: ${DEFAULT_THEME.error};
   `}
+  height: 42px;
+  flex-direction: row;
+`;
+
+const LeftContainer = styled.View`
+  flex: 1;
+  height: 50px;
 `;
 
 const TextInput = styled.TextInput`
+  padding: 0;
+  padding-bottom: 8px;
   flex: 1px;
   font-size: ${props => props.fontSize ? props.fontSize : Typography.FONT_SIZE_14}px;
   color: ${props => (props.textColor ? props.textColor : DEFAULT_THEME.text)};
@@ -45,8 +51,6 @@ const TextArea = styled.TextInput`
 const IconContainer = styled.View`
   justify-content: center;
   align-items: center;
-  height: 42px;
-  width: 42px;
 `;
 
 const InputIcon = styled(IconButton)``;
@@ -62,6 +66,13 @@ const StyledText = styled(Text)`
 
 const TextAreaContainer = styled.View`
   flex: 1px;
+`;
+
+const Title = styled(Text)`
+  color: ${DEFAULT_THEME.inputLabel};
+  ${is('error')`
+    color: ${DEFAULT_THEME.error};
+  `}
 `;
 
 interface IProps {
@@ -85,6 +96,11 @@ interface IProps {
   isFocused?: boolean;
   error?: boolean | string;
   customRef?: any;
+  inputIcon?: ReactNode;
+  labelText?: string;
+  labelStyle?: object;
+  labelFontSize?: Number;
+  labelTextColor?: string;
 }
 
 const LineTextInput = ({
@@ -106,6 +122,11 @@ const LineTextInput = ({
   error,
   customRef,
   containerStyle,
+  inputIcon,
+  labelText,
+  labelStyle,
+  labelFontSize,
+  labelTextColor,
   ...props
 }: IProps) => {
 
@@ -144,33 +165,50 @@ const LineTextInput = ({
   }
   return (
     <Container error={error} isFocused={isFocused} style={containerStyle}>
-      <TextInput
-        ref={customRef}
-        fontSize={fontSize}
-        textColor={textColor}
-        style={style}
-        onChangeText={(text: any) => onChangeText(text)}
-        value={inputValue}
-        placeholder={placeholder}
-        placeholderTextColor={
-          placeholderTextColor || DEFAULT_THEME.placeHolderText
-        }
-        secureTextEntry={secureTextEntry ? showPassword : false}
-        {...props}
-      />
+      <LeftContainer>
+        {labelText ? (
+          <Title
+            style={labelStyle}
+            size={labelFontSize || Typography.FONT_SIZE_12}
+            error={error}
+          >
+            {labelText}
+          </Title>
+        ) : (<></>)}
+        <TextInput
+          ref={customRef}
+          fontSize={fontSize}
+          textColor={textColor}
+          style={style}
+          onChangeText={(text: any) => onChangeText(text)}
+          value={inputValue}
+          placeholder={placeholder}
+          placeholderTextColor={
+            placeholderTextColor || DEFAULT_THEME.placeHolderText
+          }
+          secureTextEntry={secureTextEntry ? showPassword : false}
+          {...props}
+        />
+      </LeftContainer>
+      
+      {inputIcon && (
+          <IconContainer>
+            {inputIcon}
+          </IconContainer>
+        )}
 
-      {secureTextEntry && (
-        <IconContainer>
-          <InputIcon
-            iconType={iconType}
-            name={handleIconName()}
-            size={iconSize}
-            color={iconColor}
-            backgroundColor={backgroundColor}
-            onPress={() => togglePasswordVisibility(!showPassword)}
-          />
-        </IconContainer>
-      )}
+        {secureTextEntry && (
+          <IconContainer>
+            <InputIcon
+              iconType={iconType}
+              name={handleIconName()}
+              size={iconSize}
+              color={iconColor}
+              backgroundColor={backgroundColor}
+              onPress={() => togglePasswordVisibility(!showPassword)}
+            />
+          </IconContainer>
+        )}
     </Container>
   );
 };
