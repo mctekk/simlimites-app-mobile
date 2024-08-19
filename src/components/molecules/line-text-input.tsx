@@ -15,7 +15,7 @@ const Container = styled.View`
   border-width: 1px;
   height: 42px;
   border-width: 1px;
-  border-color: ${props => props.isFocused ? DEFAULT_THEME.inputFocus : DEFAULT_THEME.boderColor};
+  border-color: ${props => props.isFocused ? DEFAULT_THEME.black : DEFAULT_THEME.boderColor};
   border-radius: 4px;
   padding-horizontal: 10px;
   background-color: ${DEFAULT_THEME.inputBg};
