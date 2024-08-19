@@ -1,14 +1,15 @@
 // Modules
 import React from 'react';
-import {TouchableOpacityProps} from 'react-native';
+import { TouchableOpacityProps } from 'react-native';
 import styled from 'styled-components/native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 // Atoms
 import BackArrow from 'assets/icons/back-arrow';
 
 // Constants
-import {TOUCHABLE_AREA} from 'utils/constants';
+import { TOUCHABLE_AREA } from 'utils/constants';
+import { Colors } from 'styles';
 
 const BackButtonContainer = styled(TouchableOpacity)`
   flex-direction: row;
@@ -17,10 +18,10 @@ const BackButtonContainer = styled(TouchableOpacity)`
 `;
 
 const BackButton = (props: TouchableOpacityProps) => {
-  const {onPress} = props;
+  const { onPress, backIconColor = Colors.WHITE } = props;
   return (
     <BackButtonContainer onPress={onPress} hitSlop={TOUCHABLE_AREA} {...props}>
-      <BackArrow />
+      <BackArrow color={backIconColor} />
     </BackButtonContainer>
   );
 };
