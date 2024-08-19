@@ -123,7 +123,7 @@ export const Welcome = (props: ISignInProps) => {
         <ButtonsContainer>
           <Button
             onPress={() => {
-              navigation.navigate('SignIn');
+              navigation.navigate('LogIn');
             }}
             style={{ backgroundColor: DEFAULT_THEME.black }}>
             <CustomText

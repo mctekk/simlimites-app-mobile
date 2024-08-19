@@ -4,7 +4,7 @@ import { EditProfile } from "screens/edit-profile";
 import { Home } from "screens/home";
 import { Inventory } from "screens/invetory";
 import { Notifications } from "screens/notifications";
-import { SignIn } from "screens/sign-in";
+import { LogIn } from "screens/log-in";
 import { SignUp } from "screens/sign-up";
 
 
@@ -14,8 +14,8 @@ const navigationDefaultOptions = {
 
 export const navigationScreen = [
   {
-    name: 'SignIn',
-    screen: SignIn,
+    name: 'LogIn',
+    screen: LogIn,
     options: {
       navigationDefaultOptions,
     },
