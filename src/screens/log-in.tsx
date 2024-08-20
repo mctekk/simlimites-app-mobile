@@ -21,12 +21,13 @@ import SignWithApple from 'components/molecules/sign-with-apple-button';
 import SignWithFacebook from 'components/molecules/sign-with-facebook-button';
 import SignWithGoogle from 'components/molecules/sign-with-google-button';
 import LoadingModal from 'components/molecules/modals/loading-modal';
+import Header from 'components/molecules/header';
 
 // Atoms
 import Text from 'components/atoms/text';
 import { TextTransform, translate } from 'components/atoms/localized-label';
 import CustomText from 'atoms/text';
-import { EmailIcon, Check } from 'assets/icons';
+import { EmailIcon, Check, NextArrow } from 'assets/icons';
 
 // Styles
 import { Colors, Typography } from 'styles';
@@ -50,9 +51,7 @@ interface ISignInProps {
   route: any;
 }
 
-const Content = styled.View`
-  padding-top: 28px;
-`;
+const Content = styled.View``;
 
 const CheckContainer = styled.View`
   align-items: center;
@@ -72,6 +71,12 @@ const ContinueButton = styled.TouchableOpacity`
   height: 57px;
   border-radius: 50px;
   margin-top: 32px;
+`;
+
+const IconContainer = styled.View`
+  position: absolute;
+  align-self: flex-end;
+  padding-right: 50px;
 `;
 
 const ForgotPasswordButton = styled.TouchableOpacity``;
@@ -112,6 +117,16 @@ const SocialContainer = styled.View`
 const InputBottomContainer = styled.View`
   justify-content: space-between;
   flex-direction: row;
+`;
+
+const ScreenHeader = styled(Header)`
+  justify-content: space-between;
+  align-items: center;
+  background-color: ${DEFAULT_THEME.background};
+  padding-top: 10px;
+  padding-horizontal: 0px;
+  height: 60px;
+  margin: 0px;
 `;
 
 const initialValues = {
@@ -225,6 +240,7 @@ export const LogIn = (props: ISignInProps, ref: any) => {
               }}>
               <Container>
                 <SafeAreaView />
+                <ScreenHeader title={''} />
                 <Content>
                   <CustomText
                     size={Typography.FONT_SIZE_25}
@@ -242,7 +258,7 @@ export const LogIn = (props: ISignInProps, ref: any) => {
                     {translate('loginSubtitle', TextTransform.CAPITAL)}
                   </CustomText>
                   <Input
-                    labelText={translate('emailAdress', TextTransform.CAPITAL)}
+                    labelText={translate('emailAddress', TextTransform.CAPITAL)}
                     value={values.email}
                     onChangeText={handleChange('email')}
                     onBlur={handleOnInputBlur}
@@ -306,7 +322,7 @@ export const LogIn = (props: ISignInProps, ref: any) => {
                 <ContinueButton
                   onPress={() => handleSubmit()}
                   style={{
-                    backgroundColor: buttonDisabled ? DEFAULT_THEME.black : DEFAULT_THEME.black
+                    backgroundColor: buttonDisabled ? DEFAULT_THEME.disabledButton : DEFAULT_THEME.black
                   }}
                   disabled={buttonDisabled}
                 >
@@ -317,6 +333,9 @@ export const LogIn = (props: ISignInProps, ref: any) => {
                     color={buttonDisabled ? DEFAULT_THEME.white : DEFAULT_THEME.white}>
                     {translate('continue', TextTransform.CAPITAL)}
                   </CustomText>
+                  <IconContainer>
+                    <NextArrow />
+                  </IconContainer>
                 </ContinueButton>
                 <SocialModeTopContainer>
                   <SeparatorContainer>
@@ -330,7 +349,7 @@ export const LogIn = (props: ISignInProps, ref: any) => {
                   <SocialContainer>
                     <SignWithFacebook onLogin={onSocialLogin} />
                     <SignWithGoogle onLogin={onSocialLogin} />
-                    <SignWithApple onLogin={onSocialLogin} />
+                    {/* <SignWithApple onLogin={onSocialLogin} /> */}
                   </SocialContainer>
                 </SocialModeTopContainer>
               </Container>
