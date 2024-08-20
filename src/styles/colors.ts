@@ -15,3 +15,4 @@ export const PLACEHOLDER_TEXT = '#5E5E5E';
 export const LIGHT_GRAY = '#D9D9D9';
 export const GRAY = '#575757';
 export const LABEL_GRAY = '#747474';
+export const DISABLED_GRAY = '#B8B8B8';
