@@ -120,13 +120,13 @@ const InputBottomContainer = styled.View`
 `;
 
 const ScreenHeader = styled(Header)`
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   background-color: ${DEFAULT_THEME.background};
   padding-top: 10px;
   padding-horizontal: 0px;
   height: 60px;
-  margin: 0px;
+  margin-bottom: 0px;
 `;
 
 const initialValues = {
@@ -240,16 +240,19 @@ export const LogIn = (props: ISignInProps, ref: any) => {
               }}>
               <Container>
                 <SafeAreaView />
-                <ScreenHeader title={''} />
+                <ScreenHeader
+                  title={translate('loginTitle', TextTransform.CAPITAL)}
+                  titleProps={{
+                    style: {
+                      textAlign: 'flex-start',
+                      fontSize: 25,
+                      fontWeight: 'bold',
+                      paddingTop: 6,
+                      width: '100%'
+                    },
+                  }}
+                />
                 <Content>
-                  <CustomText
-                    size={Typography.FONT_SIZE_25}
-                    lineHeight={Typography.FONT_SIZE_30}
-                    weight='bold'
-                    style={{ marginBottom: 20 }}
-                    color={DEFAULT_THEME.black}>
-                    {translate('loginTitle', TextTransform.CAPITAL)}
-                  </CustomText>
                   <CustomText
                     size={Typography.FONT_SIZE_18}
                     lineHeight={Typography.FONT_SIZE_20}

@@ -104,7 +104,7 @@ const ScreenHeader = styled(Header)`
   padding-top: 10px;
   padding-horizontal: 0px;
   height: 60px;
-  margin: 0px;
+  margin-bottom: 0px;
 `;
 
 const initialValues = {

@@ -14,6 +14,9 @@ import CloseButton from 'components/atoms/close-button';
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
+// Utils
+import { isAndroid } from 'utils/iphone-helpers';
+
 export interface IProps {
   title?: string;
   customHeader?: any;
@@ -46,6 +49,7 @@ const Container = styled.View`
   background-color: ${DEFAULT_THEME.background};
   height: 100px;
   margin-bottom: 20px;
+  margin-top: ${isAndroid() ? '30' : '0'}px;
 `;
 
 // @ts-ignore
