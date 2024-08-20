@@ -28,6 +28,7 @@ import { FacebookIcon } from 'assets/icons';
 interface SocialButtonIconsProps {
   isSmall?: boolean;
   onLogin?: () => void;
+  textLocale?: string;
 }
 
 const Button = styled.TouchableOpacity`
@@ -50,7 +51,7 @@ const FIcon = () => (
 const SignWithFacebook = (
   props: Partial<PillButtonProps, SocialButtonIconsProps>,
 ) => {
-  const { isSmall = false, onLogin } = props;
+  const { isSmall = false, onLogin, textLocale ='signInFacebook' } = props;
 
   const handleLogin = async () => {
     try {
@@ -82,7 +83,7 @@ const SignWithFacebook = (
           weight='500'
           style={{ marginLeft: 20 }}
           color={DEFAULT_THEME.black}>
-          {translate('signInFacebook', TextTransform.CAPITAL)}
+          {translate(textLocale, TextTransform.CAPITAL)}
         </CustomText>
       </Button>
     );
