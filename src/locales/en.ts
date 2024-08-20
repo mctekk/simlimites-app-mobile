@@ -3,7 +3,7 @@ export default {
   firstName: 'First Name',
   lastName: 'Last Name',
   email: 'Email',
-  emailAdress: 'Email adress',
+  emailAddress: 'Email address',
   displayName: 'Display Name',
   welcome: 'Welcome',
   placeholderMail: 'Enter your email',
@@ -52,6 +52,7 @@ export default {
   continue: 'continue',
   loginTitle: 'Welcome again to Simlimites',
   loginSubtitle: 'Is simply dummy text of the printing and\ntypesetting industry. Lorem Ipsum has.',
+  registerTitle: 'Welcome to Simlimites',
   or: 'or',
   rememberMe: 'Remember me',
   signInFacebook: 'Login with Facebook',
@@ -60,5 +61,8 @@ export default {
   signUpGoogle: 'Continue with Google',
   signInApple: 'Login with Apple',
   signUpApple: 'Continue with Apple',
-  
+  confirmEmail: 'We’ll message you to confirm your email address.',
+  loginError: 'Invalid email or password.',
+  nameLastname: 'Name & lastname',
+  enterYourName: 'Enter your name',
 };
