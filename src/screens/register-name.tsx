@@ -105,9 +105,7 @@ export const RegisterName = (props: ISignInProps, ref: any) => {
     name: false,
   });
 
-  useEffect(() => {
-    console.log("email---", email)
-  }, []);
+  useEffect(() => {}, []);
 
 
   const handleOnFocusInput = (value: string) => {
