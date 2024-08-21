@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* kanvas_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* kanvas_appTests.m */; };
-		0FE576B97B30FE96655811A7 /* libPods-sim_limites-sim_limitesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F11C066E4C905A2E61EA3267 /* libPods-sim_limites-sim_limitesTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -46,7 +45,6 @@
 		2BBA1511D4255A8631F99AEA /* Pods-sim_limites.prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites.prod.release.xcconfig"; path = "Target Support Files/Pods-sim_limites/Pods-sim_limites.prod.release.xcconfig"; sourceTree = "<group>"; };
 		32C5CF5F70A811FA5186C435 /* libPods-sim_limites.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sim_limites.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33834A4FF8A5DDDA469D5D28 /* Pods-kanvas_app-kanvas_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app-kanvas_appTests.debug.xcconfig"; path = "Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4A023A2238A502BE3AFF07C3 /* Pods-sim_limites-sim_limitesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.debug.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		51EF70C7534D67A3E6E938A7 /* Pods-kanvas_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app.debug.xcconfig"; path = "Target Support Files/Pods-kanvas_app/Pods-kanvas_app.debug.xcconfig"; sourceTree = "<group>"; };
 		6024EBC42637ED0D62FAE0E8 /* Pods-sim_limites-sim_limitesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.release.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B5CB5AC400D957B5C9BC635 /* Pods-kanvas_app-kanvas_appTests.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app-kanvas_appTests.dev.debug.xcconfig"; path = "Target Support Files/Pods-kanvas_app-kanvas_appTests/Pods-kanvas_app-kanvas_appTests.dev.debug.xcconfig"; sourceTree = "<group>"; };
@@ -64,8 +62,6 @@
 		D105BCFD6E3A930BCACB46A8 /* Pods-sim_limites-sim_limitesTests.prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.prod.release.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.prod.release.xcconfig"; sourceTree = "<group>"; };
 		D3C74FCD454B134CD64375EC /* Pods-sim_limites.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites.dev.debug.xcconfig"; path = "Target Support Files/Pods-sim_limites/Pods-sim_limites.dev.debug.xcconfig"; sourceTree = "<group>"; };
 		D7F612707722E817EFE9EBF2 /* Pods-kanvas_app.prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app.prod.debug.xcconfig"; path = "Target Support Files/Pods-kanvas_app/Pods-kanvas_app.prod.debug.xcconfig"; sourceTree = "<group>"; };
-		DC6629F6BF202997A98B1E24 /* Pods-sim_limites-sim_limitesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.release.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.release.xcconfig"; sourceTree = "<group>"; };
-		DFEC6961EAE4E3C7E5AE6F70 /* Pods-sim_limites-sim_limitesTests.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.dev.debug.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.dev.debug.xcconfig"; sourceTree = "<group>"; };
 		E38DB4BB030D8CF920EF6CE6 /* Pods-kanvas_app.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanvas_app.dev.debug.xcconfig"; path = "Target Support Files/Pods-kanvas_app/Pods-kanvas_app.dev.debug.xcconfig"; sourceTree = "<group>"; };
 		EB0CD757A271CD4E8811BB80 /* Pods-sim_limites-sim_limitesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites-sim_limitesTests.debug.xcconfig"; path = "Target Support Files/Pods-sim_limites-sim_limitesTests/Pods-sim_limites-sim_limitesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -74,7 +70,6 @@
 		F6F6F8542BE1480E00021CB1 /* kanvas_app-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kanvas_app-Bridging-Header.h"; sourceTree = "<group>"; };
 		F6F6F8552BE1480F00021CB1 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		F6F6F8572BE177EE00021CB1 /* kanvas_app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = kanvas_app.entitlements; path = kanvas_app/kanvas_app.entitlements; sourceTree = "<group>"; };
-		FA0E2C41B0BE6EDB0EDC39C0 /* Pods-sim_limites.prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sim_limites.prod.debug.xcconfig"; path = "Target Support Files/Pods-sim_limites/Pods-sim_limites.prod.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -559,7 +554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -595,7 +590,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -681,10 +676,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -754,10 +746,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -836,10 +825,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -867,7 +853,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -982,10 +968,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -1013,7 +996,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1120,10 +1103,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -1151,7 +1131,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1254,10 +1234,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -1285,7 +1262,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
