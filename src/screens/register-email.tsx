@@ -244,7 +244,7 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
                     keyboardType='email-address'
                     inputProps={{
                       autoCapitalize: 'none',
-                      autoFocus: true,
+                      autoFocus: false,
                     }}
                     containerStyle={styles.inputContainerStyle}
                     labelStyle={styles.inputLabelStyle}
