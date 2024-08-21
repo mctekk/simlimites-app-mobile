@@ -1,23 +1,21 @@
 // Modules
-import React, {useContext, useEffect, useState} from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled from 'styled-components/native';
 import {Formik} from 'formik';
 import * as yup from 'yup';
-import {Alert, StyleSheet} from 'react-native';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { Alert, SafeAreaView, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 // Molecules
 import Header from 'components/molecules/header';
 import TextInput from 'components/molecules/text-input';
-import LoadingModal from 'components/molecules/modals/loading-modal';
 
 // Styles
-import {Colors, Typography} from 'styles';
+import { Typography } from 'styles';
 
 // Atoms
-import Text from 'components/atoms/text';
-import Button from 'components/atoms/button';
 import {TextTransform, translate} from 'components/atoms/localized-label';
+import CustomText from 'atoms/text';
+import { EmailIcon, NextArrow } from 'assets/icons';
 
 // Services
 import { client } from 'core/kanvas_client';
@@ -33,43 +31,43 @@ interface IForgotPasswordProps {
 const Container = styled.View`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
+  padding-horizontal: 30px;
 `;
 
 const ScreenHeader = styled(Header)`
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  background-color: ${DEFAULT_THEME.primary};
+  background-color: ${DEFAULT_THEME.background};
+  padding-top: 10px;
+  padding-horizontal: 0px;
+  height: 60px;
+  margin-bottom: 0px;
 `;
 
-const Content = styled(KeyboardAwareScrollView)`
-  margin-top: -30px;
+const IconContainer = styled.View`
+  position: absolute;
+  align-self: flex-end;
+  padding-right: 50px;
 `;
 
-const Title = styled(Text)`
-  font-size: ${Typography.FONT_SIZE_22}px;
-  line-height: ${Typography.FONT_SIZE_24}px;
-  font-weight: bold;
-  color: ${DEFAULT_THEME.text};
-  text-align: center;
-  margin-bottom: 5px;
-`;
-
-const Subtitle = styled(Text)`
-  font-size: ${Typography.FONT_SIZE_14}px;
-  line-height: ${Typography.FONT_SIZE_24}px;
-  color: ${DEFAULT_THEME.text};
-  text-align: center;
-  margin-bottom: 15px;
-`;
+const Content = styled.View``;
 
 const Input = styled(TextInput)`
-  width: 75%;
+  margin-bottom: 5px;
+  border-width: 1px;
+  border-color: ${DEFAULT_THEME.borderColor};
+  border-radius: 5px;
+  padding-horizontal: 20px;
+  padding-vertical: 12px;
 `;
 
-const SendButton = styled(Button)`
-  width: 50%;
-  height: 40px;
-  border-radius: 5px;
+const ContinueButton = styled.TouchableOpacity`
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 57px;
+  border-radius: 50px;
+  margin-top: 32px;
 `;
 
 const initialValues = {
@@ -77,7 +75,13 @@ const initialValues = {
 };
 
 const validationSchema = yup.object().shape({
-  email: yup.string().required('This field is requiered'),
+  email: yup
+    .string()
+    .required('This field is requiered')
+    .matches(
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      translate('fieldRequired', TextTransform.NONE),
+    ),
 });
 
 export const ForgotPassword = (props: IForgotPasswordProps) => {
@@ -86,6 +90,9 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
 
   // State
   const [isLoading, setIsLoading] = useState(false);
+  const [onFocusInput, setOnFocusInput] = useState({
+    email: true,
+  });
 
   const handleForgotPassword = async (values: any, actions: any) => {
     setIsLoading(true);
@@ -105,74 +112,109 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
     }
   };
 
+  const handleOnFocusInput = (value: string) => {
+    setOnFocusInput({ ...onFocusInput, [value]: true });
+  };
+
+  const handleOnInputBlur = () => {
+    setOnFocusInput('');
+  };
+
   return (
-    <Container>
-      <ScreenHeader
-        title={translate('forgotPassword', TextTransform.CAPITALIZE)}
-      />
+    <>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={(values, actions) => handleForgotPassword(values, actions)}>
+        {({
+          values,
+          handleChange,
+          handleSubmit,
+          isValid,
+          dirty,
+        }) => {
+          const buttonDisabled = !(isValid && dirty);
 
-      <Content contentContainerStyle={styles.contentContainerStyle}>
-        <Title>{translate('forgotYourPassword', TextTransform.NONE)}</Title>
-        <Subtitle>
-          {translate('forgotYourPasswordMsg', TextTransform.NONE)}
-        </Subtitle>
-
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={(values, actions) => handleForgotPassword(values, actions)}>
-          {props => (
-            <>
-              <Input
-                labelText={translate(
-                  'forgotPassEmailInput',
-                  TextTransform.NONE,
-                )}
-                placeholderText={translate(
-                  'placeholderMail',
-                  TextTransform.NONE,
-                )}
-                labelFontSize={Typography.FONT_SIZE_12}
-                onChangeText={props.handleChange('email')}
-                error={props.errors.email}
-                inputProps={{
-                  keyboardType: 'email-address',
-                  autoCapitalize: 'none',
-                  value: props.values.email,
-                }}
-                labelStyle={styles.labelStyle}
-                inputStyle={styles.inputStyle}
-              />
-
-              <SendButton
-                title={translate('sendMail', TextTransform.NONE)}
-                onPress={props.handleSubmit}
-                style={{marginTop: 20}}
-                loading={isLoading}
-                disabled={isLoading}
-              />
-            </>
-          )}
-        </Formik>
-      </Content>
-
-      <LoadingModal visible={isLoading} />
-    </Container>
+          return (
+            <TouchableWithoutFeedback
+              onPress={() => {
+                Keyboard.dismiss();
+              }}>
+              <Container>
+                <SafeAreaView />
+                <ScreenHeader
+                  title={`${translate('forgotPassword', TextTransform.CAPITAL)}?`}
+                  titleProps={{
+                    style: {
+                      textAlign: 'flex-start',
+                      fontSize: 25,
+                      fontWeight: 'bold',
+                      paddingTop: 6,
+                      width: '100%'
+                    },
+                  }}
+                />
+                <Content>
+                  <CustomText
+                    size={Typography.FONT_SIZE_18}
+                    lineHeight={Typography.FONT_SIZE_20}
+                    style={{ marginBottom: 15 }}
+                    color={DEFAULT_THEME.subtitle}>
+                    {translate('forgotSubtitle', TextTransform.CAPITAL)}
+                  </CustomText>
+                  <Input
+                    labelText={translate('emailAddress', TextTransform.CAPITAL)}
+                    value={values.email}
+                    onChangeText={handleChange('email')}
+                    onBlur={handleOnInputBlur}
+                    onFocus={() => handleOnFocusInput('email')}
+                    isFocused={onFocusInput.email}
+                    returnKeyType='next'
+                    keyboardType='email-address'
+                    inputProps={{
+                      autoCapitalize: 'none',
+                      autoFocus: true,
+                    }}
+                    containerStyle={styles.inputContainerStyle}
+                    labelStyle={styles.inputLabelStyle}
+                    inputIcon={<EmailIcon />}
+                    fontSize={Typography.FONT_SIZE_18}
+                    textColor={DEFAULT_THEME.black}
+                  />
+                </Content>
+                <ContinueButton
+                  onPress={() => handleSubmit()}
+                  style={{
+                    backgroundColor: buttonDisabled ? DEFAULT_THEME.disabledButton : DEFAULT_THEME.black
+                  }}
+                  disabled={buttonDisabled}
+                >
+                  <CustomText
+                    size={Typography.FONT_SIZE_20}
+                    lineHeight={Typography.FONT_SIZE_24}
+                    weight='600'
+                    color={buttonDisabled ? DEFAULT_THEME.white : DEFAULT_THEME.white}>
+                    {translate('continue', TextTransform.CAPITAL)}
+                  </CustomText>
+                  <IconContainer>
+                    <NextArrow />
+                  </IconContainer>
+                </ContinueButton>
+              </Container>
+            </TouchableWithoutFeedback>
+          )
+        }}
+      </Formik>
+    </>
   );
 };
 
-const styles = StyleSheet.create({
-  inputStyle: {
+const styles = {
+  inputContainerStyle: {
     borderWidth: 0,
-    borderBottomWidth: 1,
+    paddingHorizontal: 0,
   },
-  labelStyle: {
-    fontSize: Typography.FONT_SIZE_14,
-    lineHeight: Typography.FONT_SIZE_16,
+  inputLabelStyle: {
+    marginBottom: 0,
   },
-  contentContainerStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexGrow: 1,
-  },
-});
+}
