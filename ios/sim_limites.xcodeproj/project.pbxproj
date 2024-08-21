@@ -542,7 +542,7 @@
 				CODE_SIGN_ENTITLEMENTS = kanvas_app/kanvas_app.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = 1590037204877670;
@@ -579,7 +579,7 @@
 				CODE_SIGN_ENTITLEMENTS = kanvas_app/kanvas_app.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
@@ -841,7 +841,7 @@
 				CODE_SIGN_ENTITLEMENTS = kanvas_app/kanvas_app.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = 1590037204877670;
@@ -984,7 +984,7 @@
 				CODE_SIGN_ENTITLEMENTS = kanvas_app/kanvas_app.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = 1590037204877670;
@@ -1120,7 +1120,7 @@
 				CODE_SIGN_ENTITLEMENTS = kanvas_app/kanvas_app.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
@@ -1251,7 +1251,7 @@
 				CODE_SIGN_ENTITLEMENTS = kanvas_app/kanvas_app.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
