@@ -1,104 +1,132 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-shadow */
 // Modules
-import React, { useContext, useState } from 'react';
-import styled from 'styled-components';
+import React, { useContext, useState, useEffect } from 'react';
+import styled from 'styled-components/native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Alert } from 'react-native';
+import { Alert, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import kanvasService from 'core/services/kanvas-service';
 
 // Molecules
 import Header from 'components/molecules/header';
 import TextInput from 'components/molecules/text-input';
 
 // Styles
-import { Colors } from 'styles';
+import { Typography } from 'styles';
 
 // Atoms
-import CustomButton from 'components/atoms/button';
 import { TextTransform, translate } from 'components/atoms/localized-label';
+import CustomText from 'atoms/text';
+import { NextArrow } from 'assets/icons';
 
 // Api
 import { client } from 'core/kanvas_client';
 
 // Utils
-import { AUTH_TOKEN, REFRESH_TOKEN, USER_DATA } from 'utils/constants';
+import { AUTH_TOKEN } from 'utils/constants';
 
 // Context
 import { AuthContext } from 'components/context/auth-context';
 
 // Styles
 import { DEFAULT_THEME } from 'styles/theme';
-import kanvasService from 'core/services/kanvas-service';
+import LoadingModal from 'components/molecules/modals/loading-modal';
 
 // Interfaces
 interface ISignUpProps {
   navigation: any;
+  route: any;
 }
 
-const HEADER_HEIGHT = 130;
+const ContinueButton = styled.TouchableOpacity`
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 57px;
+  border-radius: 50px;
+  margin-top: 32px;
+`;
+
+const IconContainer = styled.View`
+  position: absolute;
+  align-self: flex-end;
+  padding-right: 50px;
+`;
 
 const Container = styled.View`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
+  padding-horizontal: 30px;
+`;
+
+const Content = styled.View``;
+
+const Input = styled(TextInput)`
+  margin-bottom: 15px;
+  border-width: 1px;
+  border-color: ${DEFAULT_THEME.borderColor};
+  border-radius: 5px;
+  padding-horizontal: 20px;
+  padding-vertical: 12px;
 `;
 
 const ScreenHeader = styled(Header)`
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-`;
-
-const Content = styled.View`
-  padding: 20px;
-  flex: 1;
-`;
-
-const Input = styled(TextInput)`
-  margin-top: 20px;
-`;
-
-const Button = styled(CustomButton)`
-  height: 50px;
-  border-radius: 5px;
+  background-color: ${DEFAULT_THEME.background};
+  padding-top: 10px;
+  padding-horizontal: 0px;
+  height: 60px;
+  margin-bottom: 0px;
 `;
 
 const initialValues = {
-  email: '',
-  firstname: '',
-  lastname: '',
-  displayname: '',
   password: '',
   password_confirmation: '',
 };
 
 const validationSchema = yup.object().shape({
-  email: yup.string().required(translate('fieldRequired', TextTransform.NONE)),
-  firstname: yup
-    .string()
-    .required(translate('fieldRequired', TextTransform.NONE)),
-  lastname: yup
-    .string()
-    .required(translate('fieldRequired', TextTransform.NONE)),
-  displayname: yup
-    .string()
-    .required(translate('fieldRequired', TextTransform.NONE)),
   password: yup
     .string()
-    .required(translate('fieldRequired', TextTransform.NONE)),
+    .required(translate('fieldRequired', TextTransform.NONE))
+    .min(8),
   password_confirmation: yup
     .string()
-    .oneOf([yup.ref('password')], 'Passwords do not match')
-    .required(translate('fieldRequired', TextTransform.NONE)),
+    .required(translate('fieldRequired', TextTransform.NONE))
+    .min(8)
+    .oneOf([yup.ref('password')], translate('passwordNotMatch', TextTransform.NONE)),
 });
 
 export const RegisterPassword = (props: ISignUpProps) => {
+  // Props
+  const { navigation, route } = props;
+
+  // Params
+  const { email, name } = route.params;
+
   // States
   const [isLoading, setIsLoading] = useState(false);
+  const [onFocusInput, setOnFocusInput] = useState({
+    password: true,
+    password_confirmation: false,
+  });
 
   // Context
   const { signUp } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log(email, name)
+  }, []);
+
+  const handleOnFocusInput = (value: string) => {
+    setOnFocusInput({ ...onFocusInput, [value]: true });
+  };
+
+  const handleOnInputBlur = () => {
+    setOnFocusInput('');
+  };
 
   const getUserData = async (token: string, refresh_token: string) => {
     try {
@@ -112,130 +140,143 @@ export const RegisterPassword = (props: ISignUpProps) => {
 
   const handleRegistration = async (values: any, actions: any) => {
     setIsLoading(true);
+
+    const data = {
+      email: email.trim(),
+      password: values.password,
+      password_confirmation: values.password_confirmation,
+      firstname: name,
+    }
+
     try {
-      const response = await client.users.register(values);
+      const response = await client.users.register(data);
       const { token, user } = response?.register;
-      AsyncStorage.setItem(AUTH_TOKEN, token?.token);
+      await AsyncStorage.setItem(AUTH_TOKEN, token?.token);
       onRegisterSuccess(token?.token, token?.refresh_token);
     } catch (error) {
       console.log('Register Error:', error);
-      onRegisterError();
+
+      onRegisterError(error);
       setIsLoading(false);
     }
   };
 
   const onRegisterSuccess = (token: string, refresh_token: string) => {
-    Alert.alert(
-      translate('success', TextTransform.CAPITALIZE),
-      translate('registerSuccessMsg', TextTransform.CAPITALIZE),
-      [
-        {
-          text: translate('ok', TextTransform.CAPITALIZE),
-          onPress: () => getUserData(token, refresh_token),
-        },
-      ],
-    );
+    getUserData(token, refresh_token);
   };
 
-  const onRegisterError = () => {
+  const onRegisterError = (error: object) => {
+    const msg = translate('registerErrorMsg', TextTransform.CAPITALIZE);
+
     Alert.alert(
       translate('error', TextTransform.CAPITALIZE),
-      translate('registerErrorMsg', TextTransform.CAPITALIZE),
+      msg,
     );
   };
 
   return (
-    <Container>
-      <ScreenHeader title={translate('signUp', TextTransform.CAPITALIZE)} />
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={(values, actions) => handleRegistration(values, actions)}>
+      {({
+        values,
+        handleChange,
+        handleSubmit,
+        errors,
+        isValid,
+        dirty,
+      }) => {
+        const buttonDisabled = !(isValid && dirty);
 
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={(values, actions) => handleRegistration(values, actions)}>
-        {props => (
-          <KeyboardAwareScrollView
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 50 }}>
+        return (
+          <Container>
+            <SafeAreaView />
+            <ScreenHeader
+              title={translate('enterYourPass', TextTransform.CAPITAL)}
+              titleProps={{
+                style: {
+                  textAlign: 'flex-start',
+                  fontSize: 25,
+                  fontWeight: 'bold',
+                  paddingTop: 6,
+                  width: '100%'
+                },
+              }}
+            />
+
             <Content>
               <Input
-                labelText={translate('email', TextTransform.CAPITALIZE)}
-                placeholderText={translate('placeholderMail', TextTransform.CAPITALIZE)}
-                onChangeText={props.handleChange('email')}
-                error={props.errors.email}
-                inputProps={{
-                  keyboardType: 'email-address',
-                  autoCapitalize: 'none',
-                  value: props.values.email,
-                }}
-              />
-
-              <Input
-                labelText={translate('firstName', TextTransform.CAPITALIZE)}
-                placeholderText={translate('placeholderFirstName', TextTransform.CAPITALIZE)}
-                onChangeText={props.handleChange('firstname')}
-                error={props.errors.firstname}
-                inputProps={{
-                  autoCapitalize: 'none',
-                  value: props.values.firstname,
-                }}
-              />
-
-              <Input
-                labelText={translate('lastName', TextTransform.CAPITALIZE)}
-                placeholderText={translate('placeholderLastName', TextTransform.NONE)}
-                onChangeText={props.handleChange('lastname')}
-                error={props.errors.lastname}
-                inputProps={{
-                  autoCapitalize: 'none',
-                  value: props.values.lastname,
-                }}
-              />
-
-              <Input
-                labelText={translate('displayName', TextTransform.CAPITALIZE)}
-                placeholderText={translate('placeholderDisplayName', TextTransform.NONE)}
-                onChangeText={props.handleChange('displayname')}
-                error={props.errors.displayname}
-                inputProps={{
-                  autoCapitalize: 'none',
-                  value: props.values.displayname,
-                }}
-              />
-
-              <Input
-                labelText={translate('password', TextTransform.CAPITALIZE)}
-                placeholderText={translate('placeholderPassword', TextTransform.NONE)}
-                onChangeText={props.handleChange('password')}
-                error={props.errors.password}
+                labelText={translate('password', TextTransform.CAPITAL)}
+                value={values.password}
+                onFocus={() => handleOnFocusInput('password')}
+                isFocused={onFocusInput.password}
+                onChangeText={handleChange('password')}
+                onBlur={handleOnInputBlur}
+                returnKeyType='next'
                 secureTextEntry={true}
+                labelStyle={styles.inputLabelStyle}
+                containerStyle={styles.inputContainerStyle}
+                fontSize={Typography.FONT_SIZE_18}
+                textColor={DEFAULT_THEME.black}
                 inputProps={{
-                  autoCapitalize: 'none',
-                  value: props.values.password,
+                  autoFocus: true,
                 }}
               />
 
               <Input
-                labelText={translate('confirmPassword', TextTransform.CAPITALIZE)}
-                placeholderText={translate('placeholderConfirmPassword', TextTransform.NONE)}
-                onChangeText={props.handleChange('password_confirmation')}
-                error={props.errors.password_confirmation}
+                labelText={translate('reEnterPassword', TextTransform.NONE)}
+                //placeholderText={translate('createPassword', TextTransform.NONE)}
+                value={values.password}
+                onFocus={() => handleOnFocusInput('password_confirmation')}
+                isFocused={onFocusInput.password}
+                onChangeText={handleChange('password_confirmation')}
+                onBlur={handleOnInputBlur}
+                returnKeyType='next'
                 secureTextEntry={true}
-                inputProps={{
-                  autoCapitalize: 'none',
-                  value: props.values.password_confirmation,
-                }}
-              />
-
-              <Button
-                title={translate('signUp', TextTransform.CAPITALIZE)}
-                onPress={props.handleSubmit}
-                loading={isLoading}
-                disabled={isLoading}
+                labelStyle={styles.inputLabelStyle}
+                containerStyle={styles.inputContainerStyle}
+                fontSize={Typography.FONT_SIZE_18}
+                textColor={DEFAULT_THEME.black}
               />
             </Content>
-          </KeyboardAwareScrollView>
-        )}
-      </Formik>
-    </Container>
+            <ContinueButton
+              onPress={() => handleSubmit()}
+              style={{
+                backgroundColor: buttonDisabled ? DEFAULT_THEME.disabledButton : DEFAULT_THEME.black
+              }}
+              disabled={buttonDisabled}
+            >
+              <CustomText
+                size={Typography.FONT_SIZE_20}
+                lineHeight={Typography.FONT_SIZE_24}
+                weight='600'
+                color={buttonDisabled ? DEFAULT_THEME.white : DEFAULT_THEME.white}>
+                {translate('continue', TextTransform.CAPITAL)}
+              </CustomText>
+              <IconContainer>
+                <NextArrow />
+              </IconContainer>
+            </ContinueButton>
+
+            <LoadingModal
+              visible={isLoading}
+              title={translate('creatingAccount', TextTransform.CAPITAL)}
+            />
+
+          </Container>
+        )
+      }}
+    </Formik>
   );
 };
+
+const styles = {
+  inputContainerStyle: {
+    borderWidth: 0,
+    paddingHorizontal: 0,
+  },
+  inputLabelStyle: {
+    marginBottom: 0,
+  },
+}
