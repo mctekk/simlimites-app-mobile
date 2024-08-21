@@ -16,6 +16,7 @@ interface ColorTheme {
   separatorText: string;
   disabledButton: string;
   title: string;
+  inputBg: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.BLACK,
@@ -33,4 +34,5 @@ export const DEFAULT_THEME: ColorTheme = {
   separatorText: Colors.GRAY,
   disabledButton: Colors.DISABLED_GRAY,
   title: Colors.BLACK,
+  inputBg: Colors.WHITE,
 };
