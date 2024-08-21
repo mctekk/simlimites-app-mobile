@@ -14,7 +14,6 @@ export class KanvasService {
 
     try {
       const response = await client.users.getUserData(withSocial);
-      console.log("userData===", response)
       const formatResponse = handleCustomFields(response);
       return formatResponse;
     } catch (error) {
