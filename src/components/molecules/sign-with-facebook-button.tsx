@@ -54,6 +54,7 @@ const SignWithFacebook = (
   const { isSmall = false, onLogin, textLocale ='signInFacebook' } = props;
 
   const handleLogin = async () => {
+    return;
     try {
       const result = await LoginManager.logInWithPermissions(
         ['public_profile', 'email'],

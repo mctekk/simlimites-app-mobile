@@ -45,6 +45,7 @@ const SignWithGoogle = (props: Partial<PillButtonProps, SocialButtonIconsProps>)
   const { isSmall = false, onLogin, textLocale ='signInGoogle' } = props;
 
   const handleLogin = async () => {
+    return;
     try {
 
       GoogleSignin.configure({
