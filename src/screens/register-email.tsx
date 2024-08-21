@@ -128,7 +128,7 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
   // States
   const [isLoading, setIsLoading] = useState(false);
   const [onFocusInput, setOnFocusInput] = useState({
-    email: false,
+    email: true,
   });
 
   // Context
@@ -179,6 +179,15 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
   };
 
   const onContinuePress = async (values: any) => {
+    const response = await kanvasService.getUserByEmail(values.email.trim());
+    if (response?.id) {
+      Alert.alert(
+        translate('error', TextTransform.CAPITALIZE),
+        translate('emailExists', TextTransform.CAPITAL),
+      );
+      return;
+    }
+
     navigation.navigate('RegisterName', { email: values.email });
   };
 
