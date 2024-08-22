@@ -19,3 +19,8 @@ export const handleCustomFields = (userData: IUser) => {
   });
   return new_user;
 };
+
+export const wait = (milliseconds: number): Promise<number> =>
+  new Promise(resolve => {
+    setTimeout(() => resolve(milliseconds), milliseconds);
+  });

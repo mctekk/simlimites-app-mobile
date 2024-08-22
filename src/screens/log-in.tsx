@@ -37,7 +37,8 @@ import { DEFAULT_THEME } from 'styles/theme';
 import { client } from 'core/kanvas_client';
 
 // Constants
-import { AUTH_TOKEN, REFRESH_TOKEN, USER_DATA } from 'utils/constants';
+import { AUTH_TOKEN, SAVED_EMAIL } from 'utils/constants';
+import { wait } from 'utils';
 
 // Context
 import { AuthContext } from 'components/context/auth-context';
@@ -129,7 +130,7 @@ const ScreenHeader = styled(Header)`
   margin-bottom: 0px;
 `;
 
-const initialValues = {
+let initialValues = {
   email: '',
   password: '',
 };
@@ -147,6 +148,7 @@ export const LogIn = (props: ISignInProps, ref: any) => {
 
   // States
   const [isLoading, setIsLoading] = useState(false);
+  const [credLoading, setCredLoading] = useState(true);
   const [isRememberChecked, setIsRememberChecked] = useState(false);
   const [onFocusInput, setOnFocusInput] = useState({
     email: false,
@@ -155,6 +157,10 @@ export const LogIn = (props: ISignInProps, ref: any) => {
 
   // Context
   const { signIn } = useContext(AuthContext);
+
+  useEffect(() => {
+    handleRememberedEmail();
+  }, []);
 
   const handleOnFocusInput = (value: string) => {
     setOnFocusInput({ ...onFocusInput, [value]: true });
@@ -176,8 +182,29 @@ export const LogIn = (props: ISignInProps, ref: any) => {
     }
   };
 
+  const handleRememberedEmail = async () => {
+    setCredLoading(true);
+    const savedEmail = await AsyncStorage.getItem(SAVED_EMAIL);
+
+    savedEmail && setIsRememberChecked(true);
+
+    initialValues = {
+      email: savedEmail ? savedEmail : '',
+      password: '',
+    };
+
+    setCredLoading(false);
+  };
+
   const handleSignIn = async (values: any) => {
     setIsLoading(true);
+
+    if (isRememberChecked) {
+      await AsyncStorage.setItem(SAVED_EMAIL, values.email);
+    } else {
+      await AsyncStorage.removeItem(SAVED_EMAIL);
+    }
+
     try {
       const response = await client.auth.login(values.email, values.password);
       const { token, refresh_token, id } = response;
@@ -220,146 +247,153 @@ export const LogIn = (props: ISignInProps, ref: any) => {
 
   return (
     <>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={(values, actions) => handleSignIn(values, actions)}>
-        {({
-          values,
-          handleChange,
-          handleSubmit,
-          isValid,
-          dirty,
-        }) => {
-          const buttonDisabled = !(isValid && dirty);
+      {
+        credLoading ? (
+          <></>
+        ) : (
+          <Formik
+            initialValues={initialValues}
+            enableReinitialize
+            validationSchema={validationSchema}
+            onSubmit={(values, actions) => handleSignIn(values, actions)}>
+            {({
+              values,
+              handleChange,
+              handleSubmit,
+              isValid,
+              dirty,
+            }) => {
+              const buttonDisabled = !(isValid && dirty);
 
-          return (
-            <TouchableWithoutFeedback
-              onPress={() => {
-                Keyboard.dismiss();
-              }}>
-              <Container>
-                <SafeAreaView />
-                <ScreenHeader
-                  title={translate('loginTitle', TextTransform.CAPITAL)}
-                  titleProps={{
-                    style: {
-                      textAlign: 'flex-start',
-                      fontSize: 25,
-                      fontWeight: 'bold',
-                      paddingTop: 6,
-                      width: '100%'
-                    },
-                  }}
-                />
-                <Content>
-                  <CustomText
-                    size={Typography.FONT_SIZE_18}
-                    lineHeight={Typography.FONT_SIZE_20}
-                    style={{ marginBottom: 15 }}
-                    color={DEFAULT_THEME.subtitle}>
-                    {translate('loginSubtitle', TextTransform.CAPITAL)}
-                  </CustomText>
-                  <Input
-                    labelText={translate('emailAddress', TextTransform.CAPITAL)}
-                    value={values.email}
-                    onChangeText={handleChange('email')}
-                    onBlur={handleOnInputBlur}
-                    onFocus={() => handleOnFocusInput('email')}
-                    isFocused={onFocusInput.email}
-                    returnKeyType='next'
-                    keyboardType='email-address'
-                    inputProps={{
-                      autoCapitalize: 'none',
-                      autoFocus: false,
-                    }}
-                    containerStyle={styles.inputContainerStyle}
-                    labelStyle={styles.inputLabelStyle}
-                    inputIcon={<EmailIcon />}
-                    fontSize={Typography.FONT_SIZE_18}
-                    textColor={DEFAULT_THEME.black}
-                  />
-                  <Input
-                    labelText={translate('password', TextTransform.CAPITAL)}
-                    value={values.password}
-                    onFocus={() => handleOnFocusInput('password')}
-                    isFocused={onFocusInput.password}
-                    onChangeText={handleChange('password')}
-                    onBlur={handleOnInputBlur}
-                    returnKeyType='next'
-                    secureTextEntry={true}
-                    labelStyle={styles.inputLabelStyle}
-                    containerStyle={styles.inputContainerStyle}
-                    fontSize={Typography.FONT_SIZE_18}
-                    textColor={DEFAULT_THEME.black}
-                  />
-                  <InputBottomContainer>
-                    <RememberMeButton
-                      onPress={() => setIsRememberChecked(!isRememberChecked)}
-                    >
-                      <CheckContainer>
-                        {isRememberChecked ? <Check /> : <></>}
-                      </CheckContainer>
+              return (
+                <TouchableWithoutFeedback
+                  onPress={() => {
+                    Keyboard.dismiss();
+                  }}>
+                  <Container>
+                    <SafeAreaView />
+                    <ScreenHeader
+                      title={translate('loginTitle', TextTransform.CAPITAL)}
+                      titleProps={{
+                        style: {
+                          textAlign: 'flex-start',
+                          fontSize: 25,
+                          fontWeight: 'bold',
+                          paddingTop: 6,
+                          width: '100%'
+                        },
+                      }}
+                    />
+                    <Content>
+                      <CustomText
+                        size={Typography.FONT_SIZE_18}
+                        lineHeight={Typography.FONT_SIZE_20}
+                        style={{ marginBottom: 15 }}
+                        color={DEFAULT_THEME.subtitle}>
+                        {translate('loginSubtitle', TextTransform.CAPITAL)}
+                      </CustomText>
+                      <Input
+                        labelText={translate('emailAddress', TextTransform.CAPITAL)}
+                        textValue={values.email}
+                        onChangeText={handleChange('email')}
+                        onBlur={handleOnInputBlur}
+                        onFocus={() => handleOnFocusInput('email')}
+                        isFocused={onFocusInput.email}
+                        returnKeyType='next'
+                        keyboardType='email-address'
+                        inputProps={{
+                          autoCapitalize: 'none',
+                          autoFocus: false,
+                        }}
+                        containerStyle={styles.inputContainerStyle}
+                        labelStyle={styles.inputLabelStyle}
+                        inputIcon={<EmailIcon />}
+                        fontSize={Typography.FONT_SIZE_18}
+                        textColor={DEFAULT_THEME.black}
+                      />
+                      <Input
+                        labelText={translate('password', TextTransform.CAPITAL)}
+                        textValue={values.password}
+                        onFocus={() => handleOnFocusInput('password')}
+                        isFocused={onFocusInput.password}
+                        onChangeText={handleChange('password')}
+                        onBlur={handleOnInputBlur}
+                        returnKeyType='next'
+                        secureTextEntry={true}
+                        labelStyle={styles.inputLabelStyle}
+                        containerStyle={styles.inputContainerStyle}
+                        fontSize={Typography.FONT_SIZE_18}
+                        textColor={DEFAULT_THEME.black}
+                      />
+                      <InputBottomContainer>
+                        <RememberMeButton
+                          onPress={() => setIsRememberChecked(!isRememberChecked)}
+                        >
+                          <CheckContainer>
+                            {isRememberChecked ? <Check /> : <></>}
+                          </CheckContainer>
 
-                      <CustomText
-                        size={Typography.FONT_SIZE_15}
-                        weight='500'
-                        color={DEFAULT_THEME.black}
-                      >
-                        {translate('rememberMe', TextTransform.CAPITAL)}
-                      </CustomText>
-                    </RememberMeButton>
-                    <ForgotPasswordButton
-                      onPress={onForgotPassword}
+                          <CustomText
+                            size={Typography.FONT_SIZE_15}
+                            weight='500'
+                            color={DEFAULT_THEME.black}
+                          >
+                            {translate('rememberMe', TextTransform.CAPITAL)}
+                          </CustomText>
+                        </RememberMeButton>
+                        <ForgotPasswordButton
+                          onPress={onForgotPassword}
+                        >
+                          <CustomText
+                            size={Typography.FONT_SIZE_13}
+                            style={{ textDecorationLine: 'underline' }}
+                            color={DEFAULT_THEME.black}
+                          >
+                            {`${translate('forgotPassword', TextTransform.CAPITAL)}?`}
+                          </CustomText>
+                        </ForgotPasswordButton>
+                      </InputBottomContainer>
+                    </Content>
+                    <ContinueButton
+                      onPress={() => handleSubmit()}
+                      style={{
+                        backgroundColor: buttonDisabled ? DEFAULT_THEME.disabledButton : DEFAULT_THEME.black
+                      }}
+                      disabled={buttonDisabled}
                     >
                       <CustomText
-                        size={Typography.FONT_SIZE_13}
-                        style={{ textDecorationLine: 'underline' }}
-                        color={DEFAULT_THEME.black}
-                      >
-                        {`${translate('forgotPassword', TextTransform.CAPITAL)}?`}
+                        size={Typography.FONT_SIZE_20}
+                        lineHeight={Typography.FONT_SIZE_24}
+                        weight='600'
+                        color={buttonDisabled ? DEFAULT_THEME.white : DEFAULT_THEME.white}>
+                        {translate('continue', TextTransform.CAPITAL)}
                       </CustomText>
-                    </ForgotPasswordButton>
-                  </InputBottomContainer>
-                </Content>
-                <ContinueButton
-                  onPress={() => handleSubmit()}
-                  style={{
-                    backgroundColor: buttonDisabled ? DEFAULT_THEME.disabledButton : DEFAULT_THEME.black
-                  }}
-                  disabled={buttonDisabled}
-                >
-                  <CustomText
-                    size={Typography.FONT_SIZE_20}
-                    lineHeight={Typography.FONT_SIZE_24}
-                    weight='600'
-                    color={buttonDisabled ? DEFAULT_THEME.white : DEFAULT_THEME.white}>
-                    {translate('continue', TextTransform.CAPITAL)}
-                  </CustomText>
-                  <IconContainer>
-                    <NextArrow />
-                  </IconContainer>
-                </ContinueButton>
-                <SocialModeTopContainer>
-                  <SeparatorContainer>
-                    <CustomText
-                      size={Typography.FONT_SIZE_15}
-                      lineHeight={Typography.FONT_SIZE_16}
-                      color={DEFAULT_THEME.separatorText}>
-                      {translate('or', TextTransform.CAPITAL)}
-                    </CustomText>
-                  </SeparatorContainer>
-                  <SocialContainer>
-                    <SignWithFacebook onLogin={onSocialLogin} />
-                    <SignWithGoogle onLogin={onSocialLogin} />
-                    {/* <SignWithApple onLogin={onSocialLogin} /> */}
-                  </SocialContainer>
-                </SocialModeTopContainer>
-              </Container>
-            </TouchableWithoutFeedback>
-          )
-        }}
-      </Formik>
+                      <IconContainer>
+                        <NextArrow />
+                      </IconContainer>
+                    </ContinueButton>
+                    <SocialModeTopContainer>
+                      <SeparatorContainer>
+                        <CustomText
+                          size={Typography.FONT_SIZE_15}
+                          lineHeight={Typography.FONT_SIZE_16}
+                          color={DEFAULT_THEME.separatorText}>
+                          {translate('or', TextTransform.CAPITAL)}
+                        </CustomText>
+                      </SeparatorContainer>
+                      <SocialContainer>
+                        <SignWithFacebook onLogin={onSocialLogin} />
+                        <SignWithGoogle onLogin={onSocialLogin} />
+                        {/* <SignWithApple onLogin={onSocialLogin} /> */}
+                      </SocialContainer>
+                    </SocialModeTopContainer>
+                  </Container>
+                </TouchableWithoutFeedback>
+              )
+            }}
+          </Formik>
+        )
+      }
       <LoadingModal
         visible={isLoading}
         title={translate('signingIn', TextTransform.CAPITALIZE)}
