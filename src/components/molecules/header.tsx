@@ -1,6 +1,6 @@
 // Modules
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -11,8 +11,11 @@ import BackButton from 'components/atoms/back-button';
 import CloseButton from 'components/atoms/close-button';
 
 // Styles
-import { Colors, Typography } from 'styles';
+import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
+
+// Utils
+import { isAndroid } from 'utils/iphone-helpers';
 
 export interface IProps {
   title?: string;
@@ -28,7 +31,6 @@ export interface IProps {
   onBackDetail?: () => void;
   diableBackButton?: boolean;
   backIconColor?: string;
-  hasBackButton?: boolean;
 }
 
 const SCREEN_MARGIN = 15;
@@ -44,17 +46,20 @@ const Container = styled.View`
   align-items: center;
   padding-horizontal: ${SCREEN_MARGIN}px;
   padding-bottom: ${SCREEN_MARGIN}px;
-  background-color: ${DEFAULT_THEME.primary};
+  background-color: ${DEFAULT_THEME.background};
+  height: 100px;
+  margin-bottom: 20px;
+  margin-top: ${isAndroid() ? '30' : '0'}px;
 `;
 
 // @ts-ignore
 const Title = styled(Text)`
-  color: ${Colors.WHITE};
-  font-size: ${Typography.FONT_SIZE_20}px;
+  color: ${DEFAULT_THEME.title};
+  font-size: ${Typography.FONT_SIZE_16}px;
   line-height: ${Typography.FONT_SIZE_24}px;
+  font-weight: 600;
   width: 200px;
   text-align: center;
-  padding-top: 10px;
 `;
 
 const CustomHeader = styled.View`
@@ -93,7 +98,7 @@ const Header = (props: IProps) => {
     onBackDetail,
     diableBackButton = false,
     hasBackButton = true,
-    backIconColor = Colors.WHITE,
+    backIconColor = DEFAULT_THEME.black,
   } = props;
 
   const onBackPress = () => {
@@ -103,6 +108,7 @@ const Header = (props: IProps) => {
 
   return (
     <Container style={style}>
+      <StatusBar barStyle="dark-content" />
       {leftButtonComponent ? (
         <>{leftButtonComponent}</>
       ) : (

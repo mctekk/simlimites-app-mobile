@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react-native/no-inline-styles */
 // Modules
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Alert,
   SafeAreaView,
@@ -24,13 +24,12 @@ import LoadingModal from 'components/molecules/modals/loading-modal';
 import Header from 'components/molecules/header';
 
 // Atoms
-import Text from 'components/atoms/text';
 import { TextTransform, translate } from 'components/atoms/localized-label';
 import CustomText from 'atoms/text';
-import { EmailIcon, Check, NextArrow } from 'assets/icons';
+import { EmailIcon, NextArrow } from 'assets/icons';
 
 // Styles
-import { Colors, Typography } from 'styles';
+import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
 // Services
@@ -53,17 +52,6 @@ interface ISignInProps {
 
 const Content = styled.View``;
 
-const CheckContainer = styled.View`
-  align-items: center;
-  justify-content: center;
-  border-width: 1px;
-  border-color: ${DEFAULT_THEME.borderColor};
-  width: 21px;
-  height: 19px;
-  border-radius: 2px;
-  margin-right: 6px;
-`;
-
 const ContinueButton = styled.TouchableOpacity`
   width: 100%;
   align-items: center;
@@ -79,11 +67,6 @@ const IconContainer = styled.View`
   padding-right: 50px;
 `;
 
-const ForgotPasswordButton = styled.TouchableOpacity``;
-
-const RememberMeButton = styled.TouchableOpacity`
-  flex-direction: row;
-`;
 const Container = styled.View`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
@@ -93,7 +76,7 @@ const Container = styled.View`
 const SocialModeTopContainer = styled.View``;
 
 const Input = styled(TextInput)`
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   border-width: 1px;
   border-color: ${DEFAULT_THEME.borderColor};
   border-radius: 5px;
@@ -114,11 +97,6 @@ const SocialContainer = styled.View`
   align-items: center;
 `;
 
-const InputBottomContainer = styled.View`
-  justify-content: space-between;
-  flex-direction: row;
-`;
-
 const ScreenHeader = styled(Header)`
   justify-content: flex-start;
   align-items: center;
@@ -131,26 +109,26 @@ const ScreenHeader = styled(Header)`
 
 const initialValues = {
   email: '',
-  password: '',
 };
 
 const validationSchema = yup.object().shape({
-  email: yup.string().required(translate('fieldRequired', TextTransform.NONE)),
-  password: yup
+  email: yup
     .string()
-    .required(translate('fieldRequired', TextTransform.NONE)),
+    .required(translate('fieldRequired', TextTransform.NONE))
+    .matches(
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      translate('fieldRequired', TextTransform.NONE),
+    ),
 });
 
-export const LogIn = (props: ISignInProps, ref: any) => {
+export const RegisterEmail = (props: ISignInProps, ref: any) => {
   // Props
   const { navigation, route } = props;
 
   // States
   const [isLoading, setIsLoading] = useState(false);
-  const [isRememberChecked, setIsRememberChecked] = useState(false);
   const [onFocusInput, setOnFocusInput] = useState({
-    email: false,
-    password: false,
+    email: true,
   });
 
   // Context
@@ -176,24 +154,10 @@ export const LogIn = (props: ISignInProps, ref: any) => {
     }
   };
 
-  const handleSignIn = async (values: any) => {
-    setIsLoading(true);
-    try {
-      const response = await client.auth.login(values.email, values.password);
-      const { token, refresh_token, id } = response;
-      await AsyncStorage.setItem(AUTH_TOKEN, token);
-      getUserData(token, refresh_token);
-    } catch (error) {
-      console.log('Login Error:', error);
-      setIsLoading(false);
-      onLoginError();
-    }
-  };
-
   const onLoginError = () => {
     Alert.alert(
       translate('error', TextTransform.CAPITALIZE),
-      translate('loginError', TextTransform.CAPITAL),
+      translate('errorMsg', TextTransform.CAPITAL),
     );
   };
 
@@ -214,8 +178,17 @@ export const LogIn = (props: ISignInProps, ref: any) => {
     }
   };
 
-  const onForgotPassword = () => {
-    navigation.navigate('ForgotPassword');
+  const onContinuePress = async (values: any) => {
+    const response = await kanvasService.getUserByEmail(values.email.trim());
+    if (response?.id) {
+      Alert.alert(
+        translate('error', TextTransform.CAPITALIZE),
+        translate('emailExists', TextTransform.CAPITAL),
+      );
+      return;
+    }
+
+    navigation.navigate('RegisterName', { email: values.email });
   };
 
   return (
@@ -223,7 +196,7 @@ export const LogIn = (props: ISignInProps, ref: any) => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values, actions) => handleSignIn(values, actions)}>
+        onSubmit={(values, actions) => onContinuePress(values)}>
         {({
           values,
           handleChange,
@@ -241,7 +214,7 @@ export const LogIn = (props: ISignInProps, ref: any) => {
               <Container>
                 <SafeAreaView />
                 <ScreenHeader
-                  title={translate('loginTitle', TextTransform.CAPITAL)}
+                  title={translate('registerTitle', TextTransform.CAPITAL)}
                   titleProps={{
                     style: {
                       textAlign: 'flex-start',
@@ -279,48 +252,11 @@ export const LogIn = (props: ISignInProps, ref: any) => {
                     fontSize={Typography.FONT_SIZE_18}
                     textColor={DEFAULT_THEME.black}
                   />
-                  <Input
-                    labelText={translate('password', TextTransform.CAPITAL)}
-                    value={values.password}
-                    onFocus={() => handleOnFocusInput('password')}
-                    isFocused={onFocusInput.password}
-                    onChangeText={handleChange('password')}
-                    onBlur={handleOnInputBlur}
-                    returnKeyType='next'
-                    secureTextEntry={true}
-                    labelStyle={styles.inputLabelStyle}
-                    containerStyle={styles.inputContainerStyle}
-                    fontSize={Typography.FONT_SIZE_18}
-                    textColor={DEFAULT_THEME.black}
-                  />
-                  <InputBottomContainer>
-                    <RememberMeButton
-                      onPress={() => setIsRememberChecked(!isRememberChecked)}
-                    >
-                      <CheckContainer>
-                        {isRememberChecked ? <Check /> : <></>}
-                      </CheckContainer>
-
-                      <CustomText
-                        size={Typography.FONT_SIZE_15}
-                        weight='500'
-                        color={DEFAULT_THEME.black}
-                      >
-                        {translate('rememberMe', TextTransform.CAPITAL)}
-                      </CustomText>
-                    </RememberMeButton>
-                    <ForgotPasswordButton
-                      onPress={onForgotPassword}
-                    >
-                      <CustomText
-                        size={Typography.FONT_SIZE_13}
-                        style={{ textDecorationLine: 'underline' }}
-                        color={DEFAULT_THEME.black}
-                      >
-                        {`${translate('forgotPassword', TextTransform.CAPITAL)}?`}
-                      </CustomText>
-                    </ForgotPasswordButton>
-                  </InputBottomContainer>
+                  <CustomText
+                    size={Typography.FONT_SIZE_12}
+                    color={DEFAULT_THEME.subtitle}>
+                    {translate('confirmEmail', TextTransform.CAPITAL)}
+                  </CustomText>
                 </Content>
                 <ContinueButton
                   onPress={() => handleSubmit()}
@@ -350,9 +286,9 @@ export const LogIn = (props: ISignInProps, ref: any) => {
                     </CustomText>
                   </SeparatorContainer>
                   <SocialContainer>
-                    <SignWithFacebook onLogin={onSocialLogin} />
-                    <SignWithGoogle onLogin={onSocialLogin} />
-                    {/* <SignWithApple onLogin={onSocialLogin} /> */}
+                    <SignWithFacebook onLogin={onSocialLogin} textLocale={'signUpFacebook'} />
+                    <SignWithGoogle onLogin={onSocialLogin} textLocale={'signUpGoogle'} />
+                    {/* <SignWithApple onLogin={onSocialLogin} textLocale={'signUpApple'} /> */}
                   </SocialContainer>
                 </SocialModeTopContainer>
               </Container>

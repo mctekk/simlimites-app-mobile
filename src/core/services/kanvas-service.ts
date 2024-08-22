@@ -1,5 +1,5 @@
 // Core
-import { client } from "core/kanvas_client";
+import { client, adminClient } from "core/kanvas_client";
 import { handleCustomFields } from "utils";
 
 export class KanvasService {
@@ -44,6 +44,21 @@ export class KanvasService {
     } catch (error) {
       console.log('Error:', error);
       throw new Error(`Error updating user data: ${error}`);
+    }
+  }
+
+  /**
+   * Retrieves user data from the server by user email.
+   * @returns {Promise<any>} A promise that resolves with the formatted user data.
+   * @throws {Error} If there is an error fetching the user data.
+   */
+  async getUserByEmail(email: string) {
+    try {
+      const response = await adminClient.app.users.getUserByEmail(email);
+      return response;
+    } catch (error) {
+      console.log('Error:', error);
+      throw new Error(`Error fetching user data: ${error}`);
     }
   }
 

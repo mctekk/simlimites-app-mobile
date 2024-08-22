@@ -17,3 +17,10 @@ export const client = new KanvasCore({
   key: `${Config.KANVAS_KEY}`,
   middlewares: [genericAuthMiddleware(getToken)],
 });
+
+export const adminClient = new KanvasCore({
+  url: `${Config.KANVAS_URL}`,
+  key: `${Config.KANVAS_KEY}`,
+  middlewares: [genericAuthMiddleware(getToken)],
+  adminKey: `${Config.KANVAS_SUPER_KEY}`,
+});

@@ -25,6 +25,7 @@ import { AppleIcon } from 'assets/icons';
 interface SocialButtonIconsProps {
   isSmall?: boolean;
   onLogin?: () => void;
+  textLocale?: string;
 }
 
 const Button = styled.TouchableOpacity`
@@ -47,7 +48,7 @@ const AIcon = () => (
 const SignWithApple = (
   props: Partial<PillButtonProps, SocialButtonIconsProps>,
 ) => {
-  const { isSmall = false, onLogin } = props;
+  const { isSmall = false, onLogin, textLocale ='signInApple' } = props;
 
   const handleLogin = async () => {
     try {
@@ -90,7 +91,7 @@ const SignWithApple = (
           weight='500'
           style={{ marginLeft: 20 }}
           color={DEFAULT_THEME.black}>
-          {translate('signInApple', TextTransform.CAPITAL)}
+          {translate(textLocale, TextTransform.CAPITAL)}
         </CustomText>
       </Button>
     );

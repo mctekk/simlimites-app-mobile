@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SvgFromXml } from 'react-native-svg';
 import { Colors } from 'styles';
 
-const SquareWithCheck = (props: any) => {
+const Check = (props: any) => {
   const {
     color = Colors.BLACK,
     width = 12,
@@ -24,4 +24,4 @@ const SquareWithCheck = (props: any) => {
   );
 };
 
-export default SquareWithCheck;
+export default Check;

@@ -22,6 +22,7 @@ import { GoogleIcon } from 'assets/icons';
 interface SocialButtonIconsProps {
   isSmall?: boolean;
   onLogin?: () => void;
+  textLocale?: string;
 }
 
 const Button = styled.TouchableOpacity`
@@ -41,9 +42,10 @@ const GIcon = () => <GoogleIcon />;
 
 const SignWithGoogle = (props: Partial<PillButtonProps, SocialButtonIconsProps>) => {
 
-  const { isSmall = false, onLogin } = props;
+  const { isSmall = false, onLogin, textLocale ='signInGoogle' } = props;
 
   const handleLogin = async () => {
+    return;
     try {
 
       GoogleSignin.configure({
@@ -88,7 +90,7 @@ const SignWithGoogle = (props: Partial<PillButtonProps, SocialButtonIconsProps>)
           weight='500'
           style={{ marginLeft: 20 }}
           color={DEFAULT_THEME.black}>
-          {translate('signInGoogle', TextTransform.CAPITAL)}
+          {translate(textLocale, TextTransform.CAPITAL)}
         </CustomText>
       </Button>
     );

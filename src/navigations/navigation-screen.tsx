@@ -5,7 +5,9 @@ import { Home } from "screens/home";
 import { Inventory } from "screens/invetory";
 import { Notifications } from "screens/notifications";
 import { LogIn } from "screens/log-in";
-import { SignUp } from "screens/sign-up";
+import { RegisterPassword } from "screens/register-password";
+import { RegisterEmail } from "screens/register-email";
+import { RegisterName } from "screens/register-name";
 
 
 const navigationDefaultOptions = {
@@ -21,8 +23,22 @@ export const navigationScreen = [
     },
   },
   {
-    name: 'SignUp',
-    screen: SignUp,
+    name: 'RegisterEmail',
+    screen: RegisterEmail,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'RegisterName',
+    screen: RegisterName,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'RegisterPassword',
+    screen: RegisterPassword,
     options: {
       navigationDefaultOptions,
     },

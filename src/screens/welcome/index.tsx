@@ -136,7 +136,7 @@ export const Welcome = (props: ISignInProps) => {
           </Button>
           <Button
             onPress={() => {
-              navigation.navigate('SignUp');
+              navigation.navigate('RegisterEmail');
             }}
             style={{ backgroundColor: DEFAULT_THEME.secondaryButton }}>
             <CustomText
