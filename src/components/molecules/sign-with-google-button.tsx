@@ -46,7 +46,6 @@ const SignWithGoogle = (props: Partial<PillButtonProps, SocialButtonIconsProps>)
 
   const handleLogin = async () => {
     try {
-
       GoogleSignin.configure({
         webClientId: Config.GOOGLE_WEB_CLIENT_ID,
         iosClientId: Config.GOOGLE_IOS_CLIENT_ID,
