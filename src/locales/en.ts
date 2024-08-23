@@ -71,4 +71,6 @@ export default {
   emailExists: 'Sorry, an account with this email already exists.',
   emailDontExists: 'An account with this email address does not exist. Please check and try again.',
   forgotSubtitle: 'Please enter the email address, we’ll send\nyou reset instructions.',
+  myeSims: 'My eSIMs',
+  account: 'Account',
 };
