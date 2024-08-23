@@ -62,6 +62,25 @@ export class KanvasService {
     }
   }
 
+  /**
+   * Retrieves products data from the server.
+   * @returns {Promise<any>} A promise that resolves with the products data.
+   * @throws {Error} If there is an error fetching the products data.
+   */
+  async getProducts() {
+    try {
+      const products = await client.inventory.getProduct({
+        first: 10,
+        page: 1,
+        whereCondition: { column: 'IS_PUBLISHED', operator: 'EQ', value: true }
+      });
+      return products;
+    } catch (error) {
+      console.log('Error:', error);
+      throw new Error(`Error fetching user data: ${error}`);
+    }
+  }
+
 }
 
 export default new KanvasService();
