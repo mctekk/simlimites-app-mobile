@@ -6,3 +6,6 @@ export { default as FacebookIcon } from './facebook-icon';
 export { default as EmailIcon } from './email-icon';
 export { default as Check } from './check';
 export { default as NextArrow } from './next-arrow';
+export { default as HomeIcon } from './home-icon';
+export { default as MyeSimsIcon } from './my-esims-icon';
+export { default as AccountIcon } from './account-icon';

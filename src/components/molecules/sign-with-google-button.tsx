@@ -42,12 +42,10 @@ const GIcon = () => <GoogleIcon />;
 
 const SignWithGoogle = (props: Partial<PillButtonProps, SocialButtonIconsProps>) => {
 
-  const { isSmall = false, onLogin, textLocale ='signInGoogle' } = props;
+  const { isSmall = false, onLogin, textLocale = 'signInGoogle' } = props;
 
   const handleLogin = async () => {
-    return;
     try {
-
       GoogleSignin.configure({
         webClientId: Config.GOOGLE_WEB_CLIENT_ID,
         iosClientId: Config.GOOGLE_IOS_CLIENT_ID,

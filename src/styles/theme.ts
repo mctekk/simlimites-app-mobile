@@ -17,6 +17,8 @@ interface ColorTheme {
   disabledButton: string;
   title: string;
   inputBg: string;
+  tabIconActive: string;
+  tabIconInactive: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.BLACK,
@@ -35,4 +37,6 @@ export const DEFAULT_THEME: ColorTheme = {
   disabledButton: Colors.DISABLED_GRAY,
   title: Colors.BLACK,
   inputBg: Colors.WHITE,
+  tabIconActive: Colors.BLACK,
+  tabIconInactive: Colors.PLACEHOLDER_TEXT,
 };
