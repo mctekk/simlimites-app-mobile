@@ -3,25 +3,37 @@
    LastUpgradeVersion = "1520"
    version = "2.2">
    <BuildAction
-      parallelizeBuildables = "YES"
+      parallelizeBuildables = "NO"
       buildImplicitDependencies = "YES">
       <PreActions>
          <ExecutionAction
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "echo &quot;.env.dev&quot; &gt; /tmp/envfile&#10;">
+               scriptText = "rm &quot;${CONFIGURATION_BUILD_DIR}/${INFOPLIST_PATH}&quot;&#10;echo &quot;.env.prod&quot; &gt; /tmp/envfile&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-<<<<<<< HEAD
-                     BuildableName = "Kanvas App.app"
-=======
                      BuildableName = "Sim Limites.app"
->>>>>>> 17615a6 (Scheme ios changed)
-                     BlueprintName = "kanvas_app"
-                     ReferencedContainer = "container:kanvas_app.xcodeproj">
+                     BlueprintName = "sim_limites"
+                     ReferencedContainer = "container:sim_limites.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "&quot;${SRCROOT}/../node_modules/react-native-config/ios/ReactNativeConfig/BuildXCConfig.rb&quot; &quot;${SRCROOT}/..&quot; &quot;${SRCROOT}/tmp.xcconfig&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+                     BuildableName = "Sim Limites.app"
+                     BlueprintName = "sim_limites"
+                     ReferencedContainer = "container:sim_limites.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
             </ActionContent>
@@ -46,26 +58,22 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-<<<<<<< HEAD
-               BuildableName = "Kanvas App.app"
-=======
                BuildableName = "Sim Limites.app"
->>>>>>> 17615a6 (Scheme ios changed)
-               BlueprintName = "kanvas_app"
-               ReferencedContainer = "container:kanvas_app.xcodeproj">
+               BlueprintName = "sim_limites"
+               ReferencedContainer = "container:sim_limites.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Dev.Debug"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Dev.Debug"
+      buildConfiguration = "Prod.Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -79,13 +87,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-<<<<<<< HEAD
-            BuildableName = "Kanvas App.app"
-=======
             BuildableName = "Sim Limites.app"
->>>>>>> 17615a6 (Scheme ios changed)
-            BlueprintName = "kanvas_app"
-            ReferencedContainer = "container:kanvas_app.xcodeproj">
+            BlueprintName = "sim_limites"
+            ReferencedContainer = "container:sim_limites.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -100,13 +104,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-<<<<<<< HEAD
-            BuildableName = "Kanvas App.app"
-=======
             BuildableName = "Sim Limites.app"
->>>>>>> 17615a6 (Scheme ios changed)
-            BlueprintName = "kanvas_app"
-            ReferencedContainer = "container:kanvas_app.xcodeproj">
+            BlueprintName = "sim_limites"
+            ReferencedContainer = "container:sim_limites.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -114,7 +114,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Dev.Release"
+      buildConfiguration = "Prod.Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
