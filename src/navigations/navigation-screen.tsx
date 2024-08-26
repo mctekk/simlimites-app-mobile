@@ -4,8 +4,10 @@ import { EditProfile } from "screens/edit-profile";
 import { Home } from "screens/home";
 import { Inventory } from "screens/invetory";
 import { Notifications } from "screens/notifications";
-import { SignIn } from "screens/sign-in";
-import { SignUp } from "screens/sign-up";
+import { LogIn } from "screens/log-in";
+import { RegisterPassword } from "screens/register-password";
+import { RegisterEmail } from "screens/register-email";
+import { RegisterName } from "screens/register-name";
 
 
 const navigationDefaultOptions = {
@@ -14,15 +16,29 @@ const navigationDefaultOptions = {
 
 export const navigationScreen = [
   {
-    name: 'SignIn',
-    screen: SignIn,
+    name: 'LogIn',
+    screen: LogIn,
     options: {
       navigationDefaultOptions,
     },
   },
   {
-    name: 'SignUp',
-    screen: SignUp,
+    name: 'RegisterEmail',
+    screen: RegisterEmail,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'RegisterName',
+    screen: RegisterName,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'RegisterPassword',
+    screen: RegisterPassword,
     options: {
       navigationDefaultOptions,
     },

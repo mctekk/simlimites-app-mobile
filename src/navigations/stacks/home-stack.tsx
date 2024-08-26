@@ -4,39 +4,55 @@
 // Modules
 import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // Screens
 import { navigationScreen } from 'navigations/navigation-screen';
 import { Home } from 'screens/home';
 import { Settings } from 'screens/settings';
-import { DrawerContent } from 'components/molecules/drawer-content';
-import { Colors } from 'styles';
+
+// Molecules
+import TabIcon from 'components/molecules/tab-icon';
+
+// Styles
+import { DEFAULT_THEME } from 'styles/theme';
 
 const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
 
-const DrawerNavigator = ({ navigation }) => {
+const TabNavigatior = ({ navigation }) => {
   return (
-    <Drawer.Navigator
+    <Tab.Navigator
       initialRouteName='Home'
-      drawerContent={(props) => <DrawerContent {...props} />}
-      screenOptions={{ 
+      screenOptions={({ route }) => ({
+        tabBarShowLabel: false,
         headerShown: false,
-        drawerActiveBackgroundColor: Colors.PRIMARY_CLEAR,
-        drawerLabelStyle: { color: Colors.PRIMARY },
-       }}
+        tabBarIcon: ({ focused }) => <TabIcon name={route.name.toLowerCase()} focused={focused} />,
+        tabBarStyle: {
+          backgroundColor: DEFAULT_THEME.background,
+          borderTopColor: DEFAULT_THEME.borderColor,
+          shadowRadius: 0,
+          shadowOffset: {
+            height: 0,
+          },
+          paddingTop: 20,
+        },
+      })}
     >
-      <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Settings" component={Settings} />
-    </Drawer.Navigator>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="MyeSims" component={Home} />
+      <Tab.Screen name="UserProfile" component={Settings} />
+    </Tab.Navigator>
   );
 };
 
 const HomeStack = ({ navigation }) => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
+      <Stack.Screen
+        name="TabNavigatior"
+        component={TabNavigatior}
+      />
 
       {navigationScreen.map((navScreen, index) => {
         return (

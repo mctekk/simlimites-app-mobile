@@ -66,3 +66,15 @@ export function getStatusBarHeight(safe: any) {
 export function getBottomSpace() {
   return isIphoneX() ? 34 : 0;
 }
+
+export function isIphoneSE() {
+  const dimen = Dimensions.get('window');
+  return (
+    dimen.height <= 667 &&
+    dimen.width <= 375
+  );
+}
+
+export function isAndroid() {
+  return (Platform.OS === 'android');
+}

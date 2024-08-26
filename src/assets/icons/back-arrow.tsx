@@ -1,26 +1,20 @@
 import * as React from 'react';
-import Svg, {Path} from 'react-native-svg';
-import {Colors} from 'styles';
-import {SVGIconProps} from './icon-props';
+import {SvgFromXml} from 'react-native-svg';
+import { DEFAULT_THEME } from 'styles/theme';
 
-const BackArrow = (props: SVGIconProps) => {
-  const {color = Colors.WHITE, width = 26, height = 26} = props;
+const BackArrow = (props: any) => {
+  const {
+    color = DEFAULT_THEME.black,
+  } = props;
 
   return (
-    <Svg
-      width={width}
-      height={height}
-      viewBox="0 0 26 26"
-      fill="none"
-      {...props}>
-      <Path fillOpacity={0.01} d="M0 0h26v26H0z" />
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M7.329 12.505a.841.841 0 01.242-.699l8.44-8.56a.843.843 0 111.193 1.193L9.24 12.515l7.748 8.15a.84.84 0 01-.596 1.435.84.84 0 01-.597-.243L7.57 13.204a.842.842 0 01-.24-.7z"
-        fill={color}
-      />
-    </Svg>
+    <SvgFromXml
+      xml={`
+        <svg width="12" height="22" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 19.415L4.583 11L12 2.585L9.7166 0L0 11L9.7166 22L12 19.415Z" fill=${color}/>
+        </svg>
+      `}
+    />
   );
 };
 

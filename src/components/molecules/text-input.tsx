@@ -1,5 +1,5 @@
 // Modules
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components/native';
 import is from 'styled-is';
 
@@ -10,6 +10,7 @@ import { DEFAULT_THEME } from 'styles/theme';
 // Atoms
 import Text from 'atoms/text';
 import LineTextInput from './line-text-input';
+import IconButton from 'components/atoms/icon-button';
 
 interface IProps {
   labelText: string;
@@ -38,18 +39,11 @@ interface IProps {
   error?: boolean | string;
   isFocused?: boolean;
   customRef?: any;
+  inputIcon?: ReactNode;
 }
 
 const Container = styled.View`
   margin-vertical: 3px;
-`;
-
-const Title = styled(Text)`
-  color: ${(props: IProps) => props.labelTextColor ? props.labelTextColor : DEFAULT_THEME.text};
-  margin-bottom: 10px;
-  ${is('error')`
-    color: ${DEFAULT_THEME.error};
-  `}
 `;
 
 const ErrorText = styled(Text)`
@@ -88,21 +82,13 @@ const TextInput = (props: IProps) => {
     error = false | '',
     isFocused,
     customRef,
+    inputIcon,
   } = props;
+
+  const InputIcon = styled(IconButton)``;
 
   return (
     <Container style={style}>
-      {labelText ? (
-        <Title
-          style={labelStyle}
-          size={labelFontSize || Typography.FONT_SIZE_14}
-          labelTextColor={labelTextColor}
-          error={error}
-        >
-          {labelText}
-        </Title>
-      ) : (<></>)}
-
       <LineTextInput
         customRef={customRef}
         isFocused={isFocused}
@@ -124,6 +110,11 @@ const TextInput = (props: IProps) => {
         secureTextEntry={secureTextEntry}
         error={error}
         containerStyle={containerStyle}
+        inputIcon={inputIcon}
+        labelText={labelText}
+        labelStyle={labelStyle}
+        labelFontSize={labelFontSize}
+        labelTextColor={labelTextColor}
         {...inputProps}
       />
 
