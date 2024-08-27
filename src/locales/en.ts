@@ -73,4 +73,9 @@ export default {
   forgotSubtitle: 'Please enter the email address, we’ll send\nyou reset instructions.',
   myeSims: 'My eSIMs',
   account: 'Account',
+  accountCreated: 'Account created',
+  accountCreatedMsg: 'Your account was created successfully,\nyou',
+  accountCreatedMsg2: 'can now buy your eSIM',
+  goToHomepage: 'Go to homepage',
+  configureDevice: 'Configure your device',
 };
