@@ -69,7 +69,7 @@ const IconContainer = styled.View`
 
 const Container = styled.View`
   flex: 1;
-  background-color: ${DEFAULT_THEME.background};
+  background-color: ${DEFAULT_THEME.authBackground};
   padding-horizontal: 30px;
 `;
 
@@ -100,7 +100,7 @@ const SocialContainer = styled.View`
 const ScreenHeader = styled(Header)`
   justify-content: flex-start;
   align-items: center;
-  background-color: ${DEFAULT_THEME.background};
+  background-color: ${DEFAULT_THEME.authBackground};
   padding-top: 10px;
   padding-horizontal: 0px;
   height: 60px;
