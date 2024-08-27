@@ -30,7 +30,7 @@ interface ISignInProps {
 
 const Container = styled.View`
   flex: 1;
-  background-color: ${DEFAULT_THEME.background};
+  background-color: ${DEFAULT_THEME.authBackground};
   align-items: center;
 `;
 
