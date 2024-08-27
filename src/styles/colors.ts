@@ -16,3 +16,7 @@ export const LIGHT_GRAY = '#D9D9D9';
 export const GRAY = '#575757';
 export const LABEL_GRAY = '#747474';
 export const DISABLED_GRAY = '#B8B8B8';
+export const TABS_BG = '#ECECEC';
+export const MAIN_BG = '#F3F3F3';
+export const AUTH_BG = '#FFFFFF';
+export const LIGHT_BLUE = '#00B8F1';
