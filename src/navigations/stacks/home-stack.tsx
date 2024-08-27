@@ -18,6 +18,9 @@ import TabIcon from 'components/molecules/tab-icon';
 // Styles
 import { DEFAULT_THEME } from 'styles/theme';
 
+// Utils
+import { isAndroid } from 'utils/iphone-helpers';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +39,8 @@ const TabNavigatior = ({ navigation }) => {
           shadowOffset: {
             height: 0,
           },
-          paddingTop: 20,
+          paddingTop: isAndroid() ? 0 : 20,
+          height: isAndroid() ? 70 : 85,
         },
       })}
     >

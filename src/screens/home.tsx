@@ -176,16 +176,18 @@ export const Home = (props: IHomeProps) => {
   };
 
   const verifyNewAccount = async () => {
-    try {
-      await wait(500);
-      const response = await kanvasService.getUserData();
-      if (isUserLogged) {
-        if (!response?.welcome) {
-          setShowNewAccountModal(true);
-        };
+    if (isUserLogged) {
+      try {
+        await wait(500);
+        const response = await kanvasService.getUserData();
+        if (isUserLogged) {
+          if (!response?.welcome) {
+            setShowNewAccountModal(true);
+          };
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
