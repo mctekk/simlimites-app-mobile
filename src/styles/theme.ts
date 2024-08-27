@@ -3,6 +3,7 @@ import { Colors } from "styles";
 interface ColorTheme {
   primary: string;
   background: string;
+  authBackground: string;
   transparent: string;
   text: string;
   borderColor: string;
@@ -19,10 +20,13 @@ interface ColorTheme {
   inputBg: string;
   tabIconActive: string;
   tabIconInactive: string;
+  tabsBg: string;
+  addFoundsBg: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.BLACK,
-  background: Colors.WHITE,
+  background: Colors.MAIN_BG,
+  authBackground: Colors.WHITE,
   text: Colors.SOFT_BLACK,
   borderColor: Colors.BORDER_COLOR,
   error: Colors.ERROR_RED,
@@ -39,4 +43,6 @@ export const DEFAULT_THEME: ColorTheme = {
   inputBg: Colors.WHITE,
   tabIconActive: Colors.BLACK,
   tabIconInactive: Colors.PLACEHOLDER_TEXT,
+  tabsBg: Colors.TABS_BG,
+  addFoundsBg: Colors.LIGHT_BLUE,
 };

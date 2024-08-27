@@ -71,7 +71,7 @@ export class KanvasService {
    */
   async getProducts(productTypeId: number) {
     try {
-      const products = await client.inventory.getProduct({
+      const products = await adminClient.inventory.getProduct({
         first: 10,
         page: 1,
         whereCondition: {

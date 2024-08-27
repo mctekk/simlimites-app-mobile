@@ -8,7 +8,7 @@ import { LogIn } from "screens/log-in";
 import { RegisterPassword } from "screens/register-password";
 import { RegisterEmail } from "screens/register-email";
 import { RegisterName } from "screens/register-name";
-
+import { MyeSims } from "screens/my-esims";
 
 const navigationDefaultOptions = {
   headerShown: false,
@@ -39,6 +39,13 @@ export const navigationScreen = [
   {
     name: 'RegisterPassword',
     screen: RegisterPassword,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'MyeSims',
+    screen: MyeSims,
     options: {
       navigationDefaultOptions,
     },

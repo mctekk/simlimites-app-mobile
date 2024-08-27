@@ -31,6 +31,7 @@ export interface IProps {
   onBackDetail?: () => void;
   diableBackButton?: boolean;
   backIconColor?: string;
+  hasBackButton?: boolean;
 }
 
 const SCREEN_MARGIN = 15;
