@@ -78,4 +78,13 @@ export default {
   accountCreatedMsg2: 'can now buy your eSIM',
   goToHomepage: 'Go to homepage',
   configureDevice: 'Configure your device',
+  nextDestinations: 'What next destinations?',
+  local: 'local',
+  regional: 'regional',
+  global: 'global',
+  enterYourDestination: 'Enter your destination',
+  balance: 'balance',
+  addFounds: 'Add founds',
+  active: 'Active',
+  expired: 'Expired',
 };
