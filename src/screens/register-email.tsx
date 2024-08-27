@@ -168,7 +168,7 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
         provider,
         token: authToken,
       });
-      const { token, refresh_token } = response.socialLogin;
+      const { token, refresh_token } = response;
       await AsyncStorage.setItem(AUTH_TOKEN, token);
       getUserData(token, refresh_token);
     } catch (error) {
