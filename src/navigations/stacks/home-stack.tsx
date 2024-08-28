@@ -41,6 +41,8 @@ const TabNavigatior = ({ navigation }) => {
           },
           paddingTop: isAndroid() ? 0 : 20,
           height: isAndroid() ? 70 : 85,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
         },
       })}
     >
