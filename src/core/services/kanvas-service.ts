@@ -69,11 +69,11 @@ export class KanvasService {
    * @returns {Promise<any>} A promise that resolves with the products data.
    * @throws {Error} If there is an error fetching the products data.
    */
-  async getProducts(productTypeId: number) {
+  async getProductsByType(productTypeId: number, pageNumber: number = 1) {
     try {
       const products = await adminClient.inventory.getProduct({
         first: 10,
-        page: 1,
+        page: pageNumber,
         whereCondition: {
           column: 'IS_PUBLISHED',
           operator: 'EQ', 
@@ -95,7 +95,7 @@ export class KanvasService {
    */
   async getProductTypes() {
     try {
-      const productTypes = await client.inventory.getProductTypes();
+      const productTypes = await adminClient.inventory.getProductTypes();
       return productTypes;
     } catch (error) {
       console.log('Error:', error);
