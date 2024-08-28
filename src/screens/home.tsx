@@ -14,6 +14,7 @@ import NewAccountModal from 'molecules/modals/new-account-modal';
 
 // Organisms
 import HomeTabsList from 'organisms/home-tabs-list';
+import LocalList from 'components/organisms/local-list';
 
 // Styles
 import { Typography } from 'styles';
@@ -137,28 +138,8 @@ export const Home = (props: IHomeProps) => {
   const { updateUserData } = useContext(AuthContext);
 
   useEffect(() => {
-    getProductsData();
-    getProductTypesData();
     verifyNewAccount();
   }, []);
-
-  const getProductsData = async () => {
-    try {
-      const response = await kanvasService.getProducts(314);
-      console.log("products===", response)
-    } catch (error) {
-      console.log('Get Products Data Error:', error);
-    }
-  };
-
-  const getProductTypesData = async () => {
-    try {
-      const response = await kanvasService.getProductTypes();
-      console.log("productTypes===", response)
-    } catch (error) {
-      console.log('Get Product Types Data Error:', error);
-    }
-  };
 
   const updateData = async (values?: object) => {
     try {
@@ -200,9 +181,13 @@ export const Home = (props: IHomeProps) => {
     switch (route.id) {
       case 0:
         return (
-          <></>
+          <LocalList />
         );
       case 1:
+        return (
+          <></>
+        );
+      case 2:
         return (
           <></>
         );
