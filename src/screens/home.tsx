@@ -14,7 +14,7 @@ import NewAccountModal from 'molecules/modals/new-account-modal';
 
 // Organisms
 import HomeTabsList from 'organisms/home-tabs-list';
-import LocalList from 'components/organisms/local-list';
+import ProductList from 'components/organisms/product-list';
 
 // Styles
 import { Typography } from 'styles';
@@ -33,6 +33,9 @@ import { DEFAULT_THEME } from 'styles/theme';
 
 // Utils
 import { wait } from 'utils';
+
+// Constants
+import { PRODUCT_TYPES_SLUGS } from 'utils/constants';
 
 const initialLayout = { width: Dimensions.get('window').width };
 
@@ -181,11 +184,15 @@ export const Home = (props: IHomeProps) => {
     switch (route.id) {
       case 0:
         return (
-          <LocalList />
+          <ProductList
+            productTypeSlug={PRODUCT_TYPES_SLUGS.LOCAL_SLUG}
+          />
         );
       case 1:
         return (
-          <></>
+          <ProductList
+            productTypeSlug={PRODUCT_TYPES_SLUGS.REGIONAL_SLUG}
+          />
         );
       case 2:
         return (
