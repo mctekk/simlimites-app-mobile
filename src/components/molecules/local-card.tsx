@@ -2,6 +2,7 @@
 // Modules
 import React from "react";
 import styled from "styled-components/native";
+import FastImage from "react-native-fast-image";
 
 // Atoms
 import CustomText from 'atoms/text';
@@ -14,6 +15,7 @@ import { DEFAULT_THEME } from "styles/theme";
 interface ILocalCardProps {
   onPress?: () => void;
   label: string;
+  flagImageUri?: string;
   isFirst: boolean;
   isLast: boolean;
 }
@@ -26,22 +28,24 @@ const Container = styled.TouchableOpacity`
   backgroundColor: ${DEFAULT_THEME.authBackground};
   justify-content: space-between;
   padding-horizontal: 24px;
+  border-bottom-width: 1px;
+  border-color: ${DEFAULT_THEME.background};
 `;
 
-const LeftContainer = styled.TouchableOpacity`
+const LeftContainer = styled.View`
   align-items: center;
   flex-direction: row;
 `;
 
-const FlagPlaceholder = styled.View`
+const Flag = styled(FastImage)`
   width: 38px;
   height: 21px;
-  background-color: gray;
+  background-color: ${DEFAULT_THEME.disabledButton};
 `;
 
 const LocalCard = (props: ILocalCardProps) => {
 
-  const { onPress, label, isFirst, isLast } = props;
+  const { onPress, label, isFirst, isLast, flagImageUri } = props;
 
   const onCardPress = () => {
     onPress?.();
@@ -58,7 +62,9 @@ const LocalCard = (props: ILocalCardProps) => {
       }}
     >
       <LeftContainer>
-        <FlagPlaceholder />
+        <Flag
+          source={{ uri: flagImageUri || '' }}
+        />
         <CustomText
           size={Typography.FONT_SIZE_15}
           weight='600'
