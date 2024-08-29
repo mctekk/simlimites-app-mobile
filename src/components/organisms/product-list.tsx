@@ -17,6 +17,7 @@ import { useScrollToTop } from '@react-navigation/native';
 
 // Molecules
 import LocalCard from 'components/molecules/local-card';
+import RegionalCard from 'components/molecules/regional-card';
 
 // Styles
 import { DEFAULT_THEME } from 'styles/theme';
@@ -35,7 +36,10 @@ import { ProductTypeInterface } from '@kanvas/core';
 // Assets
 import {} from 'assets/icons';
 import { EventRegister } from 'react-native-event-listeners';
-import { PRODUCT_TYPES_SLUGS } from 'utils/constants';
+import { PRODUCT_TYPES_SLUGS, FLAG_IMAGE_NAME } from 'utils/constants';
+
+// Interface
+import { IFile } from 'interfaces/products-interface';
 
 const Container = styled.View`
   flex: 1;
@@ -53,13 +57,15 @@ export enum LOCAL_LIST_EVENTS {
 // Interfaces
 interface IFeedProps {
   isLoading?: boolean;
+  productTypeSlug?: string;
 }
 
-const LocalList = (props: IFeedProps) => {
+const ProductList = (props: IFeedProps) => {
 
   // Props
   const {
     isLoading = true,
+    productTypeSlug = PRODUCT_TYPES_SLUGS.LOCAL_SLUG,
   } = props;
 
   // Refs
@@ -88,7 +94,7 @@ const LocalList = (props: IFeedProps) => {
     try {
       const productTypesRes = await kanvasService.getProductTypes();
       const localType = productTypesRes?.productTypes?.data?.find(
-        (type: ProductTypeInterface) => type?.slug === PRODUCT_TYPES_SLUGS.LOCAL_SLUG
+        (type: ProductTypeInterface) => type?.slug === productTypeSlug
       );
       const productTypeId = localType ? localType?.id : 0;
       const response = await kanvasService.getProductsByType(productTypeId, pageNumber);
@@ -173,7 +179,7 @@ const LocalList = (props: IFeedProps) => {
     getProducts(1);
   };
 
-  const onCardPress = (item: number) => {
+  const onCardPress = (item: object) => {
     trigger("impactLight", {});
   };
 
@@ -181,12 +187,34 @@ const LocalList = (props: IFeedProps) => {
     const isFirst = (index === 0);
     const isLast = (index === (items.current.length -1));
 
+    if (productTypeSlug === PRODUCT_TYPES_SLUGS.LOCAL_SLUG) {
+      const flag = item?.files?.data?.find(
+        (file: IFile) => file?.name === FLAG_IMAGE_NAME
+      );
+
+      return (
+        <LocalCard
+          isFirst={isFirst}
+          isLast={isLast}
+          label={item?.name}
+          flagImageUri={flag?.url}
+          onPress={() => onCardPress(item)}
+        />
+      );
+    }
+
+    if (productTypeSlug === PRODUCT_TYPES_SLUGS.REGIONAL_SLUG) {
+      return (
+        <RegionalCard
+          label={item?.name}
+          onPress={() => onCardPress(item)}
+          style={{ marginBottom: 8 }}
+        />
+      );
+    }
+
     return (
-      <LocalCard
-        isFirst={isFirst}
-        isLast={isLast}
-        label={item?.name}
-      />
+      <></>
     );
   }, []);
 
@@ -215,9 +243,7 @@ const LocalList = (props: IFeedProps) => {
       ) : (<></>)}
 
       {loading && !hasError && (
-        <>
-          {/* ActivityIndicator */}
-        </>
+        <ActivityIndicator size="small" color={DEFAULT_THEME.subtitle} />
       )}
 
       {!loading && !hasError && (
@@ -243,4 +269,4 @@ const LocalList = (props: IFeedProps) => {
   );
 };
 
-export default memo(LocalList);
+export default memo(ProductList);
