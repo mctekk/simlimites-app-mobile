@@ -15,6 +15,7 @@ import { DEFAULT_THEME } from 'styles/theme';
 interface IRegionalCardProps {
   onPress?: () => void;
   label: string;
+  countriesQty?: string;
   style?: object;
 }
 
@@ -36,7 +37,12 @@ const LeftContainer = styled.View``;
 
 const RegionalCard = (props: IRegionalCardProps) => {
 
-  const { onPress, label, style } = props;
+  const {
+    onPress,
+    label,
+    style,
+    countriesQty = '0',
+  } = props;
 
   const onCardPress = () => {
     onPress?.();
@@ -55,7 +61,7 @@ const RegionalCard = (props: IRegionalCardProps) => {
         <CustomText
           size={Typography.FONT_SIZE_10}
           color={DEFAULT_THEME.title}>
-          {i18n.t('countriesCoverage', { number: 20 })}
+          {i18n.t('countriesCoverage', { number: countriesQty })}
         </CustomText>
       </LeftContainer>
       <CardArrow />

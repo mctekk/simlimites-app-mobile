@@ -13,3 +13,8 @@ export interface IFile {
   id: string;
   name: string;
 };
+
+export interface ICountriesAttribute {
+  value: number[];
+  name: string;
+};

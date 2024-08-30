@@ -89,6 +89,31 @@ export class KanvasService {
   }
 
   /**
+   * Retrieves products data from the server by passing a search string.
+   * 
+   * @param text - The string of the product to search.
+   * @returns {Promise<any>} A promise that resolves with the found products data.
+   * @throws {Error} If there is an error fetching the products data.
+   */
+  async searchProducts(text: string) {
+    try {
+      const products = await adminClient.inventory.getProduct({
+        search: text,
+        first: 25,
+        whereCondition: {
+          column: 'IS_PUBLISHED',
+          operator: 'EQ', 
+          value: true,
+        }, 
+      });
+      return products;
+    } catch (error) {
+      console.log('Error:', error);
+      throw new Error(`Error fetching products data: ${error}`);
+    }
+  }
+
+  /**
    * Retrieves products types data from the server.
    * @returns {Promise<any>} A promise that resolves with the product types data.
    * @throws {Error} If there is an error fetching the product types data.
@@ -100,6 +125,26 @@ export class KanvasService {
     } catch (error) {
       console.log('Error:', error);
       throw new Error(`Error fetching product types data: ${error}`);
+    }
+  }
+
+  /**
+   * Retrieves countries data from the server by IDs.
+   * 
+   * @param countriesIds - The array of IDs of the countries to retrieve.
+   * @returns {Promise<any>} A promise that resolves with the countries data.
+   * @throws {Error} If there is an error fetching the countries data.
+   */
+  async getCountriesByIds(countriesIds: number[]) {
+    try {
+      const countries = await adminClient.locations.getAllCountries({
+        where: { column: 'ID', operator: 'IN', value: countriesIds }, 
+      });
+
+      return countries;
+    } catch (error) {
+      console.log('Error:', error);
+      throw new Error(`Error fetching countries data: ${error}`);
     }
   }
 

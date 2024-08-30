@@ -90,8 +90,8 @@ const BalanceSection = styled.View`
 
 const Balance = styled.View``;
 
-const AddFoundsButton = styled.TouchableOpacity`
-  background-color: ${DEFAULT_THEME.addFoundsBg};
+const AddFundsButton = styled.TouchableOpacity`
+  background-color: ${DEFAULT_THEME.addFundsBg};
   padding-vertical: 6px;
   padding-horizontal: 12px;
   border-radius: 10px;
@@ -252,7 +252,9 @@ export const Home = (props: IHomeProps) => {
             {translate('enterYourDestination', TextTransform.CAPITAL)}
           </CustomText>
         </SearchButton>
-        <BalanceSection>
+
+        {/* @enmanuel-mctekk - COMMENTED ADD FUNDS SECTION, FEATURE IS NOT GOIN TO BE ENABLED FOR NOW */}
+        {/* <BalanceSection>
           <Balance>
             <CustomText
               size={Typography.FONT_SIZE_10}
@@ -268,15 +270,16 @@ export const Home = (props: IHomeProps) => {
               {`$00.00`}
             </CustomText>
           </Balance>
-          <AddFoundsButton>
+          <AddFundsButton>
             <CustomText
               size={Typography.FONT_SIZE_12}
               weight='500'
               color={DEFAULT_THEME.white}>
-              {translate('addFounds', TextTransform.CAPITAL)}
+              {translate('addFunds', TextTransform.CAPITAL)}
             </CustomText>
-          </AddFoundsButton>
-        </BalanceSection>
+          </AddFundsButton>
+        </BalanceSection> */}
+        
         <TabView
           renderTabBar={renderTabBar}
           navigationState={{ index, routes }}
