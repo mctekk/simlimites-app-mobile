@@ -20,6 +20,7 @@ export const USER_DATA_UPDATE = 'USER_DATA_UPDATE';
 export const UPDATE_TOKEN = 'UPDATE_TOKEN';
 export const SAVED_EMAIL = 'SAVED_EMAIL';
 export const FLAG_IMAGE_NAME = 'flag.png';
+export const COUNTRIES_ATTRIBUTE_NAME = 'Countries';
 
 export enum PRODUCT_TYPES_SLUGS {
   LOCAL_SLUG = 'local',
