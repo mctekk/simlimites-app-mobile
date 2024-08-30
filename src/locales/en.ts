@@ -84,7 +84,7 @@ export default {
   global: 'global',
   enterYourDestination: 'Enter your destination',
   balance: 'balance',
-  addFounds: 'Add founds',
+  addFunds: 'Add funds',
   active: 'Active',
   expired: 'Expired',
   countriesCoverage: 'Coverage in {{number}} countries',
