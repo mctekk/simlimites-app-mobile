@@ -36,10 +36,10 @@ import { ProductTypeInterface } from '@kanvas/core';
 // Assets
 import {} from 'assets/icons';
 import { EventRegister } from 'react-native-event-listeners';
-import { PRODUCT_TYPES_SLUGS, FLAG_IMAGE_NAME } from 'utils/constants';
+import { PRODUCT_TYPES_SLUGS, FLAG_IMAGE_NAME, COUNTRIES_ATTRIBUTE_NAME } from 'utils/constants';
 
 // Interface
-import { IFile } from 'interfaces/products-interface';
+import { IFile, ICountriesAttribute } from 'interfaces/products-interface';
 
 const Container = styled.View`
   flex: 1;
@@ -204,11 +204,16 @@ const ProductList = (props: IFeedProps) => {
     }
 
     if (productTypeSlug === PRODUCT_TYPES_SLUGS.REGIONAL_SLUG) {
+      const countriesAttribute = item?.attributes?.find(
+        (attribute: ICountriesAttribute) => attribute?.name === COUNTRIES_ATTRIBUTE_NAME
+      );
+
       return (
         <RegionalCard
           label={item?.name}
           onPress={() => onCardPress(item)}
           style={{ marginBottom: 8 }}
+          countriesQty={countriesAttribute?.value?.length || '0'}
         />
       );
     }
