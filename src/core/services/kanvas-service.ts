@@ -103,6 +103,26 @@ export class KanvasService {
     }
   }
 
+  /**
+   * Retrieves countries data from the server by IDs.
+   * 
+   * @param countriesIds - The array of IDs of the countries to retrieve.
+   * @returns {Promise<any>} A promise that resolves with the countries data.
+   * @throws {Error} If there is an error fetching the countries data.
+   */
+  async getCountriesByIds(countriesIds: number[]) {
+    try {
+      const countries = await adminClient.locations.getAllCountries({
+        where: { column: 'ID', operator: 'IN', value: countriesIds }, 
+      });
+
+      return countries;
+    } catch (error) {
+      console.log('Error:', error);
+      throw new Error(`Error fetching countries data: ${error}`);
+    }
+  }
+
 }
 
 export default new KanvasService();
