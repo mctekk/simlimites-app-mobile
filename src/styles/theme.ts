@@ -22,6 +22,7 @@ interface ColorTheme {
   tabIconInactive: string;
   tabsBg: string;
   addFundsBg: string;
+  variantSubtitle: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.BLACK,
@@ -45,4 +46,5 @@ export const DEFAULT_THEME: ColorTheme = {
   tabIconInactive: Colors.PLACEHOLDER_TEXT,
   tabsBg: Colors.TABS_BG,
   addFundsBg: Colors.LIGHT_BLUE,
+  variantSubtitle: Colors.LIGHT_BLACK,
 };
