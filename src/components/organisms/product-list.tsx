@@ -114,8 +114,6 @@ const ProductList = (props: IFeedProps) => {
         setLoading(false);
       }
 
-      //console.log('getProducts:', items.current);
-
       paginatorInfo && (pages_total.current = paginatorInfo.total);
       paginatorInfo && (last_page.current = paginatorInfo.currentPage);
 
