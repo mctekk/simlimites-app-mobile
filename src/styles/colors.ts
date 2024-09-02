@@ -20,3 +20,4 @@ export const TABS_BG = '#ECECEC';
 export const MAIN_BG = '#F3F3F3';
 export const AUTH_BG = '#FFFFFF';
 export const LIGHT_BLUE = '#00B8F1';
+export const LIGHT_BLACK = '#2D2D2D';

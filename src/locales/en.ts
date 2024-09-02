@@ -88,4 +88,5 @@ export default {
   active: 'Active',
   expired: 'Expired',
   countriesCoverage: 'Coverage in {{number}} countries',
+  dataOnly: 'Data only',
 };

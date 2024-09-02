@@ -19,6 +19,9 @@ import { useScrollToTop } from '@react-navigation/native';
 import LocalCard from 'components/molecules/local-card';
 import RegionalCard from 'components/molecules/regional-card';
 
+// Organisms
+import ProductVariants from 'components/organisms/product-variants';
+
 // Styles
 import { DEFAULT_THEME } from 'styles/theme';
 
@@ -46,6 +49,7 @@ const Container = styled.View`
   background-color: ${DEFAULT_THEME.background};
   margin-top: 15px;
   border-radius: 10px;
+  margin-horizontal: 22px;
 `;
 
 const ErrorContainer = styled.View``;
@@ -109,8 +113,6 @@ const ProductList = (props: IFeedProps) => {
         items.current = data;
         setLoading(false);
       }
-
-      console.log('getProducts:', items.current);
 
       paginatorInfo && (pages_total.current = paginatorInfo.total);
       paginatorInfo && (last_page.current = paginatorInfo.currentPage);
@@ -251,7 +253,7 @@ const ProductList = (props: IFeedProps) => {
         <ActivityIndicator size="small" color={DEFAULT_THEME.subtitle} />
       )}
 
-      {!loading && !hasError && (
+      {!loading && !hasError && (productTypeSlug != PRODUCT_TYPES_SLUGS.GLOBAL_SLUG) && (
         <FlatList
           data={items.current}
           extraData={items.current}
@@ -268,6 +270,10 @@ const ProductList = (props: IFeedProps) => {
           contentContainerStyle={{ borderRadius: 10 }}
           ListFooterComponent={ListFooterComponent}
         />
+      )}
+
+      {!loading && !hasError && (productTypeSlug === PRODUCT_TYPES_SLUGS.GLOBAL_SLUG) && (
+        <ProductVariants product={items?.current[0]} />
       )}
 
     </Container>
