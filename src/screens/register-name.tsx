@@ -1,37 +1,75 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable react-native/no-inline-styles */
 // Modules
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {
+  Alert,
+  SafeAreaView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  TextInput as RnInput,
+} from 'react-native';
 import styled from 'styled-components/native';
-import {Formik} from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
-import { Alert, SafeAreaView, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import Config from 'react-native-config';
 
-// Molecules
-import Header from 'components/molecules/header';
+// Molcules
 import TextInput from 'components/molecules/text-input';
-
-// Styles
-import { Typography } from 'styles';
+import LoadingModal from 'components/molecules/modals/loading-modal';
+import Header from 'components/molecules/header';
 
 // Atoms
-import {TextTransform, translate} from 'components/atoms/localized-label';
+import { TextTransform, translate } from 'components/atoms/localized-label';
 import CustomText from 'atoms/text';
 import { EmailIcon, NextArrow } from 'assets/icons';
 
-// Services
-import { client } from 'core/kanvas_client';
-
 // Styles
+import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
+// Constants
+import { AUTH_TOKEN, REFRESH_TOKEN, USER_DATA } from 'utils/constants';
+
+// Modules
+import kanvasService from 'core/services/kanvas-service';
+
 // Interfaces
-interface IForgotPasswordProps {
+interface ISignInProps {
   navigation: any;
+  route: any;
 }
+
+const Content = styled.View``;
+
+const ContinueButton = styled.TouchableOpacity`
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 57px;
+  border-radius: 50px;
+  margin-top: 32px;
+`;
+
+const IconContainer = styled.View`
+  position: absolute;
+  align-self: flex-end;
+  padding-right: 50px;
+`;
 
 const Container = styled.View`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
   padding-horizontal: 30px;
+`;
+
+const Input = styled(TextInput)`
+  margin-bottom: 5px;
+  border-width: 1px;
+  border-color: ${DEFAULT_THEME.borderColor};
+  border-radius: 5px;
+  padding-horizontal: 20px;
+  padding-vertical: 12px;
 `;
 
 const ScreenHeader = styled(Header)`
@@ -44,73 +82,31 @@ const ScreenHeader = styled(Header)`
   margin-bottom: 0px;
 `;
 
-const IconContainer = styled.View`
-  position: absolute;
-  align-self: flex-end;
-  padding-right: 50px;
-`;
-
-const Content = styled.View``;
-
-const Input = styled(TextInput)`
-  margin-bottom: 5px;
-  border-width: 1px;
-  border-color: ${DEFAULT_THEME.borderColor};
-  border-radius: 5px;
-  padding-horizontal: 20px;
-  padding-vertical: 12px;
-`;
-
-const ContinueButton = styled.TouchableOpacity`
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  height: 57px;
-  border-radius: 50px;
-  margin-top: 32px;
-`;
-
 const initialValues = {
-  email: '',
+  name: '',
 };
 
 const validationSchema = yup.object().shape({
-  email: yup
+  name: yup
     .string()
-    .required('This field is requiered')
-    .matches(
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-      translate('fieldRequired', TextTransform.NONE),
-    ),
+    .required(translate('fieldRequired', TextTransform.NONE)),
 });
 
-export const ForgotPassword = (props: IForgotPasswordProps) => {
+export const RegisterName = (props: ISignInProps, ref: any) => {
   // Props
-  const {navigation} = props;
+  const { navigation, route } = props;
 
-  // State
+  // Params
+  const { email } = route.params;
+
+  // States
   const [isLoading, setIsLoading] = useState(false);
   const [onFocusInput, setOnFocusInput] = useState({
-    email: true,
+    name: false,
   });
 
-  const handleForgotPassword = async (values: any, actions: any) => {
-    setIsLoading(true);
-    try {
-      const response = await client.users.forgotPassword(values.email);
-      Alert.alert('Success', 'Password reset email sent successfully', [
-        {
-          text: 'OK',
-          onPress: () => navigation.goBack(),
-        },
-      ]);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.log('Forgot Password Error:', error);
-      Alert.alert('Error', 'An error occurred while sending the email');
-    }
-  };
+  useEffect(() => {}, []);
+
 
   const handleOnFocusInput = (value: string) => {
     setOnFocusInput({ ...onFocusInput, [value]: true });
@@ -120,12 +116,17 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
     setOnFocusInput('');
   };
 
+  const onContinuePress = async (values: any) => {
+    console.log('email: ', email, 'name: ', values.name)
+    navigation.navigate('RegisterPassword', { email: email, name: values.name });
+  };
+
   return (
     <>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values, actions) => handleForgotPassword(values, actions)}>
+        onSubmit={(values, actions) => onContinuePress(values)}>
         {({
           values,
           handleChange,
@@ -143,7 +144,7 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
               <Container>
                 <SafeAreaView />
                 <ScreenHeader
-                  title={`${translate('forgotPassword', TextTransform.CAPITAL)}?`}
+                  title={translate('enterYourName', TextTransform.CAPITAL)}
                   titleProps={{
                     style: {
                       textAlign: 'flex-start',
@@ -160,17 +161,16 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
                     lineHeight={Typography.FONT_SIZE_20}
                     style={{ marginBottom: 15 }}
                     color={DEFAULT_THEME.subtitle}>
-                    {translate('forgotSubtitle', TextTransform.CAPITAL)}
+                    {translate('loginSubtitle', TextTransform.CAPITAL)}
                   </CustomText>
                   <Input
-                    labelText={translate('emailAddress', TextTransform.CAPITAL)}
-                    value={values.email}
-                    onChangeText={handleChange('email')}
+                    labelText={translate('nameLastname', TextTransform.CAPITAL)}
+                    value={values.name}
+                    onChangeText={handleChange('name')}
                     onBlur={handleOnInputBlur}
-                    onFocus={() => handleOnFocusInput('email')}
-                    isFocused={onFocusInput.email}
+                    onFocus={() => handleOnFocusInput('name')}
+                    isFocused={onFocusInput.name}
                     returnKeyType='next'
-                    keyboardType='email-address'
                     inputProps={{
                       autoCapitalize: 'none',
                       autoFocus: true,
@@ -205,6 +205,10 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
           )
         }}
       </Formik>
+      <LoadingModal
+        visible={isLoading}
+        title={translate('signingIn', TextTransform.CAPITALIZE)}
+      />
     </>
   );
 };

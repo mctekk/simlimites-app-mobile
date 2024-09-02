@@ -5,77 +5,91 @@ import {
   LoginManager,
   GraphRequest,
   GraphRequestManager,
+  AuthenticationToken,
+  AccessToken,
 } from 'react-native-fbsdk-next';
+import styled from 'styled-components/native';
 
 // Atoms
 import { translate, TextTransform } from 'atoms/localized-label';
 import SmallButton from 'atoms/small-button';
+import CustomText from 'atoms/text';
 
 // Styles
-import { Colors } from 'styles';
+import { DEFAULT_THEME } from 'styles/theme';
+import { Typography, Colors } from 'styles';
 
 // Molecules
 import PillButton, { PillButtonProps } from './pill-button';
 
-// Utils
-import { isIphoneX } from 'utils/iphone-helpers';
+// Assets
+import { FacebookIcon } from 'assets/icons';
 
 interface SocialButtonIconsProps {
   isSmall?: boolean;
   onLogin?: () => void;
+  textLocale?: string;
 }
 
-const FacebookIcon = () => (
-  <Fontisto name="facebook" size={20} color={Colors.FACEBOOK} />
+const Button = styled.TouchableOpacity`
+  width: 100%;
+  height: 62px;
+  border-color: ${DEFAULT_THEME.borderColor};
+  border-width: 1px;
+  background-color: ${DEFAULT_THEME.white};
+  margin-bottom: 13px;
+  border-radius: 5px;
+  align-items: center;
+  flex-direction: row;
+  padding-horizontal: 25px;
+`;
+
+const FIcon = () => (
+  <FacebookIcon />
 );
 
 const SignWithFacebook = (
   props: Partial<PillButtonProps, SocialButtonIconsProps>,
 ) => {
-  const { isSmall = false, onLogin } = props;
+  const { isSmall = false, onLogin, textLocale ='signInFacebook' } = props;
 
   const handleLogin = async () => {
-    console.log('Facebook Login');
     try {
-      const loginState = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-      console.log('Login State: ', loginState);
-      if (!loginState.isCancelled) {
-        const infoRequest = new GraphRequest(
-          '/me?fields=name,picture,email',
-          null,
-          (error: any, user: ISocialLoginUser) => {
-            if (!error) {
-              console.log('Facebok User Info: ', user);
-              // HERE: Implement the logic to handle the user data
-              onLogin?.('facebook', user);
-            } else {
-              console.log('Error fetching data: ');
-            }
-          },
-        );
-        new GraphRequestManager().addRequest(infoRequest).start();
+      const result = await LoginManager.logInWithPermissions(
+        ['public_profile', 'email'],
+        'limited',
+        'my_nonce', // Optional
+      );
+      console.log(result);
+      if (Platform.OS === 'ios') {
+        const result = await AuthenticationToken.getAuthenticationTokenIOS();
+        onLogin?.('facebook', result?.authenticationToken);
+      } else {
+        // This token can be used to access the Graph API.
+        const result = await AccessToken.getCurrentAccessToken();
+        console.log(result?.accessToken);
       }
     } catch (error) {
-      console.log('Facebook Login Error:', error);
+      console.log(error);
     }
   };
 
   if (!isSmall) {
     return (
-      <PillButton
-        title={
-          props?.isSignIn
-            ? translate('signInFacebook', TextTransform.CAPITAL)
-            : translate('signUpFacebook', TextTransform.CAPITAL)
-        }
-        icon={FacebookIcon}
-        onPress={handleLogin}
-        {...props}
-      />
+      <Button onPress={handleLogin}>
+        {FIcon()}
+        <CustomText
+          size={Typography.FONT_SIZE_18}
+          weight='500'
+          style={{ marginLeft: 20 }}
+          color={DEFAULT_THEME.black}>
+          {translate(textLocale, TextTransform.CAPITAL)}
+        </CustomText>
+      </Button>
     );
   }
 
-  return <SmallButton icon={FacebookIcon} onPress={handleLogin} {...props} />;
+  return <SmallButton icon={FIcon} onPress={handleLogin} {...props} />;
 };
 
 export default SignWithFacebook;

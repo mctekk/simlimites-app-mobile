@@ -1,40 +1,25 @@
-import * as React from "react"
-import Svg, { SvgProps, Path } from "react-native-svg"
+import * as React from 'react';
+import {SvgFromXml} from 'react-native-svg';
+import {Colors} from 'styles';
 
-
-const GoogleIcon = (props: SvgProps) => {
-
-  const {
-    width = 21,
-    height = 20,
-  } = props;
+const GoogleIcon = (props: any) => {
+  const {} = props;
 
   return (
-    <Svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={width}
-      height={height}
-      fill="none"
-      {...props}
-    >
-      <Path
-        fill="#4285F4"
-        d="M20.1 10.227c0-.709-.064-1.39-.182-2.045H10.5v3.868h5.382a4.6 4.6 0 0 1-1.996 3.018v2.51h3.232c1.891-1.742 2.982-4.305 2.982-7.35Z"
-      />
-      <Path
-        fill="#34A853"
-        d="M10.5 20c2.7 0 4.964-.895 6.618-2.423l-3.231-2.509c-.896.6-2.042.955-3.387.955-2.604 0-4.809-1.76-5.595-4.123H1.564v2.59A9.996 9.996 0 0 0 10.5 20Z"
-      />
-      <Path
-        fill="#FBBC04"
-        d="M4.904 11.9c-.2-.6-.313-1.24-.313-1.9 0-.66.114-1.3.313-1.9V5.51h-3.34A9.997 9.997 0 0 0 .5 10c0 1.614.386 3.14 1.064 4.49l3.34-2.59Z"
-      />
-      <Path
-        fill="#E94235"
-        d="M10.5 3.977c1.468 0 2.786.505 3.823 1.496l2.868-2.869C15.459.991 13.196 0 10.501 0 6.59 0 3.208 2.24 1.563 5.51l3.34 2.59c.787-2.364 2.992-4.123 5.596-4.123Z"
-      />
-    </Svg>
-  )
-}
+    <SvgFromXml
+      xml={`
+        <svg width="35" height="39" viewBox="0 0 35 39" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <rect width="35" height="39" fill="url(#pattern0_576_54)"/>
+        <defs>
+        <pattern id="pattern0_576_54" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#image0_576_54" transform="matrix(0.0104167 0 0 0.00934829 0 0.0512821)"/>
+        </pattern>
+        <image id="image0_576_54" width="96" height="96" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFJklEQVR4nO2dWaxeUxSAv3tvFVdVEWmlQVKqhiiRa0y0gijxINEiBKko5YUYEkEFlaYSNVQMjSExJIaSijFFEEPV0KataszRSNRFCEqH27BlJevhz83/1+3Za5+z9zn7S9bb/7CGs6e1114/ZDKZTCaTyWQymUyc7AwcD8wE7gBeAVYA3wK/ABuAf4DfgO+BL4G3gYeAa4EzgLFVG5ESw4ATgTnAB8AWwBmIBOxR4Hxgl6qNjJHDgDuBH40cvjXZBDwPnA1sT4PpBqYBy0tweieRgN8A7E6D6AEuAD6v0PGD5W9gHjCKmnM48GEEDu8kv+riPZyasSuwQHcsLgFZCUykJvTpLsQlJgPAzTplJkkXcLUa4hKWN3QEJ4XMoU9H4DxnJHLAm0AijNCvxtVM1uhBMWpkP/1JBM5yxvJDCiOgF1gSgbOcsfQDBxE52wGvRuAs10TnC49H4CzXxGlHuLQiB/2puZy1mo7e3ETnSxZzY2BH/wt8CswHztQT6g4dknv7ACcBs4DFmvks4vz9SYCddH8cyvFrgZuAcR46jgTOA96vm/OFuYEc/xUwXRd2S44AXquL8w80nnOdXi/OKuGSZArwXcrOF94ydv5qDWqZp/VHUnX+KcbOf0YPcVVwYWrOF94zdP59unvJDJFJhs5fkL2+7bxs5PxFKV90VMVoozqdr3V/ntlGrjJw/ha9mM8UYKVBAKT0I1OAfY1Su1LrmSnAxQYBkHqbTEGe9HT+73nh9Ssv8S2alXLxTEHGGkw/coALxUit22kntSgxPMFg+gl56Fpl8IFYy186c5hwmacyLxCWVRE4vJ3sZWXg3Z6KXE8zA3CylYFPeSoylWYGYEYsCbhDaWYArrEy8B1PRfammQG41cpA3zdcu9HMAMy3MjAHgEIBkHfNJuQpiEIBkLIdE17yHIpNXYRnWxmYt6FUuwu6y/NLkIfQTRwB58aSiniRZgZgkpWBORlHoQDsF1M6ejLNGgEbLYuLJa26zlOhhwnH0fomwFJ8H53IQ8WoriT/SOxKcq6nvQ9aKzTDYFheRxoMMxjxMoJMGWcQgJ8SGQVTDWw9IIRiKwwUkzNFzMjC+YWnjfL4I+rSxD7i5QoDGx8IpdwYo+LcbyJtnDdan7v62nd6SCV9E3OtF/U9xDX1+GZ9nbbSDPrG7VijADjgMcvSDU/uNbKplDXuXcMg3B/BSLjS0J5DylB4iqHCDnhWH32XTZfxW+elZSr/ZoBmSAeXqH+vdtK1tOG0EvVnfME+DFuTzcBtHfpAWDLZYK8/WJZVsZ7NMTbCqUiHxYsCFNbKaf6JQDrL2+nS6Q3wJbkWkW7ot+hoK4os8KcCCw0bgQ8W6RpQGRO1x4MLLJ8B92jDbWmRs2MbXWQK2BM4Tk+0C40OVv/X8tjs4qUol5QQANehBLxfcy/WDZuGKrKFjQLrHYVLQJZGcIapfdM+10H6S6h5LbQoD7UzlUtY5L73GCJu3PpxBE5yAfvXnUPkSDOk1yNwlou52i00ww0u8l1kX75sbZOiS5WuYnvoDGWTZZlhFRzZpkmeS0SkdeZR1IBRmvtP5S9MHPBcCa97Sqcvgfb26/TvtWpLt3azXROBs1tlvXbqlV1cI+jWIqhlFTteCsZubNqfubXLqs4zKAkcqgxohce0pv+d4WB69N9TZ2taY8C4J7UkDc+KtC4pSkboSxPp2HW7frXL9dbs55a7iPUtf2n7kf5OKtQu154Ne1RtSCaTyWQymUwmk6Hx/Afoc4FHwhJhLgAAAABJRU5ErkJggg=="/>
+        </defs>
+        </svg>
+      `}
+    />
+  );
+};
 
-export default GoogleIcon
+export default GoogleIcon;

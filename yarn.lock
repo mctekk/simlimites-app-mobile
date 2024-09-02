@@ -1572,10 +1572,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@kanvas/core@^0.5.2":
-  version "0.5.3"
-  resolved "https://registry.npmjs.org/@kanvas/core/-/core-0.5.3.tgz"
-  integrity sha512-Jlz8+PX2peidmWZz875dXtDFP28qIN2RhCz5/dE1N2stIr3zatCtUPI9fH5azIkiP2WOj/FzNay0wpvtHQIQRw==
+"@kanvas/core@^0.6.5":
+  version "0.6.5"
+  resolved "https://registry.npmjs.org/@kanvas/core/-/core-0.6.5.tgz"
+  integrity sha512-yxUKTbQrwRhcd2qj3gAa/ExgGklWhqeFz9ET3t5B/8Z0i6uHCy+2V4cpYJBld4BWmR6JuRn3ZErvlk6ON7+o6g==
   dependencies:
     "@apollo/client" "^3.10.8"
     axios "^1.7.2"
@@ -6555,6 +6555,11 @@ react-native-config@^1.5.1:
   resolved "https://registry.npmjs.org/react-native-config/-/react-native-config-1.5.1.tgz"
   integrity sha512-g1xNgt1tV95FCX+iWz6YJonxXkQX0GdD3fB8xQtR1GUBEqweB9zMROW77gi2TygmYmUkBI7LU4pES+zcTyK4HA==
 
+react-native-fast-image@^8.6.3:
+  version "8.6.3"
+  resolved "https://registry.npmjs.org/react-native-fast-image/-/react-native-fast-image-8.6.3.tgz"
+  integrity sha512-Sdw4ESidXCXOmQ9EcYguNY2swyoWmx53kym2zRsvi+VeFCHEdkO+WG1DK+6W81juot40bbfLNhkc63QnWtesNg==
+
 react-native-fbsdk-next@^13.0.0:
   version "13.0.0"
   resolved "https://registry.npmjs.org/react-native-fbsdk-next/-/react-native-fbsdk-next-13.0.0.tgz"
@@ -6656,6 +6661,11 @@ react-native-screens@^3.30.1:
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
+
+react-native-splash-screen@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.npmjs.org/react-native-splash-screen/-/react-native-splash-screen-3.3.0.tgz"
+  integrity sha512-rGjt6HkoSXxMqH4SQUJ1gnPQlPJV8+J47+4yhgTIan4bVvAwJhEeJH7wWt9hXSdH4+VfwTS0GTaflj1Tw83IhA==
 
 react-native-svg@^15.1.0:
   version "15.1.0"

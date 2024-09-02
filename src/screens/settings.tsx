@@ -119,7 +119,7 @@ export const Settings = (props: ISettingsProps) => {
     <Container>
       <ScreenHeader
         title={translate('settings', TextTransform.CAPITALIZE)}
-        leftButtonComponent={<LeftButtonComponent />}
+        leftButtonComponent={<></>}
       />
 
       <Content>

@@ -25,9 +25,11 @@ export const FONT_SIZE_20 = scaleFont(20);
 export const FONT_SIZE_21 = scaleFont(21);
 export const FONT_SIZE_22 = scaleFont(22);
 export const FONT_SIZE_24 = scaleFont(24);
+export const FONT_SIZE_25 = scaleFont(25);
 export const FONT_SIZE_26 = scaleFont(26);
 export const FONT_SIZE_27 = scaleFont(27);
 export const FONT_SIZE_28 = scaleFont(28);
+export const FONT_SIZE_30 = scaleFont(30);
 export const FONT_SIZE_32 = scaleFont(32);
 export const FONT_SIZE_36 = scaleFont(36);
 export const FONT_SIZE_40 = scaleFont(40);
@@ -80,6 +82,7 @@ export enum ZillaSlabFont {
 export const LINE_HEIGHT_24 = scaleFont(24);
 export const LINE_HEIGHT_20 = scaleFont(20);
 export const LINE_HEIGHT_16 = scaleFont(16);
+export const LINE_HEIGHT_48 = scaleFont(48);
 
 // FONT STYLE
 export const FONT_REGULAR = {
