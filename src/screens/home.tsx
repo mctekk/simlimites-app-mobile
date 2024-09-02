@@ -41,7 +41,6 @@ const initialLayout = { width: Dimensions.get('window').width };
 
 const Container = styled.View`
   background-color: ${DEFAULT_THEME.background};
-  padding-horizontal: 22px;
   flex: 1;
 `;
 
@@ -52,12 +51,18 @@ const ScreenHeader = styled(Header)`
   padding-horizontal: 0px;
   height: 60px;
   margin-bottom: 0px;
+  padding-horizontal: 22px;
 `;
 
 const TabsContainer = styled.View`
   background-color: ${DEFAULT_THEME.tabsBg};
   justify-content: center;
   border-radius: 50px;
+  margin-horizontal: 22px;
+`;
+
+const TopSection = styled.View`
+  padding-horizontal: 22px;
 `;
 
 const Content = styled.View`
@@ -196,7 +201,9 @@ export const Home = (props: IHomeProps) => {
         );
       case 2:
         return (
-          <></>
+          <ProductList
+            productTypeSlug={PRODUCT_TYPES_SLUGS.GLOBAL_SLUG}
+          />
         );
       default:
         return null;
@@ -234,24 +241,26 @@ export const Home = (props: IHomeProps) => {
         }}
       />
       <Content>
-        <CustomText
-          size={Typography.FONT_SIZE_25}
-          lineHeight={Typography.FONT_SIZE_30}
-          weight='700'
-          style={{ marginBottom: 8 }}
-          color={DEFAULT_THEME.title}>
-          {translate('nextDestinations', TextTransform.CAPITAL)}
-        </CustomText>
-        <SearchButton>
-          <SearchIcon />
+        <TopSection>
           <CustomText
-            size={Typography.FONT_SIZE_15}
-            weight='300'
-            style={{ marginLeft: 20 }}
-            color={DEFAULT_THEME.subtitle}>
-            {translate('enterYourDestination', TextTransform.CAPITAL)}
+            size={Typography.FONT_SIZE_25}
+            lineHeight={Typography.FONT_SIZE_30}
+            weight='700'
+            style={{ marginBottom: 8 }}
+            color={DEFAULT_THEME.title}>
+            {translate('nextDestinations', TextTransform.CAPITAL)}
           </CustomText>
-        </SearchButton>
+          <SearchButton>
+            <SearchIcon />
+            <CustomText
+              size={Typography.FONT_SIZE_15}
+              weight='300'
+              style={{ marginLeft: 20 }}
+              color={DEFAULT_THEME.subtitle}>
+              {translate('enterYourDestination', TextTransform.CAPITAL)}
+            </CustomText>
+          </SearchButton>
+        </TopSection>   
 
         {/* @enmanuel-mctekk - COMMENTED ADD FUNDS SECTION, FEATURE IS NOT GOIN TO BE ENABLED FOR NOW */}
         {/* <BalanceSection>
@@ -279,7 +288,7 @@ export const Home = (props: IHomeProps) => {
             </CustomText>
           </AddFundsButton>
         </BalanceSection> */}
-        
+
         <TabView
           renderTabBar={renderTabBar}
           navigationState={{ index, routes }}
