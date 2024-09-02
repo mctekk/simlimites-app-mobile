@@ -21,7 +21,7 @@ import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
 // Utils
-import { isAndroid } from 'utils/iphone-helpers';
+import { isAndroid, isIphoneSE } from 'utils/iphone-helpers';
 
 // Interfaces
 interface ISignInProps {
@@ -46,7 +46,7 @@ const Image = styled(FastImage)``;
 
 const ImageContainer = styled.View`
   width: 100%;
-  height: 43%;
+  height: ${isIphoneSE() ? '35%' : '43%'};
   background-color: ${DEFAULT_THEME.secondaryButton};
 `;
 
