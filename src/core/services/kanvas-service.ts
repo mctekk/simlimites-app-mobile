@@ -69,16 +69,41 @@ export class KanvasService {
    * @returns {Promise<any>} A promise that resolves with the products data.
    * @throws {Error} If there is an error fetching the products data.
    */
-  async getProducts(productTypeId: number) {
+  async getProductsByType(productTypeId: number, pageNumber: number = 1) {
     try {
-      const products = await client.inventory.getProduct({
+      const products = await adminClient.inventory.getProduct({
         first: 10,
-        page: 1,
+        page: pageNumber,
         whereCondition: {
           column: 'IS_PUBLISHED',
           operator: 'EQ', 
           value: true,
           AND: [{ column: 'PRODUCTS_TYPES_ID', operator: 'EQ', value: productTypeId }]
+        }, 
+      });
+      return products;
+    } catch (error) {
+      console.log('Error:', error);
+      throw new Error(`Error fetching products data: ${error}`);
+    }
+  }
+
+  /**
+   * Retrieves products data from the server by passing a search string.
+   * 
+   * @param text - The string of the product to search.
+   * @returns {Promise<any>} A promise that resolves with the found products data.
+   * @throws {Error} If there is an error fetching the products data.
+   */
+  async searchProducts(text: string) {
+    try {
+      const products = await adminClient.inventory.getProduct({
+        search: text,
+        first: 25,
+        whereCondition: {
+          column: 'IS_PUBLISHED',
+          operator: 'EQ', 
+          value: true,
         }, 
       });
       return products;
@@ -95,11 +120,31 @@ export class KanvasService {
    */
   async getProductTypes() {
     try {
-      const productTypes = await client.inventory.getProductTypes();
+      const productTypes = await adminClient.inventory.getProductTypes();
       return productTypes;
     } catch (error) {
       console.log('Error:', error);
       throw new Error(`Error fetching product types data: ${error}`);
+    }
+  }
+
+  /**
+   * Retrieves countries data from the server by IDs.
+   * 
+   * @param countriesIds - The array of IDs of the countries to retrieve.
+   * @returns {Promise<any>} A promise that resolves with the countries data.
+   * @throws {Error} If there is an error fetching the countries data.
+   */
+  async getCountriesByIds(countriesIds: number[]) {
+    try {
+      const countries = await adminClient.locations.getAllCountries({
+        where: { column: 'ID', operator: 'IN', value: countriesIds }, 
+      });
+
+      return countries;
+    } catch (error) {
+      console.log('Error:', error);
+      throw new Error(`Error fetching countries data: ${error}`);
     }
   }
 
