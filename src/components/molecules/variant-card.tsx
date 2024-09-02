@@ -27,6 +27,7 @@ const Container = styled.TouchableOpacity`
   margin-bottom: 8px;
   width: 32%;
   border-radius: 10px;
+  border-width: 1px;
 `;
 
 const VariantCard = (props: IVariantCardProps) => {
@@ -40,6 +41,7 @@ const VariantCard = (props: IVariantCardProps) => {
   return (
     <Container
       onPress={onCardPress}
+      style={{ borderColor: DEFAULT_THEME.transparent }}
     >
       <CustomText
         size={(isIphoneSE() || isIphoneX()) ? Typography.FONT_SIZE_22 : Typography.FONT_SIZE_30}
