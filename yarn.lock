@@ -16,9 +16,9 @@
     "@jridgewell/trace-mapping" "^0.3.24"
 
 "@apollo/client@^3.10.8":
-  version "3.11.2"
-  resolved "https://registry.npmjs.org/@apollo/client/-/client-3.11.2.tgz"
-  integrity sha512-HVcsJChOVut6gmmf5YukTG52EXg0cxq0LU7I/0yZPcfcJOPW2cpVqveaxZt+B1fL6ZKrYVdSa2nfuK0oSpv0Yw==
+  version "3.11.5"
+  resolved "https://registry.npmjs.org/@apollo/client/-/client-3.11.5.tgz"
+  integrity sha512-gmTKgXhYH2Q3VT9vUWChuMy34gfK7n/EEJYc7kXt1GP7678Vz2L0xUlHSMEoPoqit317eamZjXQSyxlpn03lnQ==
   dependencies:
     "@graphql-typed-document-node/core" "^3.1.1"
     "@wry/caches" "^1.0.0"
@@ -1572,10 +1572,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@kanvas/core@^0.6.5":
-  version "0.6.5"
-  resolved "https://registry.npmjs.org/@kanvas/core/-/core-0.6.5.tgz"
-  integrity sha512-yxUKTbQrwRhcd2qj3gAa/ExgGklWhqeFz9ET3t5B/8Z0i6uHCy+2V4cpYJBld4BWmR6JuRn3ZErvlk6ON7+o6g==
+"@kanvas/core@^0.8.6":
+  version "0.8.6"
+  resolved "https://registry.npmjs.org/@kanvas/core/-/core-0.8.6.tgz"
+  integrity sha512-LyRxeDZ77u9dEltCIHMk/bBWYj1JH+PffxDQ9OhbN1Gl3kPoT7n8Iz9VWi+huBnetFWyqJlzh3x/FflzybtkXg==
   dependencies:
     "@apollo/client" "^3.10.8"
     axios "^1.7.2"
@@ -2770,9 +2770,9 @@ available-typed-arrays@^1.0.7:
     possible-typed-array-names "^1.0.0"
 
 axios@^1.7.2:
-  version "1.7.3"
-  resolved "https://registry.npmjs.org/axios/-/axios-1.7.3.tgz"
-  integrity sha512-Ar7ND9pU99eJ9GpoGQKhKf58GpUOgnzuaB7ueNQ5BMi0p+LZ5oaEnfF999fAArcTIBwXTCHAmGcHOZJaWPq9Nw==
+  version "1.7.7"
+  resolved "https://registry.npmjs.org/axios/-/axios-1.7.7.tgz"
+  integrity sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==
   dependencies:
     follow-redirects "^1.15.6"
     form-data "^4.0.0"
@@ -4416,9 +4416,9 @@ graphql-tag@^2.12.6:
     tslib "^2.1.0"
 
 graphql@^16.6.0:
-  version "16.8.1"
-  resolved "https://registry.npmjs.org/graphql/-/graphql-16.8.1.tgz"
-  integrity sha512-59LZHPdGZVh695Ud9lRzPBVTtlX9ZCV150Er2W43ro37wVof0ctenSaskPPjN7lVTIN8mSZt8PHUNKZuNQUuxw==
+  version "16.9.0"
+  resolved "https://registry.npmjs.org/graphql/-/graphql-16.9.0.tgz"
+  integrity sha512-GGTKBX4SD7Wdb8mqeDLni2oaRGYQWjWHGKPQ24ZMnUtKfcsVoiv4uX8+LJr1K6U5VW2Lu1BwJnj7uiori0YtRw==
 
 has-bigints@^1.0.1, has-bigints@^1.0.2:
   version "1.0.2"
@@ -5871,6 +5871,13 @@ mimic-fn@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/mimic-fn/-/mimic-fn-2.1.0.tgz"
   integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
+
+minimatch@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.npmjs.org/minimatch/-/minimatch-10.0.1.tgz"
+  integrity sha512-ethXTt3SGGR+95gudmqJ1eNhRO7eGEGIgYA9vnPatK4/etz2MEVDno5GMCibdMTuBMyElzIlgxMna3K94XDIDQ==
+  dependencies:
+    brace-expansion "^2.0.1"
 
 minimatch@^3.0.2:
   version "3.1.2"
@@ -7734,11 +7741,11 @@ typed-array-length@^1.0.6:
     possible-typed-array-names "^1.0.0"
 
 typescript-transform-paths@^3.4.6:
-  version "3.4.7"
-  resolved "https://registry.npmjs.org/typescript-transform-paths/-/typescript-transform-paths-3.4.7.tgz"
-  integrity sha512-1Us1kdkdfKd2unbkBAOV2HHRmbRBYpSuk9nJ7cLD2hP4QmfToiM/VpxNlhJc1eezVwVqSKSBjNSzZsK/fWR/9A==
+  version "3.5.0"
+  resolved "https://registry.npmjs.org/typescript-transform-paths/-/typescript-transform-paths-3.5.0.tgz"
+  integrity sha512-Qsm5elv11DWu1q+yaugV37ygHhSLhPExkkQu3+blIYfEZAMtY6jSdXANoaR7p+uDoAAHrWXSzwFYK9AmTApLvw==
   dependencies:
-    minimatch "^3.0.4"
+    minimatch "^10.0.1"
 
 typescript@5.0.4:
   version "5.0.4"
