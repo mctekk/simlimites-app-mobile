@@ -43,9 +43,10 @@ const ProductVariants = (props: IProductVariantsProps) => {
   return (
     <Container style={style}>
       <VariantsContainer>
-        {product?.variants && product?.variants?.map((variant: VariantInterface) => {
+        {product?.variants && product?.variants?.map((variant: VariantInterface, index: number) => {
           return (
             <VariantCard
+              key={index}
               label={variant?.name}
               price={variant?.channel?.price}
             />
