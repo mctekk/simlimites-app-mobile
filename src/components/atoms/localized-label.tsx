@@ -98,13 +98,9 @@ const LocalizedLabel = (props: ILocalizedLabelProps) => {
   const text = getTranslatedText(localeKey, defaultValue, currentLocale, interpolate);
 
   return (
-    currentLocale?.length ? (
-      <Text {...textProps} {...props}>
-        {transformText(text, textTransform)}
-      </Text>
-    ) : (
-      <></>
-    )
+    <Text {...textProps} {...props}>
+      {transformText(text, textTransform)}
+    </Text>
   );
 };
 
