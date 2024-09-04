@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Text, {ITextProps} from 'atoms/text';
 import i18n from 'i18n';
 import { UserContext } from 'components/context/user-context';
+import LocalesService from 'locales/locales-service';
 
 export enum TextTransform {
   CAPITAL = 'capital',
@@ -73,11 +74,12 @@ export const translate = (
   textTransformation?: TextTransform,
   options?: ITranslateOptions,
 ) => {
+  const currentLocale = LocalesService.getCurrentLocale();
   const {locale, defaultValue, interpolate} =
     options || ({} as ITranslateOptions);
-
+  
   return transformText(
-    getTranslatedText(localeKey, defaultValue, locale, interpolate),
+    getTranslatedText(localeKey, defaultValue, currentLocale || locale, interpolate),
     textTransformation,
   );
 };
@@ -91,8 +93,7 @@ const LocalizedLabel = (props: ILocalizedLabelProps) => {
     textProps,
   } = props;
 
-  // Context
-  const { currentLocale } = useContext(UserContext);
+  const currentLocale = LocalesService.getCurrentLocale();
 
   const text = getTranslatedText(localeKey, defaultValue, currentLocale, interpolate);
 
