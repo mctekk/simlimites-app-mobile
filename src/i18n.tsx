@@ -1,12 +1,17 @@
 import { I18n } from "i18n-js";
-import {EN} from './locales';
+import { EN, ES } from './locales';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // CHANGE THIS TO GET THE LANGUAGE FROM THE DEVICE
-export const currentLocale = 'EN';
+export let currentLocale = 'en';
 
-// i18n.locale = currentLocale;
 const i18n = new I18n({
   en: EN,
+  es: ES,
 });
+
+export const setLanguage = async (locale: string = 'en') => {
+  await AsyncStorage.setItem('APP_LOCALE', locale);
+}
 
 export default i18n;
