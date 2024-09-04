@@ -45,7 +45,7 @@ export default {
   saveChanges: 'Guardar cambios',
   notification: 'Notificación',
   welcomeTitle: 'Tu viaje empieza\ncon Simlimites',
-  welcomeSubtitle: 'Lorem ipsum dolor sit amet, consectetur\nadipiscing elit, sed do eiusmod tempor\nincididunt ut labore et dolore magna aliqua.',
+  welcomeSubtitle: 'Adquirir tu eSIM, recargar tu plan y explorar\nlos destinos a los que puedes viajar conectado\nes más fácil que nunca con tu Simlimites App.',
   skipText: 'Omitir y ver los planes',
   login: 'Iniciar sesión',
   register: 'Registrarse',

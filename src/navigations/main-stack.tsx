@@ -2,6 +2,7 @@
 import React, { useEffect, useReducer } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import LocalesService from 'locales/locales-service';
 
 // Scenes
 import HomeStack from './stacks/home-stack';
@@ -78,7 +79,6 @@ const MainStack = ({ navigation }) => {
             userToken: null,
             refresh_token: null,
             userData: null,
-            currentLocale: action.currentLocale,
           };
         case UPDATE_TOKEN:
           return {
@@ -94,7 +94,6 @@ const MainStack = ({ navigation }) => {
       userToken: null,
       refresh_token: null,
       userData: null,
-      currentLocale: APP_LOCALE_KEYS.EN,
     },
   );
 
@@ -134,10 +133,11 @@ const MainStack = ({ navigation }) => {
   };
 
   useEffect(() => {
+    LocalesService.setCurrentLocale();
+    
     const bootstrapAsync = async () => {
       let userToken;
       let userData;
-      let currentLocale = await AsyncStorage.getItem(APP_LOCALE) || APP_LOCALE_KEYS.EN;
 
       try {
         const token = await AsyncStorage.getItem(AUTH_TOKEN);
@@ -153,13 +153,12 @@ const MainStack = ({ navigation }) => {
         userData = userInfo;
       } catch (e) {
         await AsyncStorage.multiRemove(AsyncKeys);
-        dispatch({ type: SIGN_OUT, currentLocale }); // Restoring token failed
+        dispatch({ type: SIGN_OUT }); // Restoring token failed
       }
       dispatch({
         type: REFRESH_TOKEN,
         token: userToken,
         user: userData,
-        currentLocale: currentLocale,
       });
     };
     bootstrapAsync();
@@ -220,7 +219,6 @@ const MainStack = ({ navigation }) => {
           userToken: state.userToken,
           isLoading: state.isLoading,
           isUserLogged: !!state.userData?.id,
-          currentLocale: state.currentLocale,
         }}>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {state.userToken == null ? (

@@ -7,7 +7,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Config from 'react-native-config';
 import FastImage from 'react-native-fast-image';
 import SplashScreen from 'react-native-splash-screen';
-import i18n from 'i18n';
 
 // Molcules
 import LoadingModal from 'components/molecules/modals/loading-modal';
