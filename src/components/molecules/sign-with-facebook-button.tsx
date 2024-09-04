@@ -1,5 +1,6 @@
 // Modules
 import React from 'react';
+import { Platform } from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {
   LoginManager,
@@ -60,14 +61,15 @@ const SignWithFacebook = (
         'limited',
         'my_nonce', // Optional
       );
-      console.log(result);
-      if (Platform.OS === 'ios') {
-        const result = await AuthenticationToken.getAuthenticationTokenIOS();
-        onLogin?.('facebook', result?.authenticationToken);
-      } else {
-        // This token can be used to access the Graph API.
-        const result = await AccessToken.getCurrentAccessToken();
-        console.log(result?.accessToken);
+      if (result?.grantedPermissions) {
+        if (Platform.OS === 'ios') {
+          const result = await AuthenticationToken.getAuthenticationTokenIOS();
+          onLogin?.('facebook', result?.authenticationToken);
+        } else {
+          // This token can be used to access the Graph API.
+          const result = await AccessToken.getCurrentAccessToken();
+          console.log(result?.accessToken);
+        }
       }
     } catch (error) {
       console.log(error);

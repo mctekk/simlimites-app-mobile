@@ -39,7 +39,7 @@ import { client } from 'core/kanvas_client';
 import { AUTH_TOKEN, SAVED_EMAIL } from 'utils/constants';
 
 // Utils
-import { isIphoneSE, isIphoneX } from 'utils/iphone-helpers';
+import { isIphoneSE, isIphone14 } from 'utils/iphone-helpers';
 
 // Context
 import { AuthContext } from 'components/context/auth-context';
@@ -274,7 +274,7 @@ export const LogIn = (props: ISignInProps, ref: any) => {
                   <Container>
                     <SafeAreaView />
                     <ScreenHeader
-                      title={translate((isIphoneSE() || isIphoneX()) ? 'registerTitle' : 'loginTitle', TextTransform.CAPITAL)}
+                      title={translate((isIphoneSE() || isIphone14()) ? 'registerTitle' : 'loginTitle', TextTransform.CAPITAL)}
                       titleProps={{
                         style: {
                           textAlign: 'flex-start',
