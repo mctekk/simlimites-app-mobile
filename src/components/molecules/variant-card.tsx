@@ -12,12 +12,12 @@ import { Typography } from "styles";
 import { DEFAULT_THEME } from "styles/theme";
 
 // Utils
-import { isIphoneSE, isIphoneX } from 'utils/iphone-helpers';
+import { isIphoneSE, isIphone14 } from 'utils/iphone-helpers';
 
 interface IVariantCardProps {
   onPress?: () => void;
   label: string;
-  price?: string;
+  price?: string | number;
 }
 
 const Container = styled.TouchableOpacity`
@@ -44,7 +44,7 @@ const VariantCard = (props: IVariantCardProps) => {
       style={{ borderColor: DEFAULT_THEME.transparent }}
     >
       <CustomText
-        size={(isIphoneSE() || isIphoneX()) ? Typography.FONT_SIZE_22 : Typography.FONT_SIZE_30}
+        size={(isIphoneSE() || isIphone14()) ? Typography.FONT_SIZE_22 : Typography.FONT_SIZE_30}
         weight='700'
         style={{ marginBottom: 1 }}
         color={DEFAULT_THEME.title}>
