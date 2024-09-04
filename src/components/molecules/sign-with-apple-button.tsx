@@ -16,9 +16,6 @@ import { Typography } from 'styles';
 // Molecules
 import PillButton, { PillButtonProps } from 'molecules/pill-button';
 
-// Utils
-import { isIphoneX } from 'utils/iphone-helpers';
-
 // Assets
 import { AppleIcon } from 'assets/icons';
 
