@@ -549,7 +549,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				ENABLE_BITCODE = NO;
-				FACEBOOK_APP_ID = 1410488643148645;
+				FACEBOOK_APP_ID = 495256246624804;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
@@ -585,7 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
-				FACEBOOK_APP_ID = 1410488643148645;
+				FACEBOOK_APP_ID = 495256246624804;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
@@ -848,7 +848,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				ENABLE_BITCODE = NO;
-				FACEBOOK_APP_ID = 1410488643148645;
+				FACEBOOK_APP_ID = 495256246624804;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
@@ -991,7 +991,7 @@
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				ENABLE_BITCODE = NO;
-				FACEBOOK_APP_ID = 1410488643148645;
+				FACEBOOK_APP_ID = 495256246624804;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
@@ -1126,7 +1126,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
-				FACEBOOK_APP_ID = 1410488643148645;
+				FACEBOOK_APP_ID = 495256246624804;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
@@ -1257,7 +1257,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
-				FACEBOOK_APP_ID = 1410488643148645;
+				FACEBOOK_APP_ID = 495256246624804;
 				INFOPLIST_FILE = kanvas_app/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SimLimites;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
