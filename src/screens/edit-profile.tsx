@@ -7,6 +7,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Alert } from 'react-native';
+import { setLanguage, APP_LOCALE_KEYS } from 'i18n';
 
 // Molecules
 import Header from 'components/molecules/header';
@@ -180,6 +181,20 @@ export const EditProfile = (props: IEditProfileProps) => {
               <Button
                 title={translate('saveChanges', TextTransform.CAPITALIZE)}
                 onPress={props.handleSubmit}
+                loading={isLoading}
+                disabled={isLoading}
+              />
+
+              <Button
+                title={translate('setToEs', TextTransform.CAPITALIZE)}
+                onPress={() => setLanguage(APP_LOCALE_KEYS.ES)}
+                loading={isLoading}
+                disabled={isLoading}
+              />
+
+              <Button
+                title={translate('setToEn', TextTransform.CAPITALIZE)}
+                onPress={() => setLanguage(APP_LOCALE_KEYS.EN)}
                 loading={isLoading}
                 disabled={isLoading}
               />

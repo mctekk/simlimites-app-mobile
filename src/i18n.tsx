@@ -4,14 +4,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { APP_LOCALE } from "utils/constants";
 
 // CHANGE THIS TO GET THE LANGUAGE FROM THE DEVICE
-export let currentLocale = 'en';
+export enum APP_LOCALE_KEYS {
+  EN = 'en',
+  ES = 'es',
+}
 
 const i18n = new I18n({
   en: EN,
   es: ES,
 });
 
-export const setLanguage = async (locale: string = 'en') => {
+export const setLanguage = async (locale: string = APP_LOCALE_KEYS.EN) => {
   await AsyncStorage.setItem(APP_LOCALE, locale);
 }
 

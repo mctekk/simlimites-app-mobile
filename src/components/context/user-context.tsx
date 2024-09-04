@@ -6,6 +6,7 @@ export interface IUserContext {
   isLoading: boolean;
   isConnected: boolean;
   isUserLogged: boolean;
+  currentLocale: string;
 }
 
 const Context = createContext<IUserContext>({} as IUserContext);

@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import Text, {ITextProps} from 'atoms/text';
-import i18n, { currentLocale } from 'i18n';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { APP_LOCALE } from 'utils/constants';
+import i18n from 'i18n';
+import { UserContext } from 'components/context/user-context';
 
 export enum TextTransform {
   CAPITAL = 'capital',
@@ -92,21 +91,13 @@ const LocalizedLabel = (props: ILocalizedLabelProps) => {
     textProps,
   } = props;
 
-  useEffect(() => {
-    getSavedLocale();
-  }, []);
+  // Context
+  const { currentLocale } = useContext(UserContext);
 
-  const [locale, setLocale] = useState('');
-
-  const text = getTranslatedText(localeKey, defaultValue, locale, interpolate);
-  
-  const getSavedLocale = async() => {
-    const savedLocale = await AsyncStorage.getItem(APP_LOCALE);
-    setLocale(savedLocale || 'en');
-  }
+  const text = getTranslatedText(localeKey, defaultValue, currentLocale, interpolate);
 
   return (
-    locale?.length ? (
+    currentLocale?.length ? (
       <Text {...textProps} {...props}>
         {transformText(text, textTransform)}
       </Text>
