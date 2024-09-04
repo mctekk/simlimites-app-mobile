@@ -21,7 +21,9 @@ import {
   USER_DATA_UPDATE,
   SIGN_UP,
   UPDATE_TOKEN,
+  APP_LOCALE,
 } from 'utils/constants';
+import { APP_LOCALE_KEYS } from 'i18n';
 
 // core
 import { client } from 'core/kanvas_client';
@@ -76,6 +78,7 @@ const MainStack = ({ navigation }) => {
             userToken: null,
             refresh_token: null,
             userData: null,
+            currentLocale: action.currentLocale,
           };
         case UPDATE_TOKEN:
           return {
@@ -91,6 +94,7 @@ const MainStack = ({ navigation }) => {
       userToken: null,
       refresh_token: null,
       userData: null,
+      currentLocale: APP_LOCALE_KEYS.EN,
     },
   );
 
@@ -133,6 +137,8 @@ const MainStack = ({ navigation }) => {
     const bootstrapAsync = async () => {
       let userToken;
       let userData;
+      let currentLocale = await AsyncStorage.getItem(APP_LOCALE) || APP_LOCALE_KEYS.EN;
+
       try {
         const token = await AsyncStorage.getItem(AUTH_TOKEN);
         userToken = token;
@@ -147,12 +153,13 @@ const MainStack = ({ navigation }) => {
         userData = userInfo;
       } catch (e) {
         await AsyncStorage.multiRemove(AsyncKeys);
-        dispatch({ type: SIGN_OUT }); // Restoring token failed
+        dispatch({ type: SIGN_OUT, currentLocale }); // Restoring token failed
       }
       dispatch({
         type: REFRESH_TOKEN,
         token: userToken,
         user: userData,
+        currentLocale: currentLocale,
       });
     };
     bootstrapAsync();
@@ -213,6 +220,7 @@ const MainStack = ({ navigation }) => {
           userToken: state.userToken,
           isLoading: state.isLoading,
           isUserLogged: !!state.userData?.id,
+          currentLocale: state.currentLocale,
         }}>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {state.userToken == null ? (
