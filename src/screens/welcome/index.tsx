@@ -7,12 +7,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Config from 'react-native-config';
 import FastImage from 'react-native-fast-image';
 import SplashScreen from 'react-native-splash-screen';
+import i18n from 'i18n';
 
 // Molcules
 import LoadingModal from 'components/molecules/modals/loading-modal';
 
 // Atoms
-import { TextTransform, translate } from 'components/atoms/localized-label';
+import LocalizedLabel, { TextTransform, translate } from 'components/atoms/localized-label';
 import CustomText from 'atoms/text';
 //import InAppBrowser from 'components/atoms/in-app-browser';
 
@@ -101,15 +102,15 @@ export const Welcome = (props: ISignInProps) => {
       </ImageContainer>
       <BottomContainer>
         <TitlesContainer>
-          <CustomText
+          <LocalizedLabel
+            localeKey="welcomeTitle"
             size={Typography.FONT_SIZE_40}
             lineHeight={Typography.LINE_HEIGHT_48}
             align='center'
-            color={DEFAULT_THEME.black}
+            color={DEFAULT_THEME.title}
             weight='800'
-          >
-            {`${translate('welcomeTitle', TextTransform.CAPITAL)} `}
-          </CustomText>
+            textTransform={TextTransform.CAPITAL}
+          />
           <CustomText
             size={Typography.FONT_SIZE_13}
             align='center'
