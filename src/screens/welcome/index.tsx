@@ -97,7 +97,13 @@ export const Welcome = (props: ISignInProps) => {
   return (
     <Container>
       <ImageContainer>
-        
+        <Image
+          source={require('assets/images/welcome-cover.jpg')}
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+        />
       </ImageContainer>
       <BottomContainer>
         <TitlesContainer>
