@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Text, {ITextProps} from 'atoms/text';
-import i18n from 'i18n';
+import i18n, { APP_LOCALE_KEYS } from 'i18n';
 import { UserContext } from 'components/context/user-context';
 import LocalesService from 'locales/locales-service';
 
@@ -75,11 +75,11 @@ export const translate = (
   options?: ITranslateOptions,
 ) => {
   const currentLocale = LocalesService.getCurrentLocale();
-  const {locale, defaultValue, interpolate} =
+  const {defaultValue, interpolate} =
     options || ({} as ITranslateOptions);
   
   return transformText(
-    getTranslatedText(localeKey, defaultValue, currentLocale || locale, interpolate),
+    getTranslatedText(localeKey, defaultValue, currentLocale || APP_LOCALE_KEYS.ES, interpolate),
     textTransformation,
   );
 };
@@ -92,10 +92,9 @@ const LocalizedLabel = (props: ILocalizedLabelProps) => {
     textTransform = TextTransform.NONE,
     textProps,
   } = props;
-
+  
   const currentLocale = LocalesService.getCurrentLocale();
-
-  const text = getTranslatedText(localeKey, defaultValue, currentLocale, interpolate);
+  const text = getTranslatedText(localeKey, defaultValue, currentLocale || APP_LOCALE_KEYS.ES, interpolate);
 
   return (
     <Text {...textProps} {...props}>

@@ -273,19 +273,15 @@ export const LogIn = (props: ISignInProps, ref: any) => {
                   }}>
                   <Container>
                     <SafeAreaView />
-                    <ScreenHeader
-                      title={translate((isIphoneSE() || isIphone14()) ? 'registerTitle' : 'loginTitle', TextTransform.CAPITAL)}
-                      titleProps={{
-                        style: {
-                          textAlign: 'flex-start',
-                          fontSize: 25,
-                          fontWeight: 'bold',
-                          paddingTop: 6,
-                          width: '100%'
-                        },
-                      }}
-                    />
+                    <ScreenHeader />
                     <Content>
+                      <CustomText
+                        size={Typography.FONT_SIZE_25}
+                        style={{ marginBottom: 15 }}
+                        weight='700'
+                        color={DEFAULT_THEME.title}>
+                        {translate('loginTitle', TextTransform.CAPITAL)}
+                      </CustomText>
                       <CustomText
                         size={Typography.FONT_SIZE_18}
                         lineHeight={Typography.FONT_SIZE_20}
@@ -313,7 +309,7 @@ export const LogIn = (props: ISignInProps, ref: any) => {
                         textColor={DEFAULT_THEME.black}
                       />
                       <Input
-                        labelText={translate('password', TextTransform.CAPITAL)}
+                        labelText={translate('enterPassword', TextTransform.CAPITAL)}
                         textValue={values.password}
                         onFocus={() => handleOnFocusInput('password')}
                         isFocused={onFocusInput.password}
