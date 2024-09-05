@@ -28,3 +28,9 @@ export enum PRODUCT_TYPES_SLUGS {
   REGIONAL_SLUG = 'regional',
   GLOBAL_SLUG = 'global',
 }
+
+export const DUMMY_FLAGS_URLS = [
+  'https://s3.amazonaws.com/mc-canvas/Nz3ltKr0JWPreQdwmvTuSxVYOXdKnVfAxlx0VuLm.png',
+  'https://s3.amazonaws.com/mc-canvas/5wGOjegceggXBjShQngKrHfWVbxFZ2jLpu2eOmvA.png',
+  'https://s3.amazonaws.com/mc-canvas/rtPHLL7iVUoKcq0ZpBP3pE06I4y5tl92kcYYWb6q.png',
+]
