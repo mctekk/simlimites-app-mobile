@@ -8,6 +8,7 @@ export default {
   welcome: 'Welcome',
   placeholderMail: 'Enter your email',
   password: 'Password',
+  enterPassword: 'Password',
   placeholderPassword: 'Enter your password',
   signIn: 'Sign In',
   signUp: 'Sign Up',
@@ -53,6 +54,7 @@ export default {
   loginTitle: 'Welcome again to Simlimites',
   loginSubtitle: 'Is simply dummy text of the printing and\ntypesetting industry. Lorem Ipsum has.',
   registerTitle: 'Welcome to Simlimites',
+  registerSubtitle: 'Is simply dummy text of the printing and\ntypesetting industry. Lorem Ipsum has.',
   or: 'or',
   rememberMe: 'Remember me',
   signInFacebook: 'Login with Facebook',
@@ -91,4 +93,7 @@ export default {
   dataOnly: 'Data only',
   espanol: 'Español',
   english: 'English',
+  countriesIncluded: 'Countries included',
+  eSimDetails: 'eSIM Details',
+  nameSubtitle: 'Introduce your name and last name to configure youre profile.'
 };
