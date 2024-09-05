@@ -186,14 +186,14 @@ export const EditProfile = (props: IEditProfileProps) => {
               />
 
               <Button
-                title={translate('setToEs', TextTransform.CAPITALIZE)}
+                title={translate('espanol', TextTransform.CAPITALIZE)}
                 onPress={() => setLanguage(APP_LOCALE_KEYS.ES)}
                 loading={isLoading}
                 disabled={isLoading}
               />
 
               <Button
-                title={translate('setToEn', TextTransform.CAPITALIZE)}
+                title={translate('english', TextTransform.CAPITALIZE)}
                 onPress={() => setLanguage(APP_LOCALE_KEYS.EN)}
                 loading={isLoading}
                 disabled={isLoading}

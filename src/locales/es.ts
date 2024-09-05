@@ -89,4 +89,6 @@ export default {
   expired: 'Expirado',
   countriesCoverage: 'Cobertura en {{number}} países',
   dataOnly: 'Solo datos',
+  espanol: 'Español',
+  english: 'English',
 };
