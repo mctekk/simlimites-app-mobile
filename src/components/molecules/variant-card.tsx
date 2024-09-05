@@ -18,6 +18,7 @@ interface IVariantCardProps {
   onPress?: () => void;
   label: string;
   price?: string | number;
+  isSelected?: boolean;
 }
 
 const Container = styled.TouchableOpacity`
@@ -27,12 +28,12 @@ const Container = styled.TouchableOpacity`
   margin-bottom: 8px;
   width: 32%;
   border-radius: 10px;
-  border-width: 1px;
+  border-width: 2px;
 `;
 
 const VariantCard = (props: IVariantCardProps) => {
 
-  const { onPress, label, price } = props;
+  const { onPress, label, price, isSelected } = props;
 
   const onCardPress = () => {
     onPress?.();
@@ -41,10 +42,10 @@ const VariantCard = (props: IVariantCardProps) => {
   return (
     <Container
       onPress={onCardPress}
-      style={{ borderColor: DEFAULT_THEME.transparent }}
+      style={{ borderColor: isSelected ? DEFAULT_THEME.black : DEFAULT_THEME.transparent }}
     >
       <CustomText
-        size={(isIphoneSE() || isIphone14()) ? Typography.FONT_SIZE_22 : Typography.FONT_SIZE_30}
+        size={(isIphoneSE() || isIphone14()) ? Typography.FONT_SIZE_22 : Typography.FONT_SIZE_28}
         weight='700'
         style={{ marginBottom: 1 }}
         color={DEFAULT_THEME.title}>
