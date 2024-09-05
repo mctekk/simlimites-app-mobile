@@ -14,7 +14,7 @@ const i18n = new I18n({
   es: ES,
 });
 
-export const setLanguage = async (locale: APP_LOCALE_KEYS = APP_LOCALE_KEYS.EN) => {
+export const setLanguage = async (locale: APP_LOCALE_KEYS = APP_LOCALE_KEYS.ES) => {
   await AsyncStorage.setItem(APP_LOCALE, locale);
 }
 

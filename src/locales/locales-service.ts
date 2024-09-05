@@ -7,7 +7,7 @@ class LocalesService {
 
   public static async loadCurrentLocale() {
     let currentLocale = await AsyncStorage.getItem(APP_LOCALE);
-    this.currentLocale = currentLocale || APP_LOCALE_KEYS.EN;
+    this.currentLocale = currentLocale || APP_LOCALE_KEYS.ES;
   }
 
   public static getCurrentLocale() {
