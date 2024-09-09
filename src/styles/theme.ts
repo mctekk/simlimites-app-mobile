@@ -23,6 +23,7 @@ interface ColorTheme {
   tabsBg: string;
   addFundsBg: string;
   variantSubtitle: string;
+  disabledSearch: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.BLACK,
@@ -47,4 +48,5 @@ export const DEFAULT_THEME: ColorTheme = {
   tabsBg: Colors.TABS_BG,
   addFundsBg: Colors.LIGHT_BLUE,
   variantSubtitle: Colors.LIGHT_BLACK,
+  disabledSearch: Colors.LIGHT_GRAY,
 };
