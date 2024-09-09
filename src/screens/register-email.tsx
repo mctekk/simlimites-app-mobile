@@ -213,25 +213,21 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
               }}>
               <Container>
                 <SafeAreaView />
-                <ScreenHeader
-                  title={translate('registerTitle', TextTransform.CAPITAL)}
-                  titleProps={{
-                    style: {
-                      textAlign: 'flex-start',
-                      fontSize: 25,
-                      fontWeight: 'bold',
-                      paddingTop: 6,
-                      width: '100%'
-                    },
-                  }}
-                />
+                <ScreenHeader />
                 <Content>
+                  <CustomText
+                    size={Typography.FONT_SIZE_25}
+                    style={{ marginBottom: 15 }}
+                    weight='700'
+                    color={DEFAULT_THEME.title}>
+                    {translate('registerTitle', TextTransform.CAPITAL)}
+                  </CustomText>
                   <CustomText
                     size={Typography.FONT_SIZE_18}
                     lineHeight={Typography.FONT_SIZE_20}
                     style={{ marginBottom: 15 }}
                     color={DEFAULT_THEME.subtitle}>
-                    {translate('loginSubtitle', TextTransform.CAPITAL)}
+                    {translate('registerSubtitle', TextTransform.CAPITAL)}
                   </CustomText>
                   <Input
                     labelText={translate('emailAddress', TextTransform.CAPITAL)}

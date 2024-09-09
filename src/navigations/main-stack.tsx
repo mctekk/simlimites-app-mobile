@@ -1,7 +1,8 @@
 // Modules
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import LocalesService from 'locales/locales-service';
 
 // Scenes
 import HomeStack from './stacks/home-stack';
@@ -33,6 +34,9 @@ const Stack = createStackNavigator();
 const MainStack = ({ navigation }) => {
 
   const AsyncKeys = [AUTH_TOKEN, USER_DATA, REFRESH_TOKEN];
+
+  // State
+  const [currentLocale, setCurrentLocale] = useState();
 
   const [state, dispatch] = React.useReducer(
     (prevState, action) => {
@@ -133,6 +137,7 @@ const MainStack = ({ navigation }) => {
     const bootstrapAsync = async () => {
       let userToken;
       let userData;
+
       try {
         const token = await AsyncStorage.getItem(AUTH_TOKEN);
         userToken = token;
@@ -157,6 +162,16 @@ const MainStack = ({ navigation }) => {
     };
     bootstrapAsync();
   }, []);
+
+  useEffect(() => {
+    handleLanguage();
+  }, []);
+
+  const handleLanguage = async () => {
+    await LocalesService.loadCurrentLocale();
+    const savedLocale = await LocalesService.getCurrentLocale();
+    setCurrentLocale(savedLocale);
+  };
 
   const onUserLogout = async () => {
     try {
@@ -204,7 +219,7 @@ const MainStack = ({ navigation }) => {
     }),
     [],
   );
-
+  
   return (
     <AuthContextProvider value={authContext}>
       <UserContextProvider
@@ -214,13 +229,15 @@ const MainStack = ({ navigation }) => {
           isLoading: state.isLoading,
           isUserLogged: !!state.userData?.id,
         }}>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {state.userToken == null ? (
-            <Stack.Screen name="LoginStack" component={LoginStack} />
-          ) : (
-            <Stack.Screen name="HomeStack" component={HomeStack} />
-          )}
-        </Stack.Navigator>
+        {currentLocale && (
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            {state.userToken == null ? (
+              <Stack.Screen name="LoginStack" component={LoginStack} />
+            ) : (
+              <Stack.Screen name="HomeStack" component={HomeStack} />
+            )}
+          </Stack.Navigator>
+        )}
       </UserContextProvider>
     </AuthContextProvider>
   );

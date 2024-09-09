@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Text, {ITextProps} from 'atoms/text';
-import i18n from 'i18n';
+import i18n, { APP_LOCALE_KEYS } from 'i18n';
+import { UserContext } from 'components/context/user-context';
+import LocalesService from 'locales/locales-service';
 
 export enum TextTransform {
   CAPITAL = 'capital',
@@ -13,7 +15,6 @@ export enum TextTransform {
 export interface ILocalizedLabelProps extends ITextProps {
   localeKey: string;
   textTransform?: TextTransform;
-  locale?: string;
   interpolate?: object;
   defaultValue?: string;
   textProps?: object;
@@ -73,11 +74,12 @@ export const translate = (
   textTransformation?: TextTransform,
   options?: ITranslateOptions,
 ) => {
-  const {locale, defaultValue, interpolate} =
+  const currentLocale = LocalesService.getCurrentLocale();
+  const {defaultValue, interpolate} =
     options || ({} as ITranslateOptions);
-
+  
   return transformText(
-    getTranslatedText(localeKey, defaultValue, locale, interpolate),
+    getTranslatedText(localeKey, defaultValue, currentLocale || APP_LOCALE_KEYS.ES, interpolate),
     textTransformation,
   );
 };
@@ -85,14 +87,15 @@ export const translate = (
 const LocalizedLabel = (props: ILocalizedLabelProps) => {
   const {
     localeKey,
-    locale,
     interpolate = undefined,
     defaultValue,
     textTransform = TextTransform.NONE,
     textProps,
   } = props;
+  
+  const currentLocale = LocalesService.getCurrentLocale();
+  const text = getTranslatedText(localeKey, defaultValue, currentLocale || APP_LOCALE_KEYS.ES, interpolate);
 
-  const text = getTranslatedText(localeKey, defaultValue, locale, interpolate);
   return (
     <Text {...textProps} {...props}>
       {transformText(text, textTransform)}

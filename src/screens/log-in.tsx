@@ -24,13 +24,12 @@ import LoadingModal from 'components/molecules/modals/loading-modal';
 import Header from 'components/molecules/header';
 
 // Atoms
-import Text from 'components/atoms/text';
 import { TextTransform, translate } from 'components/atoms/localized-label';
 import CustomText from 'atoms/text';
 import { EmailIcon, Check, NextArrow } from 'assets/icons';
 
 // Styles
-import { Colors, Typography } from 'styles';
+import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
 // Services
@@ -38,7 +37,9 @@ import { client } from 'core/kanvas_client';
 
 // Constants
 import { AUTH_TOKEN, SAVED_EMAIL } from 'utils/constants';
-import { wait } from 'utils';
+
+// Utils
+import { isIphoneSE, isIphone14 } from 'utils/iphone-helpers';
 
 // Context
 import { AuthContext } from 'components/context/auth-context';
@@ -107,7 +108,7 @@ const SeparatorContainer = styled.View`
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-vertical: 44px;
+  margin-vertical: ${isIphoneSE() ? '25' : '44'}px;
 `;
 
 const SocialContainer = styled.View`
@@ -272,19 +273,15 @@ export const LogIn = (props: ISignInProps, ref: any) => {
                   }}>
                   <Container>
                     <SafeAreaView />
-                    <ScreenHeader
-                      title={translate('loginTitle', TextTransform.CAPITAL)}
-                      titleProps={{
-                        style: {
-                          textAlign: 'flex-start',
-                          fontSize: 25,
-                          fontWeight: 'bold',
-                          paddingTop: 6,
-                          width: '100%'
-                        },
-                      }}
-                    />
+                    <ScreenHeader />
                     <Content>
+                      <CustomText
+                        size={Typography.FONT_SIZE_25}
+                        style={{ marginBottom: 15 }}
+                        weight='700'
+                        color={DEFAULT_THEME.title}>
+                        {translate('loginTitle', TextTransform.CAPITAL)}
+                      </CustomText>
                       <CustomText
                         size={Typography.FONT_SIZE_18}
                         lineHeight={Typography.FONT_SIZE_20}
@@ -312,7 +309,7 @@ export const LogIn = (props: ISignInProps, ref: any) => {
                         textColor={DEFAULT_THEME.black}
                       />
                       <Input
-                        labelText={translate('password', TextTransform.CAPITAL)}
+                        labelText={translate('enterPassword', TextTransform.CAPITAL)}
                         textValue={values.password}
                         onFocus={() => handleOnFocusInput('password')}
                         isFocused={onFocusInput.password}
