@@ -1,6 +1,7 @@
 import { Dimensions } from 'react-native';
 
 const TOUCH_PADDING = 18;
+export const deviceWidth = Dimensions.get('window').width;
 
 export const TOUCHABLE_AREA = {
   top: TOUCH_PADDING,
@@ -18,3 +19,11 @@ export const SIGN_OUT = 'SIGN_OUT';
 export const USER_DATA_UPDATE = 'USER_DATA_UPDATE';
 export const UPDATE_TOKEN = 'UPDATE_TOKEN';
 export const SAVED_EMAIL = 'SAVED_EMAIL';
+export const FLAG_IMAGE_NAME = 'flag.png';
+export const COUNTRIES_ATTRIBUTE_NAME = 'Countries';
+
+export enum PRODUCT_TYPES_SLUGS {
+  LOCAL_SLUG = 'local',
+  REGIONAL_SLUG = 'regional',
+  GLOBAL_SLUG = 'global',
+}
