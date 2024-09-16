@@ -20,7 +20,8 @@ import CountriesCard from 'components/molecules/countries-card';
 // Interface
 import { ProductInterface, VariantInterface } from '@kanvas/core';
 import kanvasService from 'core/services/kanvas-service';
-import { DUMMY_FLAGS_URLS, PRODUCT_TYPES_SLUGS } from 'utils/constants';
+import { PRODUCT_TYPES_SLUGS } from 'utils/constants';
+import { DUMMY_FLAGS_URLS } from 'utils/dummy-data';
 
 const Container = styled.ScrollView``;
 
