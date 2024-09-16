@@ -12,7 +12,7 @@ import SplashScreen from 'react-native-splash-screen';
 import LoadingModal from 'components/molecules/modals/loading-modal';
 
 // Atoms
-import { TextTransform, translate } from 'components/atoms/localized-label';
+import LocalizedLabel, { TextTransform, translate } from 'components/atoms/localized-label';
 import CustomText from 'atoms/text';
 //import InAppBrowser from 'components/atoms/in-app-browser';
 
@@ -21,7 +21,7 @@ import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
 // Utils
-import { isAndroid } from 'utils/iphone-helpers';
+import { isAndroid, isIphoneSE } from 'utils/iphone-helpers';
 
 // Interfaces
 interface ISignInProps {
@@ -46,7 +46,7 @@ const Image = styled(FastImage)``;
 
 const ImageContainer = styled.View`
   width: 100%;
-  height: 43%;
+  height: ${isIphoneSE() ? '35%' : '43%'};
   background-color: ${DEFAULT_THEME.secondaryButton};
 `;
 
@@ -97,19 +97,25 @@ export const Welcome = (props: ISignInProps) => {
   return (
     <Container>
       <ImageContainer>
-        
+        <Image
+          source={require('assets/images/welcome-cover.jpg')}
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+        />
       </ImageContainer>
       <BottomContainer>
         <TitlesContainer>
-          <CustomText
+          <LocalizedLabel
+            localeKey="welcomeTitle"
             size={Typography.FONT_SIZE_40}
             lineHeight={Typography.LINE_HEIGHT_48}
             align='center'
-            color={DEFAULT_THEME.black}
+            color={DEFAULT_THEME.title}
             weight='800'
-          >
-            {`${translate('welcomeTitle', TextTransform.CAPITAL)} `}
-          </CustomText>
+            textTransform={TextTransform.CAPITAL}
+          />
           <CustomText
             size={Typography.FONT_SIZE_13}
             align='center'

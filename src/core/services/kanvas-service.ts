@@ -92,18 +92,21 @@ export class KanvasService {
    * Retrieves products data from the server by passing a search string.
    * 
    * @param text - The string of the product to search.
+   * @param productTypeId - The ID of the product type to retrieve.
    * @returns {Promise<any>} A promise that resolves with the found products data.
    * @throws {Error} If there is an error fetching the products data.
    */
-  async searchProducts(text: string) {
+  async searchProducts(productTypeId: number, text: string) {
     try {
       const products = await adminClient.inventory.getProduct({
-        search: text,
-        first: 25,
         whereCondition: {
           column: 'IS_PUBLISHED',
           operator: 'EQ', 
           value: true,
+          AND: [
+            { column: 'PRODUCTS_TYPES_ID', operator: 'EQ', value: productTypeId },
+            { column: 'NAME', operator: 'LIKE', value:`%${text}%` }
+          ]
         }, 
       });
       return products;

@@ -161,7 +161,7 @@ export const RegisterName = (props: ISignInProps, ref: any) => {
                     lineHeight={Typography.FONT_SIZE_20}
                     style={{ marginBottom: 15 }}
                     color={DEFAULT_THEME.subtitle}>
-                    {translate('loginSubtitle', TextTransform.CAPITAL)}
+                    {translate('nameSubtitle', TextTransform.CAPITAL)}
                   </CustomText>
                   <Input
                     labelText={translate('nameLastname', TextTransform.CAPITAL)}

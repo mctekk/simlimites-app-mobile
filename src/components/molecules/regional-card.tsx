@@ -2,11 +2,11 @@
 // Modules
 import React from 'react';
 import styled from 'styled-components/native';
-import i18n from 'i18n';
 
 // Atoms
 import CustomText from 'atoms/text';
 import { CardArrow } from 'assets/icons';
+import LocalizedLabel, { TextTransform } from 'components/atoms/localized-label';
 
 // Styles
 import { Typography } from 'styles';
@@ -58,11 +58,13 @@ const RegionalCard = (props: IRegionalCardProps) => {
           color={DEFAULT_THEME.title}>
           {label}
         </CustomText>
-        <CustomText
+        <LocalizedLabel
+          localeKey="countriesCoverage"
           size={Typography.FONT_SIZE_10}
-          color={DEFAULT_THEME.title}>
-          {i18n.t('countriesCoverage', { number: countriesQty })}
-        </CustomText>
+          color={DEFAULT_THEME.title}
+          interpolate={{ number: countriesQty }}
+          textTransform={TextTransform.CAPITAL}
+        />
       </LeftContainer>
       <CardArrow />
     </Container>
