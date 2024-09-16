@@ -35,7 +35,7 @@ const TabIcon = (props: IProps) => {
 
   const navigation = useNavigation();
 
-  const tintColor = focused ? DEFAULT_THEME.tabIconActive : DEFAULT_THEME.tabIconInactive;
+  const tintColor = focused ? DEFAULT_THEME.primary : DEFAULT_THEME.black;
 
   switch (name) {
     case 'home':
