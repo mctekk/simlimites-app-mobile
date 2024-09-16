@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Modules
 import React, { useContext, useEffect, useState, useCallback } from 'react';
-import { SafeAreaView, Dimensions } from 'react-native';
+import { SafeAreaView, Dimensions, TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import kanvasService from 'core/services/kanvas-service';
 import { TabView } from 'react-native-tab-view';
@@ -26,7 +26,7 @@ import { AuthContext } from 'components/context/auth-context';
 // Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
 import CustomText from 'atoms/text';
-import { SearchIcon } from 'assets/icons';
+import { SearchIcon, CloseIconv2 } from 'assets/icons';
 
 // Styles
 import { DEFAULT_THEME } from 'styles/theme';
@@ -69,9 +69,8 @@ const Content = styled.View`
   flex: 1px;
 `;
 
-const SearchButton = styled.TouchableOpacity`
+const SearchContainer = styled.View`
   width: 100%;
-  background-color: ${DEFAULT_THEME.white};
   margin-bottom: 8px;
   flex-direction: row;
   align-items: center;
@@ -79,6 +78,17 @@ const SearchButton = styled.TouchableOpacity`
   padding-vertical: 10px;
   padding-horizontal: 16px;
 `;
+
+const SearchInput = styled.TextInput`
+  padding: 0;
+  margin-horizontal: 8px;
+  flex: 1px;
+  font-size: ${Typography.FONT_SIZE_15}px;
+  font-weight: 300px;
+  color: ${DEFAULT_THEME.black};
+`;
+
+const CancelButton = styled.TouchableOpacity``;
 
 const BalanceSection = styled.View`
   width: 100%;
@@ -140,10 +150,19 @@ export const Home = (props: IHomeProps) => {
   const [showNewAccountModal, setShowNewAccountModal] = useState(false);
   const [index, setIndex] = useState(0);
   const [selectedTab, setSelectedTab] = useState(routes[0]);
+  const [searchText, setSearchText] = useState('');
 
   // Context
   const { userData, isUserLogged } = useContext(UserContext);
   const { updateUserData } = useContext(AuthContext);
+
+  let inputRef: TextInput;
+
+  const searchDisabled = index === 2;
+
+  const handleInputRef = (input: TextInput) => {
+    inputRef = input;
+  };
 
   useEffect(() => {
     verifyNewAccount();
@@ -191,12 +210,16 @@ export const Home = (props: IHomeProps) => {
         return (
           <ProductList
             productTypeSlug={PRODUCT_TYPES_SLUGS.LOCAL_SLUG}
+            isSearching={!!searchText?.length}
+            searchText={searchText}
           />
         );
       case 1:
         return (
           <ProductList
             productTypeSlug={PRODUCT_TYPES_SLUGS.REGIONAL_SLUG}
+            isSearching={!!searchText?.length}
+            searchText={searchText}
           />
         );
       case 2:
@@ -208,7 +231,7 @@ export const Home = (props: IHomeProps) => {
       default:
         return null;
     }
-  }, []);
+  }, [searchText]);
 
   const renderTabBar = () => {
     return (
@@ -250,16 +273,28 @@ export const Home = (props: IHomeProps) => {
             color={DEFAULT_THEME.title}>
             {translate('nextDestinations', TextTransform.CAPITAL)}
           </CustomText>
-          <SearchButton>
+          <SearchContainer style={{ backgroundColor: !searchDisabled ? DEFAULT_THEME.white : DEFAULT_THEME.disabledSearch }}>
             <SearchIcon />
-            <CustomText
-              size={Typography.FONT_SIZE_15}
-              weight='300'
-              style={{ marginLeft: 20 }}
-              color={DEFAULT_THEME.subtitle}>
-              {translate('enterYourDestination', TextTransform.CAPITAL)}
-            </CustomText>
-          </SearchButton>
+            <SearchInput
+              placeholder={translate('enterYourDestination', TextTransform.CAPITAL)}
+              placeholderTextColor={DEFAULT_THEME.placeHolderText}
+              onChangeText={(text: string) => setSearchText(text)}
+              value={searchText}
+              editable={!searchDisabled}
+              ref={handleInputRef}
+            />
+            {searchText?.length ? (
+              <CancelButton
+                onPress={() => {
+                  setSearchText('');
+                  inputRef.blur();
+                }}
+                disabled={searchDisabled}
+              >
+                <CloseIconv2 />
+              </CancelButton>
+            ) : <></>}
+          </SearchContainer>
         </TopSection>   
 
         {/* @enmanuel-mctekk - COMMENTED ADD FUNDS SECTION, FEATURE IS NOT GOIN TO BE ENABLED FOR NOW */}

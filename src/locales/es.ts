@@ -95,5 +95,6 @@ export default {
   english: 'English',
   countriesIncluded: 'Países incluídos',
   eSimDetails: 'Detalles de eSIM',
-  nameSubtitle: 'Ingresa tu nombre y apellido para configurar tu perfil.'
+  nameSubtitle: 'Ingresa tu nombre y apellido para configurar tu perfil.',
+  noSearchResults: 'Sin resultados',
 };
