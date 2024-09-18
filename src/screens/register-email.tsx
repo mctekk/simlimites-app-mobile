@@ -57,7 +57,7 @@ const ContinueButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   height: 57px;
-  border-radius: 50px;
+  border-radius: 8px;
   margin-top: 32px;
 `;
 
@@ -115,10 +115,7 @@ const validationSchema = yup.object().shape({
   email: yup
     .string()
     .required(translate('fieldRequired', TextTransform.NONE))
-    .matches(
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-      translate('fieldRequired', TextTransform.NONE),
-    ),
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, translate('fieldRequired', TextTransform.NONE)),
 });
 
 export const RegisterEmail = (props: ISignInProps, ref: any) => {
@@ -197,13 +194,7 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={(values, actions) => onContinuePress(values)}>
-        {({
-          values,
-          handleChange,
-          handleSubmit,
-          isValid,
-          dirty,
-        }) => {
+        {({ values, handleChange, handleSubmit, isValid, dirty }) => {
           const buttonDisabled = !(isValid && dirty);
 
           return (
@@ -218,7 +209,7 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
                   <CustomText
                     size={Typography.FONT_SIZE_25}
                     style={{ marginBottom: 15 }}
-                    weight='700'
+                    weight="700"
                     color={DEFAULT_THEME.title}>
                     {translate('registerTitle', TextTransform.CAPITAL)}
                   </CustomText>
@@ -236,8 +227,8 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
                     onBlur={handleOnInputBlur}
                     onFocus={() => handleOnFocusInput('email')}
                     isFocused={onFocusInput.email}
-                    returnKeyType='next'
-                    keyboardType='email-address'
+                    returnKeyType="next"
+                    keyboardType="email-address"
                     inputProps={{
                       autoCapitalize: 'none',
                       autoFocus: false,
@@ -248,23 +239,22 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
                     fontSize={Typography.FONT_SIZE_18}
                     textColor={DEFAULT_THEME.black}
                   />
-                  <CustomText
-                    size={Typography.FONT_SIZE_12}
-                    color={DEFAULT_THEME.subtitle}>
+                  <CustomText size={Typography.FONT_SIZE_12} color={DEFAULT_THEME.subtitle}>
                     {translate('confirmEmail', TextTransform.CAPITAL)}
                   </CustomText>
                 </Content>
                 <ContinueButton
                   onPress={() => handleSubmit()}
                   style={{
-                    backgroundColor: buttonDisabled ? DEFAULT_THEME.disabledButton : DEFAULT_THEME.black
+                    backgroundColor: buttonDisabled
+                      ? DEFAULT_THEME.disabledPrimary
+                      : DEFAULT_THEME.primary,
                   }}
-                  disabled={buttonDisabled}
-                >
+                  disabled={buttonDisabled}>
                   <CustomText
                     size={Typography.FONT_SIZE_20}
                     lineHeight={Typography.FONT_SIZE_24}
-                    weight='600'
+                    weight="600"
                     color={buttonDisabled ? DEFAULT_THEME.white : DEFAULT_THEME.white}>
                     {translate('continue', TextTransform.CAPITAL)}
                   </CustomText>
@@ -289,13 +279,10 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
                 </SocialModeTopContainer>
               </Container>
             </TouchableWithoutFeedback>
-          )
+          );
         }}
       </Formik>
-      <LoadingModal
-        visible={isLoading}
-        title={translate('signingIn', TextTransform.CAPITALIZE)}
-      />
+      <LoadingModal visible={isLoading} title={translate('signingIn', TextTransform.CAPITALIZE)} />
     </>
   );
 };
@@ -308,4 +295,4 @@ const styles = {
   inputLabelStyle: {
     marginBottom: 0,
   },
-}
+};

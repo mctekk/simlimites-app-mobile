@@ -28,24 +28,20 @@ interface SocialButtonIconsProps {
 const Button = styled.TouchableOpacity`
   width: 100%;
   height: 62px;
-  border-color: ${DEFAULT_THEME.borderColor};
+  border-color: ${DEFAULT_THEME.primary};
   border-width: 1px;
   background-color: ${DEFAULT_THEME.white};
   margin-bottom: 13px;
-  border-radius: 5px;
+  border-radius: 8px;
   align-items: center;
   flex-direction: row;
   padding-horizontal: 25px;
 `;
 
-const AIcon = () => (
-  <AppleIcon />
-);
+const AIcon = () => <AppleIcon />;
 
-const SignWithApple = (
-  props: Partial<PillButtonProps, SocialButtonIconsProps>,
-) => {
-  const { isSmall = false, onLogin, textLocale ='signInApple' } = props;
+const SignWithApple = (props: Partial<PillButtonProps, SocialButtonIconsProps>) => {
+  const { isSmall = false, onLogin, textLocale = 'signInApple' } = props;
 
   const handleLogin = async () => {
     try {
@@ -85,7 +81,7 @@ const SignWithApple = (
         {AIcon()}
         <CustomText
           size={Typography.FONT_SIZE_18}
-          weight='500'
+          weight="500"
           style={{ marginLeft: 20 }}
           color={DEFAULT_THEME.black}>
           {translate(textLocale, TextTransform.CAPITAL)}

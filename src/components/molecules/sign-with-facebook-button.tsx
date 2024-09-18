@@ -35,24 +35,20 @@ interface SocialButtonIconsProps {
 const Button = styled.TouchableOpacity`
   width: 100%;
   height: 62px;
-  border-color: ${DEFAULT_THEME.borderColor};
+  border-color: ${DEFAULT_THEME.primary};
   border-width: 1px;
   background-color: ${DEFAULT_THEME.white};
   margin-bottom: 13px;
-  border-radius: 5px;
+  border-radius: 8px;
   align-items: center;
   flex-direction: row;
   padding-horizontal: 25px;
 `;
 
-const FIcon = () => (
-  <FacebookIcon />
-);
+const FIcon = () => <FacebookIcon />;
 
-const SignWithFacebook = (
-  props: Partial<PillButtonProps, SocialButtonIconsProps>,
-) => {
-  const { isSmall = false, onLogin, textLocale ='signInFacebook' } = props;
+const SignWithFacebook = (props: Partial<PillButtonProps, SocialButtonIconsProps>) => {
+  const { isSmall = false, onLogin, textLocale = 'signInFacebook' } = props;
 
   const handleLogin = async () => {
     try {
@@ -82,7 +78,7 @@ const SignWithFacebook = (
         {FIcon()}
         <CustomText
           size={Typography.FONT_SIZE_18}
-          weight='500'
+          weight="500"
           style={{ marginLeft: 20 }}
           color={DEFAULT_THEME.black}>
           {translate(textLocale, TextTransform.CAPITAL)}

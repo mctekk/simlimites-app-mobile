@@ -1,18 +1,28 @@
 import * as React from 'react';
 import {SvgFromXml} from 'react-native-svg';
+import Svg, { G, Circle, Path } from 'react-native-svg';
+
 import {Colors} from 'styles';
 
 const CloseIconV2 = (props: any) => {
-  const {color, size = 20} = props;
+  const {color = Colors.PLACEHOLDER_TEXT, size = 20} = props;
 
   return (
-    <SvgFromXml
-      xml={`
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width=${size} height=${size} viewBox="0,0,256,256">
-        <g fill="#9f9f9f" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M25,2c-12.681,0 -23,10.319 -23,23c0,12.681 10.319,23 23,23c12.681,0 23,-10.319 23,-23c0,-12.681 -10.319,-23 -23,-23zM33.71,32.29c0.39,0.39 0.39,1.03 0,1.42c-0.2,0.19 -0.45,0.29 -0.71,0.29c-0.26,0 -0.51,-0.1 -0.71,-0.29l-7.29,-7.29l-7.29,7.29c-0.2,0.19 -0.45,0.29 -0.71,0.29c-0.26,0 -0.51,-0.1 -0.71,-0.29c-0.39,-0.39 -0.39,-1.03 0,-1.42l7.29,-7.29l-7.29,-7.29c-0.39,-0.39 -0.39,-1.03 0,-1.42c0.39,-0.39 1.03,-0.39 1.42,0l7.29,7.29l7.29,-7.29c0.39,-0.39 1.03,-0.39 1.42,0c0.39,0.39 0.39,1.03 0,1.42l-7.29,7.29z"></path></g></g>
-        </svg> 
-      `}
-    />
+    <Svg width={size} height={size} viewBox="0 0 30 30" {...props}>
+      <G data-name="Group 2905" transform="translate(-7 -7)">
+        <Circle
+          cx={15}
+          cy={15}
+          r={15}
+          transform="translate(7 7)"
+          fill={color}
+        />
+        <Path
+          d="M17.281 26a1.057 1.057 0 00.008 1.461 1.065 1.065 0 001.461.008l3.625-3.625L26 27.461a1.042 1.042 0 001.461-.008 1.05 1.05 0 00.008-1.461l-3.617-3.617 3.617-3.625a1.05 1.05 0 00-.008-1.461A1.042 1.042 0 0026 17.281L22.375 20.9l-3.625-3.627a1.065 1.065 0 00-1.461.008 1.067 1.067 0 00-.008 1.469l3.625 3.625z"
+          fill="#fff"
+        />
+      </G>
+    </Svg>
   );
 };
 
