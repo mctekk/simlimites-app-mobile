@@ -167,7 +167,7 @@ export const RegisterName = (props: ISignInProps, ref: any) => {
                     onBlur={handleOnInputBlur}
                     onFocus={() => handleOnFocusInput('name')}
                     isFocused={onFocusInput.name}
-                    returnKeyType="next"
+                    returnKeyType='next'
                     inputProps={{
                       autoCapitalize: 'none',
                       autoFocus: true,
@@ -184,7 +184,7 @@ export const RegisterName = (props: ISignInProps, ref: any) => {
                     onBlur={handleOnInputBlur}
                     onFocus={() => handleOnFocusInput('lastName')}
                     isFocused={onFocusInput.name}
-                    returnKeyType="next"
+                    returnKeyType='next'
                     inputProps={{
                       autoCapitalize: 'none',
                     }}
@@ -205,7 +205,7 @@ export const RegisterName = (props: ISignInProps, ref: any) => {
                   <CustomText
                     size={Typography.FONT_SIZE_20}
                     lineHeight={Typography.FONT_SIZE_24}
-                    weight="600"
+                    weight='600'
                     color={buttonDisabled ? DEFAULT_THEME.white : DEFAULT_THEME.white}>
                     {translate('continue', TextTransform.CAPITAL)}
                   </CustomText>
