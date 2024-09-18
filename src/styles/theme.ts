@@ -26,6 +26,7 @@ interface ColorTheme {
   disabledSearch: string;
   cardBg: string;
   simCardInfo: string;
+  disabledPrimary: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.LIGHT_BLUE,
@@ -43,6 +44,7 @@ export const DEFAULT_THEME: ColorTheme = {
   inputLabel: Colors.LABEL_GRAY,
   separatorText: Colors.GRAY,
   disabledButton: Colors.DISABLED_GRAY,
+  disabledPrimary: Colors.DISABLED_BLUE,
   title: Colors.BLACK,
   inputBg: Colors.WHITE,
   tabIconActive: Colors.BLACK,
