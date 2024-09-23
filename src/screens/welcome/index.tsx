@@ -84,8 +84,8 @@ export const Welcome = (props: ISignInProps) => {
     <SkipButton onPress={() => navigation.navigate('HomeStack')}>
       <CustomText
         size={Typography.FONT_SIZE_18}
-        align="center"
-        weight="600"
+        align='center'
+        weight='600'
         color={DEFAULT_THEME.primary}>
         {translate('skipText', TextTransform.CAPITAL)}
       </CustomText>
@@ -106,19 +106,19 @@ export const Welcome = (props: ISignInProps) => {
       <BottomContainer>
         <TitlesContainer>
           <LocalizedLabel
-            localeKey="welcomeTitle"
+            localeKey='welcomeTitle'
             size={Typography.FONT_SIZE_40}
             lineHeight={Typography.LINE_HEIGHT_48}
-            align="center"
+            align='center'
             color={DEFAULT_THEME.title}
-            weight="800"
+            weight='800'
             textTransform={TextTransform.CAPITAL}
           />
           <CustomText
             size={Typography.FONT_SIZE_13}
-            align="center"
+            align='center'
             color={DEFAULT_THEME.black}
-            weight="300"
+            weight='300'
             style={{ marginTop: 17 }}>
             {translate('welcomeSubtitle', TextTransform.CAPITAL)}
           </CustomText>
@@ -131,8 +131,8 @@ export const Welcome = (props: ISignInProps) => {
             style={{ backgroundColor: DEFAULT_THEME.primary }}>
             <CustomText
               size={Typography.FONT_SIZE_20}
-              weight="600"
-              align="center"
+              weight='600'
+              align='center'
               color={DEFAULT_THEME.white}>
               {translate('login', TextTransform.CAPITAL)}
             </CustomText>
@@ -142,15 +142,13 @@ export const Welcome = (props: ISignInProps) => {
               navigation.navigate('RegisterEmail');
             }}
             style={{
-              backgroundColor: DEFAULT_THEME.transparent,
-              borderWidth: 1,
-              borderColor: DEFAULT_THEME.primary,
+              backgroundColor: DEFAULT_THEME.simMoreInfo,
             }}>
             <CustomText
               size={Typography.FONT_SIZE_20}
-              weight="600"
-              align="center"
-              color={DEFAULT_THEME.black}>
+              weight='600'
+              align='center'
+              color={DEFAULT_THEME.white}>
               {translate('register', TextTransform.CAPITAL)}
             </CustomText>
           </Button>

@@ -1,17 +1,16 @@
-
 // Modules
-import React from "react";
-import styled from "styled-components/native";
-import FastImage from "react-native-fast-image";
+import React from 'react';
+import styled from 'styled-components/native';
+import FastImage from 'react-native-fast-image';
 
 // Atoms
 import CustomText from 'atoms/text';
 import { translate, TextTransform } from 'atoms/localized-label';
 
 // Styles
-import { Typography } from "styles";
-import { DEFAULT_THEME } from "styles/theme";
-import { ISimCard } from "interfaces/products-interface";
+import { Typography } from 'styles';
+import { DEFAULT_THEME } from 'styles/theme';
+import { ISimCard } from 'interfaces/products-interface';
 
 interface IeSimCardProps {
   onPress?: () => void;
@@ -22,7 +21,7 @@ interface IeSimCardProps {
 const Container = styled.TouchableOpacity`
   width: 100%;
   align-items: center;
-  backgroundColor: ${DEFAULT_THEME.authBackground};
+  background-color: ${DEFAULT_THEME.authBackground};
   justify-content: space-between;
   padding: 10px;
   border-bottom-width: 1px;
@@ -78,7 +77,6 @@ const Circle = styled.View`
 `;
 
 const SimCard = (props: IeSimCardProps) => {
-
   const { onPress, simCardData, style } = props;
 
   const onCardPress = () => {
@@ -86,16 +84,11 @@ const SimCard = (props: IeSimCardProps) => {
   };
 
   return (
-    <Container
-      onPress={onCardPress}
-      style={style}
-    >
+    <Container onPress={onCardPress} style={style}>
       <TopContainer>
         <RowContainer>
           <RowChildContainer>
-            <Flag
-              source={{ uri: simCardData?.flagImageUri || '' }}
-            />
+            <Flag source={{ uri: simCardData?.flagImageUri || '' }} />
             <CustomText
               size={Typography.FONT_SIZE_12}
               weight='600'
@@ -117,7 +110,7 @@ const SimCard = (props: IeSimCardProps) => {
               <CustomText
                 size={Typography.FONT_SIZE_20}
                 weight='700'
-                style={{ marginBottom: -2  }}
+                style={{ marginBottom: -2 }}
                 color={DEFAULT_THEME.title}>
                 {simCardData?.dataPlan}
               </CustomText>
@@ -146,14 +139,18 @@ const SimCard = (props: IeSimCardProps) => {
                 weight='500'
                 style={{ marginLeft: 3 }}
                 color={DEFAULT_THEME.title}>
-                {translate('dataMsg', TextTransform.NONE, {interpolate: {dataPlan: simCardData?.dataPlan}})}
+                {translate('dataMsg', TextTransform.NONE, {
+                  interpolate: { dataPlan: simCardData?.dataPlan },
+                })}
               </CustomText>
             </RowChildContainer>
             <CustomText
               size={Typography.FONT_SIZE_10}
               weight='500'
               color={DEFAULT_THEME.title}>
-              {translate('daysLeft', TextTransform.CAPITAL, {interpolate: {days: simCardData?.daysLeft}})}
+              {translate('daysLeft', TextTransform.CAPITAL, {
+                interpolate: { days: simCardData?.daysLeft },
+              })}
             </CustomText>
           </RowContainer>
         ) : (
@@ -171,7 +168,7 @@ const SimCard = (props: IeSimCardProps) => {
                 {translate('buyMoreData', TextTransform.CAPITAL)}
               </CustomText>
             </Button>
-            <Button style={{ backgroundColor: DEFAULT_THEME.simCardInfo }}>
+            <Button style={{ backgroundColor: DEFAULT_THEME.simMoreInfo }}>
               <CustomText
                 size={Typography.FONT_SIZE_12}
                 weight='600'
@@ -190,10 +187,9 @@ const SimCard = (props: IeSimCardProps) => {
             </CustomText>
           </Button>
         )}
-        
       </ButtonsContainer>
     </Container>
-  )
+  );
 };
 
 export default SimCard;

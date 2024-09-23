@@ -105,4 +105,11 @@ export default {
   expiredSimsHere: 'Aquí verás tus eSIMs expirados',
   days: 'días',
   letsActivateSim: 'Activa tu eSIM',
+  profile: 'Perfil',
+  myPlans: 'mis planes',
+  myOrders: 'mis órdenes',
+  userGuide: 'guía de usuario',
+  aboutUs: 'sobre nosotros',
+  termsAndConditions: 'términos y condiciones',
+  help: 'ayuda',
 };

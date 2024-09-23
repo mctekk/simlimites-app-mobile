@@ -105,4 +105,11 @@ export default {
   expiredSimsHere: 'Here you will see your expired eSims',
   days: 'days',
   letsActivateSim: 'Let’s active eSIM',
+  profile: 'Profile',
+  myPlans: 'my plans',
+  myOrders: 'my orders',
+  userGuide: 'user guide',
+  aboutUs: 'about us',
+  termsAndConditions: 'terms and conditions',
+  help: 'help',
 };
