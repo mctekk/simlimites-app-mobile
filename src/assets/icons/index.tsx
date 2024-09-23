@@ -12,3 +12,4 @@ export { default as MyeSimsIcon } from './my-esims-icon';
 export { default as DetaileSimsIcon } from './detail-esims-icon';
 export { default as AccountIcon } from './account-icon';
 export { default as CardArrow } from './card-arrow';
+export { default as CloseIconv2 } from './close-icon-v2';

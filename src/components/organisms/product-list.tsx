@@ -18,6 +18,7 @@ import { useScrollToTop } from '@react-navigation/native';
 // Molecules
 import LocalCard from 'components/molecules/local-card';
 import RegionalCard from 'components/molecules/regional-card';
+import SearchEmptyComponent from 'components/molecules/search-empty-component';
 
 // Organisms
 import ProductVariants from 'components/organisms/product-variants';
@@ -62,6 +63,8 @@ export enum LOCAL_LIST_EVENTS {
 interface IFeedProps {
   isLoading?: boolean;
   productTypeSlug?: string;
+  isSearching?: boolean;
+  searchText?: string;
 }
 
 const ProductList = (props: IFeedProps) => {
@@ -70,10 +73,13 @@ const ProductList = (props: IFeedProps) => {
   const {
     isLoading = true,
     productTypeSlug = PRODUCT_TYPES_SLUGS.LOCAL_SLUG,
+    isSearching,
+    searchText = '',
   } = props;
 
   // Refs
   const items = useRef([]);
+  const searchedItems = useRef([]);
   const flatListRef = useRef(null);
   const pages_total = useRef<number>(0);
   const last_page = useRef<number>(0);
@@ -92,8 +98,7 @@ const ProductList = (props: IFeedProps) => {
   // Const 
   const { ON_LOCAL_LIST_UPDATE } = LOCAL_LIST_EVENTS;
 
-  // Get the list of memos 
-  // in kanvas sdk the info is saved in the messages property as a string.
+  // Get the list of products
   const getProducts = debounce(async (pageNumber = 1) => {
     try {
       const productTypesRes = await kanvasService.getProductTypes();
@@ -102,6 +107,7 @@ const ProductList = (props: IFeedProps) => {
       );
       const productTypeId = localType ? localType?.id : 0;
       const response = await kanvasService.getProductsByType(productTypeId, pageNumber);
+
       const { paginatorInfo, data } = response?.products;
 
       if (pageNumber > 1) {
@@ -128,6 +134,31 @@ const ProductList = (props: IFeedProps) => {
     }
   }, 500);
 
+  // Get the list of products by search text
+  const searchProducts = async () => {
+    try {
+      setLoading(true);
+      const productTypesRes = await kanvasService.getProductTypes();
+      const localType = productTypesRes?.productTypes?.data?.find(
+        (type: ProductTypeInterface) => type?.slug === productTypeSlug
+      );
+      const productTypeId = localType ? localType?.id : 0;
+      const response = await kanvasService.searchProducts(productTypeId, searchText.trim());
+
+      const { data } = response?.products;
+
+      searchedItems.current = data;
+
+      setRefreshing(false);
+      setLoading(false);
+      setError(false);
+    } catch (error) {
+      console.log('searchProducts error:', error);
+      setError(true);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => () => {
     setPage(1);
     items.current = [];
@@ -141,6 +172,14 @@ const ProductList = (props: IFeedProps) => {
   useEffect(() => {
     getProducts();
   }, []);
+
+  useEffect(() => {
+    !loading && setLoading(true);
+    const delayDebounceFn = setTimeout(() => {
+      searchProducts();
+    }, 500)
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchText]);
 
   useEffect(() => {
     const updateList = EventRegister.on(ON_LOCAL_LIST_UPDATE, () => {
@@ -187,7 +226,7 @@ const ProductList = (props: IFeedProps) => {
 
   const renderItem = useCallback(({ item, index }) => {
     const isFirst = (index === 0);
-    const isLast = (index === (items.current.length -1));
+    const isLast = (index === ((isSearching ? searchedItems.current.length : items.current.length)-1));
 
     if (productTypeSlug === PRODUCT_TYPES_SLUGS.LOCAL_SLUG) {
       const flag = item?.files?.data?.find(
@@ -196,6 +235,7 @@ const ProductList = (props: IFeedProps) => {
 
       return (
         <LocalCard
+          key={item.id}
           isFirst={isFirst}
           isLast={isLast}
           label={item?.name}
@@ -223,7 +263,7 @@ const ProductList = (props: IFeedProps) => {
     return (
       <></>
     );
-  }, []);
+  }, [isSearching]);
 
   const ListFooterComponent = (showLoadear: boolean) => {
     {
@@ -253,7 +293,7 @@ const ProductList = (props: IFeedProps) => {
         <ActivityIndicator size="small" color={DEFAULT_THEME.subtitle} />
       )}
 
-      {!loading && !hasError && (productTypeSlug != PRODUCT_TYPES_SLUGS.GLOBAL_SLUG) && (
+      {!loading && !hasError && (productTypeSlug != PRODUCT_TYPES_SLUGS.GLOBAL_SLUG) && !isSearching && (
         <FlatList
           data={items.current}
           extraData={items.current}
@@ -269,6 +309,18 @@ const ProductList = (props: IFeedProps) => {
           // ListEmptyComponent={ListEmptyComponent}
           contentContainerStyle={{ borderRadius: 10 }}
           ListFooterComponent={ListFooterComponent}
+        />
+      )}
+
+      {!loading && !hasError && (productTypeSlug != PRODUCT_TYPES_SLUGS.GLOBAL_SLUG) && isSearching && (
+        <FlatList
+          data={searchedItems.current}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          showsVerticalScrollIndicator={false}
+          scrollEventThrottle={16}
+          ListEmptyComponent={<SearchEmptyComponent />}
+          contentContainerStyle={{ borderRadius: 10 }}
         />
       )}
 
