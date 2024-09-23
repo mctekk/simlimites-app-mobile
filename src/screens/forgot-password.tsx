@@ -1,7 +1,7 @@
 // Modules
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import {Formik} from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Alert, SafeAreaView, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
@@ -13,7 +13,7 @@ import TextInput from 'components/molecules/text-input';
 import { Typography } from 'styles';
 
 // Atoms
-import {TextTransform, translate} from 'components/atoms/localized-label';
+import { TextTransform, translate } from 'components/atoms/localized-label';
 import CustomText from 'atoms/text';
 import { EmailIcon, NextArrow } from 'assets/icons';
 
@@ -78,15 +78,12 @@ const validationSchema = yup.object().shape({
   email: yup
     .string()
     .required('This field is requiered')
-    .matches(
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-      translate('fieldRequired', TextTransform.NONE),
-    ),
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, translate('fieldRequired', TextTransform.NONE)),
 });
 
 export const ForgotPassword = (props: IForgotPasswordProps) => {
   // Props
-  const {navigation} = props;
+  const { navigation } = props;
 
   // State
   const [isLoading, setIsLoading] = useState(false);
@@ -126,13 +123,7 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={(values, actions) => handleForgotPassword(values, actions)}>
-        {({
-          values,
-          handleChange,
-          handleSubmit,
-          isValid,
-          dirty,
-        }) => {
+        {({ values, handleChange, handleSubmit, isValid, dirty }) => {
           const buttonDisabled = !(isValid && dirty);
 
           return (
@@ -150,7 +141,7 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
                       fontSize: 25,
                       fontWeight: 'bold',
                       paddingTop: 6,
-                      width: '100%'
+                      width: '100%',
                     },
                   }}
                 />
@@ -169,8 +160,8 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
                     onBlur={handleOnInputBlur}
                     onFocus={() => handleOnFocusInput('email')}
                     isFocused={onFocusInput.email}
-                    returnKeyType='next'
-                    keyboardType='email-address'
+                    returnKeyType="next"
+                    keyboardType="email-address"
                     inputProps={{
                       autoCapitalize: 'none',
                       autoFocus: true,
@@ -185,14 +176,15 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
                 <ContinueButton
                   onPress={() => handleSubmit()}
                   style={{
-                    backgroundColor: buttonDisabled ? DEFAULT_THEME.disabledButton : DEFAULT_THEME.black
+                    backgroundColor: buttonDisabled
+                      ? DEFAULT_THEME.disabledPrimary
+                      : DEFAULT_THEME.primary,
                   }}
-                  disabled={buttonDisabled}
-                >
+                  disabled={buttonDisabled}>
                   <CustomText
                     size={Typography.FONT_SIZE_20}
                     lineHeight={Typography.FONT_SIZE_24}
-                    weight='600'
+                    weight="600"
                     color={buttonDisabled ? DEFAULT_THEME.white : DEFAULT_THEME.white}>
                     {translate('continue', TextTransform.CAPITAL)}
                   </CustomText>
@@ -202,7 +194,7 @@ export const ForgotPassword = (props: IForgotPasswordProps) => {
                 </ContinueButton>
               </Container>
             </TouchableWithoutFeedback>
-          )
+          );
         }}
       </Formik>
     </>
@@ -217,4 +209,4 @@ const styles = {
   inputLabelStyle: {
     marginBottom: 0,
   },
-}
+};

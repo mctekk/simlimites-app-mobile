@@ -97,4 +97,12 @@ export default {
   eSimDetails: 'eSIM Details',
   nameSubtitle: 'Introduce your name and last name to configure youre profile.',
   noSearchResults: 'No results',
+  dataMsg: 'of {{dataPlan}} used',
+  daysLeft: '{{days}} days left',
+  buyMoreData: 'Buy more data',
+  moreInformation: 'More information',
+  purchasedSimsHere: 'Here you will see your purchased eSims',
+  expiredSimsHere: 'Here you will see your expired eSims',
+  days: 'days',
+  letsActivateSim: 'Let’s active eSIM',
 };

@@ -3,11 +3,7 @@ import { SvgFromXml } from 'react-native-svg';
 import { Colors } from 'styles';
 
 const Check = (props: any) => {
-  const {
-    color = Colors.BLACK,
-    width = 12,
-    height = 12,
-  } = props;
+  const { color = Colors.BLACK, width = 12, height = 12 } = props;
   return (
     <SvgFromXml
       xml={`

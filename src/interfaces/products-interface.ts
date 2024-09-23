@@ -18,3 +18,14 @@ export interface ICountriesAttribute {
   value: number[];
   name: string;
 };
+
+export interface ISimCard {
+  id: string;
+  usedData: string;
+  dataPlan: string;
+  countryName: string;
+  active: boolean;
+  flagImageUri: string;
+  daysLeft: string;
+  planDays: string;
+};

@@ -97,4 +97,12 @@ export default {
   eSimDetails: 'Detalles de eSIM',
   nameSubtitle: 'Ingresa tu nombre y apellido para configurar tu perfil.',
   noSearchResults: 'Sin resultados',
+  dataMsg: 'de {{dataPlan}} usados',
+  daysLeft: 'quedan {{days}} días',
+  buyMoreData: 'Comprar más datos',
+  moreInformation: 'Más información',
+  purchasedSimsHere: 'Aquí verás tus eSIMs comprados',
+  expiredSimsHere: 'Aquí verás tus eSIMs expirados',
+  days: 'días',
+  letsActivateSim: 'Activa tu eSIM',
 };

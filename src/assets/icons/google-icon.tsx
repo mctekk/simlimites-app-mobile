@@ -3,19 +3,16 @@ import {SvgFromXml} from 'react-native-svg';
 import {Colors} from 'styles';
 
 const GoogleIcon = (props: any) => {
-  const {} = props;
+  const { size = 32 } = props;
 
   return (
     <SvgFromXml
       xml={`
-        <svg width="35" height="39" viewBox="0 0 35 39" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <rect width="35" height="39" fill="url(#pattern0_576_54)"/>
-        <defs>
-        <pattern id="pattern0_576_54" patternContentUnits="objectBoundingBox" width="1" height="1">
-        <use xlink:href="#image0_576_54" transform="matrix(0.0104167 0 0 0.00934829 0 0.0512821)"/>
-        </pattern>
-        <image id="image0_576_54" width="96" height="96" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFJklEQVR4nO2dWaxeUxSAv3tvFVdVEWmlQVKqhiiRa0y0gijxINEiBKko5YUYEkEFlaYSNVQMjSExJIaSijFFEEPV0KataszRSNRFCEqH27BlJevhz83/1+3Za5+z9zn7S9bb/7CGs6e1114/ZDKZTCaTyWQymUyc7AwcD8wE7gBeAVYA3wK/ABuAf4DfgO+BL4G3gYeAa4EzgLFVG5ESw4ATgTnAB8AWwBmIBOxR4Hxgl6qNjJHDgDuBH40cvjXZBDwPnA1sT4PpBqYBy0tweieRgN8A7E6D6AEuAD6v0PGD5W9gHjCKmnM48GEEDu8kv+riPZyasSuwQHcsLgFZCUykJvTpLsQlJgPAzTplJkkXcLUa4hKWN3QEJ4XMoU9H4DxnJHLAm0AijNCvxtVM1uhBMWpkP/1JBM5yxvJDCiOgF1gSgbOcsfQDBxE52wGvRuAs10TnC49H4CzXxGlHuLQiB/2puZy1mo7e3ETnSxZzY2BH/wt8CswHztQT6g4dknv7ACcBs4DFmvks4vz9SYCddH8cyvFrgZuAcR46jgTOA96vm/OFuYEc/xUwXRd2S44AXquL8w80nnOdXi/OKuGSZArwXcrOF94ydv5qDWqZp/VHUnX+KcbOf0YPcVVwYWrOF94zdP59unvJDJFJhs5fkL2+7bxs5PxFKV90VMVoozqdr3V/ntlGrjJw/ha9mM8UYKVBAKT0I1OAfY1Su1LrmSnAxQYBkHqbTEGe9HT+73nh9Ssv8S2alXLxTEHGGkw/coALxUit22kntSgxPMFg+gl56Fpl8IFYy186c5hwmacyLxCWVRE4vJ3sZWXg3Z6KXE8zA3CylYFPeSoylWYGYEYsCbhDaWYArrEy8B1PRfammQG41cpA3zdcu9HMAMy3MjAHgEIBkHfNJuQpiEIBkLIdE17yHIpNXYRnWxmYt6FUuwu6y/NLkIfQTRwB58aSiniRZgZgkpWBORlHoQDsF1M6ejLNGgEbLYuLJa26zlOhhwnH0fomwFJ8H53IQ8WoriT/SOxKcq6nvQ9aKzTDYFheRxoMMxjxMoJMGWcQgJ8SGQVTDWw9IIRiKwwUkzNFzMjC+YWnjfL4I+rSxD7i5QoDGx8IpdwYo+LcbyJtnDdan7v62nd6SCV9E3OtF/U9xDX1+GZ9nbbSDPrG7VijADjgMcvSDU/uNbKplDXuXcMg3B/BSLjS0J5DylB4iqHCDnhWH32XTZfxW+elZSr/ZoBmSAeXqH+vdtK1tOG0EvVnfME+DFuTzcBtHfpAWDLZYK8/WJZVsZ7NMTbCqUiHxYsCFNbKaf6JQDrL2+nS6Q3wJbkWkW7ot+hoK4os8KcCCw0bgQ8W6RpQGRO1x4MLLJ8B92jDbWmRs2MbXWQK2BM4Tk+0C40OVv/X8tjs4qUol5QQANehBLxfcy/WDZuGKrKFjQLrHYVLQJZGcIapfdM+10H6S6h5LbQoD7UzlUtY5L73GCJu3PpxBE5yAfvXnUPkSDOk1yNwlou52i00ww0u8l1kX75sbZOiS5WuYnvoDGWTZZlhFRzZpkmeS0SkdeZR1IBRmvtP5S9MHPBcCa97Sqcvgfb26/TvtWpLt3azXROBs1tlvXbqlV1cI+jWIqhlFTteCsZubNqfubXLqs4zKAkcqgxohce0pv+d4WB69N9TZ2taY8C4J7UkDc+KtC4pSkboSxPp2HW7frXL9dbs55a7iPUtf2n7kf5OKtQu154Ne1RtSCaTyWQymUwmk6Hx/Afoc4FHwhJhLgAAAABJRU5ErkJggg=="/>
-        </defs>
+        <svg width=${size} height=${size} viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.6 10.7273C19.6 10.0182 19.5364 9.33636 19.4182 8.68176H10V12.55H15.3818C15.15 13.8 14.4455 14.8591 13.3864 15.5682V18.0773H16.6182C18.5091 16.3364 19.6 13.7727 19.6 10.7273Z" fill="#4285F4"/>
+        <path d="M10 20.5C12.7 20.5 14.9636 19.6045 16.6181 18.0773L13.3863 15.5682C12.4909 16.1682 11.3454 16.5227 10 16.5227C7.3954 16.5227 5.1909 14.7636 4.4045 12.4H1.0636V14.9909C2.7091 18.2591 6.0909 20.5 10 20.5Z" fill="#34A853"/>
+        <path d="M4.4045 12.4001C4.2045 11.8001 4.0909 11.1592 4.0909 10.5001C4.0909 9.84096 4.2045 9.20006 4.4045 8.60006V6.00916H1.0636C0.3864 7.35916 0 8.88646 0 10.5001C0 12.1137 0.3864 13.641 1.0636 14.991L4.4045 12.4001Z" fill="#FBBC04"/>
+        <path d="M10 4.4773C11.4681 4.4773 12.7863 4.9818 13.8227 5.9727L16.6909 3.1045C14.9591 1.4909 12.6954 0.5 10 0.5C6.0909 0.5 2.7091 2.7409 1.0636 6.0091L4.4045 8.6C5.1909 6.2364 7.3954 4.4773 10 4.4773Z" fill="#E94235"/>
         </svg>
       `}
     />
