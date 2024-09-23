@@ -27,6 +27,8 @@ interface ColorTheme {
   cardBg: string;
   simCardInfo: string;
   disabledPrimary: string;
+  simMoreInfo: string;
+  settingsGray: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.LIGHT_BLUE,
@@ -55,4 +57,6 @@ export const DEFAULT_THEME: ColorTheme = {
   disabledSearch: Colors.LIGHT_GRAY,
   cardBg: Colors.CARD_GRAY,
   simCardInfo: Colors.GRAY,
+  simMoreInfo: Colors.LIGHT_GREEN,
+  settingsGray: Colors.SETTINGS_GRAY,
 };
