@@ -112,4 +112,10 @@ export default {
   aboutUs: 'about us',
   termsAndConditions: 'terms and conditions',
   help: 'help',
+  createAccount: '¡Create your account!',
+  unregisteredProfileTitle: 'Nothing here... yet!',
+  unregisteredProfileSubtitle: 'Register to see your profile',
+  unregisteredMyeSimsTitle: 'Nothing here... yet!',
+  unregisteredMyeSimsSubtitle: 'Register to see your eSIMs',
+  haveAnAccount: 'Have an account?',
 };

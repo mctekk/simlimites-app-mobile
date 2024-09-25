@@ -1,16 +1,15 @@
-
 // Modules
-import React from "react";
-import styled from "styled-components/native";
-import FastImage from "react-native-fast-image";
+import React from 'react';
+import styled from 'styled-components/native';
+import FastImage from 'react-native-fast-image';
 
 // Atoms
 import CustomText from 'atoms/text';
 import { CardArrow } from 'assets/icons';
 
 // Styles
-import { Typography } from "styles";
-import { DEFAULT_THEME } from "styles/theme";
+import { Typography } from 'styles';
+import { DEFAULT_THEME } from 'styles/theme';
 
 interface ICountriesCardProps {
   onPress?: () => void;
@@ -26,7 +25,7 @@ const Container = styled.TouchableOpacity`
   width: 100%;
   align-items: center;
   flex-direction: row;
-  backgroundColor: ${DEFAULT_THEME.authBackground};
+  background-color: ${DEFAULT_THEME.authBackground};
   justify-content: space-between;
   padding-horizontal: 24px;
   border-bottom-width: 1px;
@@ -58,7 +57,6 @@ const FlagGroupContainer = styled.View`
 `;
 
 const CountriesCard = (props: ICountriesCardProps) => {
-
   const { onPress, label, style, flagImageUris, isLocal, iconComponent } = props;
 
   const onCardPress = () => {
@@ -66,22 +64,15 @@ const CountriesCard = (props: ICountriesCardProps) => {
   };
 
   return (
-    <Container
-      onPress={onCardPress}
-      style={style}
-      disabled={isLocal}
-    >
+    <Container onPress={onCardPress} style={style} disabled={isLocal}>
       <LeftContainer>
         {isLocal ? (
-          <Flag
-            source={{ uri: flagImageUris?.[0] || '' }}
-          />
+          <Flag source={{ uri: flagImageUris?.[0] || '' }} />
         ) : (
           <FlagGroupContainer>
-            {
-              iconComponent ? (
-                <>{iconComponent}</>
-              ) : (
+            {iconComponent ? (
+              <>{iconComponent}</>
+            ) : (
               flagImageUris?.map((flagUri, index) => {
                 return (
                   <GroupFlag
@@ -89,12 +80,12 @@ const CountriesCard = (props: ICountriesCardProps) => {
                     source={{ uri: flagUri || '' }}
                     style={{ marginLeft: -7 }}
                   />
-                )
-              }))
-            }
+                );
+              })
+            )}
           </FlagGroupContainer>
         )}
-        
+
         <CustomText
           size={Typography.FONT_SIZE_15}
           weight='600'
@@ -104,13 +95,9 @@ const CountriesCard = (props: ICountriesCardProps) => {
         </CustomText>
       </LeftContainer>
 
-      {isLocal ? (
-        <></>
-      ) : (
-        <CardArrow />
-      )}
+      {isLocal ? <></> : <CardArrow />}
     </Container>
-  )
+  );
 };
 
 export default CountriesCard;

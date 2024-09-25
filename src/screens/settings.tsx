@@ -3,14 +3,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 // Modules
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext } from 'react';
 import styled from 'styled-components/native';
 import { SectionList, SafeAreaView } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 // Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
 import SectionHeader from 'components/atoms/section-header';
-import { OrdersIcon, EditIcon, MyeSimsIcon } from 'assets/icons';
+import { OrdersIcon, EditIcon, MyeSimsIcon, DefaultProfileIcon } from 'assets/icons';
 import CustomText from 'atoms/text';
 
 // Context
@@ -20,6 +21,7 @@ import { UserContext } from 'components/context/user-context';
 // Molecules
 import Header from 'components/molecules/header';
 import SettingsItem from 'components/molecules/settings-item';
+import UnregisteredCard from 'components/molecules/unregistered-card';
 
 // Styles
 import { Typography } from 'styles';
@@ -27,6 +29,9 @@ import { DEFAULT_THEME } from 'styles/theme';
 
 // Utils
 import { isIphoneX } from 'utils/iphone-helpers';
+
+// Constants
+import { UNREGISTERED_TYPES } from 'utils/constants';
 
 // Interfaces
 interface ISettingsProps {
@@ -46,6 +51,30 @@ const ScreenHeader = styled(Header)`
   height: 60px;
   margin-bottom: 0px;
   padding-horizontal: 22px;
+`;
+
+const UserInfoContainer = styled.View`
+  align-items: center;
+`;
+
+const ProfileImageContainer = styled.View`
+  width: 84px;
+  height: 84px;
+  border-radius: 42px;
+  margin-bottom: 16px;
+`;
+
+const Image = styled(FastImage)`
+  width: 84px;
+  height: 84px;
+  border-radius: 42px;
+`;
+
+const UserNameText = styled(CustomText)`
+  font-size: ${Typography.FONT_SIZE_24}px;
+  line-height: ${Typography.LINE_HEIGHT_24}px;
+  color: ${DEFAULT_THEME.title};
+  font-weight: 700;
 `;
 
 const Content = styled.ScrollView`
@@ -75,6 +104,15 @@ const EditButton = styled.TouchableOpacity`
   align-items: center;
   margin-bottom: 58px;
   flex-direction: row;
+  margin-top: 8px;
+`;
+
+const UnregisteredContainer = styled.View`
+  align-items: center;
+  margin-top: 100px;
+  background-color: ${DEFAULT_THEME.white};
+  padding-top: 48px;
+  border-radius: 10px;
 `;
 
 export const SettingsItemList = [
@@ -140,7 +178,7 @@ export const Settings = (props: ISettingsProps) => {
 
   // Context
   const { signOut } = useContext(AuthContext);
-  const { userData } = useContext(UserContext);
+  const { userData, isUserLogged } = useContext(UserContext);
 
   const handleLogout = async () => {
     try {
@@ -193,10 +231,18 @@ export const Settings = (props: ISettingsProps) => {
         </FooterContainer>
 
       </ListFooterContainer>
-    )
+    );
   }, []);
 
   const keyExtractor = useCallback(item => item.key.toString(), []);
+
+  const getProfileImageUri = () => {
+    console.log('userdata==', userData);
+    if (userData?.photo?.url) {
+      return userData?.photo?.url;
+    }
+    return '';
+  };
 
   return (
     <Container>
@@ -213,31 +259,53 @@ export const Settings = (props: ISettingsProps) => {
           },
         }}
       />
-      <Content>
-        <EditButton onPress={() => navigation.navigate('EditProfile')}>
-          <EditIcon />
-          <CustomText
-            color={DEFAULT_THEME.white}
-            size={Typography.FONT_SIZE_13}
-            weight='500'
-            style={{ marginLeft: 5 }}
-          >
-            {translate('editProfile', TextTransform.CAPITALIZE)}
-          </CustomText>
-        </EditButton>
-        <SectionList
-          sections={SettingsItemList}
-          extraData={SettingsItemList}
-          renderSectionHeader={renderSectionHeader}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          showsVerticalScrollIndicator={false}
-          scrollEnabled={false}
-          ListFooterComponent={ListFooterComponent}
-          style={{
-            backgroundColor: DEFAULT_THEME.background,
-          }}
-        />
+      <Content showsVerticalScrollIndicator={false}>
+        {isUserLogged ? (
+          <>
+            <UserInfoContainer>
+              <ProfileImageContainer>
+                {getProfileImageUri() ? (
+                  <Image
+                    source={{ uri: getProfileImageUri()}}
+                    resizeMode={FastImage.resizeMode.cover}
+                  />
+                ) : (
+                  <DefaultProfileIcon />
+                )}
+              </ProfileImageContainer>
+              <UserNameText>{userData?.firstname} {userData?.lastname}</UserNameText>
+            </UserInfoContainer>
+            <EditButton onPress={() => navigation.navigate('EditProfile')}>
+              <EditIcon />
+              <CustomText
+                color={DEFAULT_THEME.white}
+                size={Typography.FONT_SIZE_13}
+                weight='500'
+                style={{ marginLeft: 5 }}
+              >
+                {translate('editProfile', TextTransform.CAPITALIZE)}
+              </CustomText>
+            </EditButton>
+            <SectionList
+              sections={SettingsItemList}
+              extraData={SettingsItemList}
+              renderSectionHeader={renderSectionHeader}
+              renderItem={renderItem}
+              keyExtractor={keyExtractor}
+              showsVerticalScrollIndicator={false}
+              scrollEnabled={false}
+              ListFooterComponent={ListFooterComponent}
+              style={{
+                backgroundColor: DEFAULT_THEME.background,
+              }}
+            />
+          </>
+        ) : (
+          <UnregisteredCard
+            onButtonPress={() => navigation.navigate('RegisterEmail', { showLogin: true })}
+            type={UNREGISTERED_TYPES.PROFILE}
+          />
+        )}
       </Content>
     </Container>
   );
