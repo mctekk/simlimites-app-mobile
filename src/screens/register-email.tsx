@@ -122,6 +122,9 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
   // Props
   const { navigation, route } = props;
 
+  // Params
+  const showLogin = route?.params?.showLogin;
+
   // States
   const [isLoading, setIsLoading] = useState(false);
   const [onFocusInput, setOnFocusInput] = useState({
@@ -209,7 +212,7 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
                   <CustomText
                     size={Typography.FONT_SIZE_25}
                     style={{ marginBottom: 15 }}
-                    weight="700"
+                    weight='700'
                     color={DEFAULT_THEME.title}>
                     {translate('registerTitle', TextTransform.CAPITAL)}
                   </CustomText>
@@ -227,8 +230,8 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
                     onBlur={handleOnInputBlur}
                     onFocus={() => handleOnFocusInput('email')}
                     isFocused={onFocusInput.email}
-                    returnKeyType="next"
-                    keyboardType="email-address"
+                    returnKeyType='next'
+                    keyboardType='email-address'
                     inputProps={{
                       autoCapitalize: 'none',
                       autoFocus: false,
@@ -254,7 +257,7 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
                   <CustomText
                     size={Typography.FONT_SIZE_20}
                     lineHeight={Typography.FONT_SIZE_24}
-                    weight="600"
+                    weight='600'
                     color={buttonDisabled ? DEFAULT_THEME.white : DEFAULT_THEME.white}>
                     {translate('continue', TextTransform.CAPITAL)}
                   </CustomText>
@@ -277,12 +280,37 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
                     {/* <SignWithApple onLogin={onSocialLogin} textLocale={'signUpApple'} /> */}
                   </SocialContainer>
                 </SocialModeTopContainer>
+                {showLogin ? (
+                  <>
+                    <CustomText
+                      size={Typography.FONT_SIZE_16}
+                      style={{ marginTop: 40 }}
+                      align='center'
+                      color={DEFAULT_THEME.title}>
+                      {`${translate('haveAnAccount', TextTransform.CAPITAL)} `}
+                      <CustomText
+                        size={Typography.FONT_SIZE_16}
+                        onPress={() => navigation.navigate('LogIn')}
+                        style={{
+                          textDecorationLine: 'underline',
+                        }}
+                        color={DEFAULT_THEME.primary}>
+                        {translate('login', TextTransform.CAPITAL)}
+                      </CustomText>
+                    </CustomText>
+                  </>
+                ) : (
+                  <></>
+                )}
               </Container>
             </TouchableWithoutFeedback>
           );
         }}
       </Formik>
-      <LoadingModal visible={isLoading} title={translate('signingIn', TextTransform.CAPITALIZE)} />
+      <LoadingModal
+        visible={isLoading}
+        title={translate('signingIn', TextTransform.CAPITALIZE)}
+      />
     </>
   );
 };
