@@ -10,9 +10,12 @@ import { TabView } from 'react-native-tab-view';
 
 // Molecules
 import Header from 'components/molecules/header';
+import SimCard from 'components/molecules/esim-card';
+import UnregisteredCard from 'components/molecules/unregistered-card';
 
 // Organisms
 import MyeSimsTabsList from 'organisms/my-esims-tabs-list';
+import MyeSimsList from 'components/organisms/esims-list';
 
 // Styles
 import { Typography } from 'styles';
@@ -28,14 +31,13 @@ import CustomText from 'atoms/text';
 // Styles
 import { DEFAULT_THEME } from 'styles/theme';
 
-// Utils
-import { wait } from 'utils';
+// Constants
+import { UNREGISTERED_TYPES } from 'utils/constants';
 
 const initialLayout = { width: Dimensions.get('window').width };
 
 const Container = styled.View`
   background-color: ${DEFAULT_THEME.background};
-  padding-horizontal: 22px;
   flex: 1;
 `;
 
@@ -43,15 +45,20 @@ const ScreenHeader = styled(Header)`
   align-items: center;
   background-color: ${DEFAULT_THEME.background};
   padding-top: 10px;
-  padding-horizontal: 0px;
   height: 60px;
   margin-bottom: 0px;
+  padding-horizontal: 22px;
+`;
+
+const TopSection = styled.View`
+  padding-horizontal: 22px;
 `;
 
 const TabsContainer = styled.View`
   background-color: ${DEFAULT_THEME.tabsBg};
   justify-content: center;
   border-radius: 50px;
+  margin-horizontal: 22px;
 `;
 
 const Content = styled.View`
@@ -105,11 +112,11 @@ export const MyeSims = (props: IMyeSimsProps) => {
     switch (route.id) {
       case 0:
         return (
-          <></>
+          <MyeSimsList />
         );
       case 1:
         return (
-          <></>
+          <MyeSimsList isExpiredList />
         );
       default:
         return null;
@@ -135,34 +142,45 @@ export const MyeSims = (props: IMyeSimsProps) => {
       <SafeAreaView />
       <ScreenHeader
         hasBackButton={false}
-        rightButtonComponent={<></>}
+        title={isUserLogged ? '' : translate('myeSims', TextTransform.CAPITALIZE)}
         titleProps={{
           style: {
             textAlign: 'center',
-            fontSize: 25,
-            fontWeight: 'bold',
-            paddingTop: 6,
-            width: '100%'
+            fontSize: 15,
+            fontWeight: '600',
+            width: '100%',
           },
         }}
       />
       <Content>
-        <CustomText
-          size={Typography.FONT_SIZE_25}
-          lineHeight={Typography.FONT_SIZE_30}
-          weight='700'
-          style={{ marginBottom: 8 }}
-          color={DEFAULT_THEME.title}>
-          {translate('myeSims', TextTransform.CAPITAL)}
-        </CustomText>
-        <TabView
-          renderTabBar={renderTabBar}
-          navigationState={{ index, routes }}
-          renderScene={renderScene}
-          onIndexChange={setNewIndex}
-          initialLayout={initialLayout}
-          lazy
-        />
+        {isUserLogged ? (
+          <>
+            <TopSection>
+              <CustomText
+                size={Typography.FONT_SIZE_25}
+                lineHeight={Typography.FONT_SIZE_30}
+                weight='700'
+                style={{ marginBottom: 8 }}
+                color={DEFAULT_THEME.title}>
+                {translate('myeSims', TextTransform.CAPITAL)}
+              </CustomText>
+            </TopSection>
+            <TabView
+              renderTabBar={renderTabBar}
+              navigationState={{ index, routes }}
+              renderScene={renderScene}
+              onIndexChange={setNewIndex}
+              initialLayout={initialLayout}
+              lazy
+            />
+          </>
+        ) : (
+          <UnregisteredCard
+            onButtonPress={() => navigation.navigate('RegisterEmail', { showLogin: true })}
+            type={UNREGISTERED_TYPES.MY_ESIMS}
+            style={{ marginHorizontal: 16 }}
+          />
+        )}
       </Content>
 
       {/* Modals */}

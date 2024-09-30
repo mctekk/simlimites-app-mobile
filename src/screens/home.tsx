@@ -48,7 +48,6 @@ const ScreenHeader = styled(Header)`
   align-items: center;
   background-color: ${DEFAULT_THEME.background};
   padding-top: 10px;
-  padding-horizontal: 0px;
   height: 60px;
   margin-bottom: 0px;
   padding-horizontal: 22px;

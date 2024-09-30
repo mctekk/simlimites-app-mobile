@@ -45,7 +45,7 @@ const ContinueButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   height: 57px;
-  border-radius: 50px;
+  border-radius: 8px;
   margin-top: 32px;
 `;
 
@@ -88,10 +88,7 @@ const initialValues = {
 };
 
 const validationSchema = yup.object().shape({
-  password: yup
-    .string()
-    .required(translate('fieldRequired', TextTransform.NONE))
-    .min(8),
+  password: yup.string().required(translate('fieldRequired', TextTransform.NONE)).min(8),
   password_confirmation: yup
     .string()
     .required(translate('fieldRequired', TextTransform.NONE))
@@ -104,7 +101,7 @@ export const RegisterPassword = (props: ISignUpProps) => {
   const { navigation, route } = props;
 
   // Params
-  const { email, name } = route.params;
+  const { email, name, lastName } = route.params;
 
   // States
   const [isLoading, setIsLoading] = useState(false);
@@ -117,7 +114,7 @@ export const RegisterPassword = (props: ISignUpProps) => {
   const { signUp } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log(email, name)
+    console.log(email, name, lastName);
   }, []);
 
   const handleOnFocusInput = (value: string) => {
@@ -146,7 +143,8 @@ export const RegisterPassword = (props: ISignUpProps) => {
       password: values.password,
       password_confirmation: values.password_confirmation,
       firstname: name,
-    }
+      lastname: lastName,
+    };
 
     try {
       const response = await client.users.register(data);
@@ -168,10 +166,7 @@ export const RegisterPassword = (props: ISignUpProps) => {
   const onRegisterError = (error: object) => {
     const msg = translate('registerErrorMsg', TextTransform.CAPITALIZE);
 
-    Alert.alert(
-      translate('error', TextTransform.CAPITALIZE),
-      msg,
-    );
+    Alert.alert(translate('error', TextTransform.CAPITALIZE), msg);
   };
 
   return (
@@ -179,14 +174,7 @@ export const RegisterPassword = (props: ISignUpProps) => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(values, actions) => handleRegistration(values, actions)}>
-      {({
-        values,
-        handleChange,
-        handleSubmit,
-        errors,
-        isValid,
-        dirty,
-      }) => {
+      {({ values, handleChange, handleSubmit, errors, isValid, dirty }) => {
         const buttonDisabled = !(isValid && dirty);
 
         return (
@@ -200,7 +188,7 @@ export const RegisterPassword = (props: ISignUpProps) => {
                   fontSize: 25,
                   fontWeight: 'bold',
                   paddingTop: 6,
-                  width: '100%'
+                  width: '100%',
                 },
               }}
             />
@@ -243,10 +231,11 @@ export const RegisterPassword = (props: ISignUpProps) => {
             <ContinueButton
               onPress={() => handleSubmit()}
               style={{
-                backgroundColor: buttonDisabled ? DEFAULT_THEME.disabledButton : DEFAULT_THEME.black
+                backgroundColor: buttonDisabled
+                  ? DEFAULT_THEME.disabledPrimary
+                  : DEFAULT_THEME.primary,
               }}
-              disabled={buttonDisabled}
-            >
+              disabled={buttonDisabled}>
               <CustomText
                 size={Typography.FONT_SIZE_20}
                 lineHeight={Typography.FONT_SIZE_24}
@@ -263,9 +252,8 @@ export const RegisterPassword = (props: ISignUpProps) => {
               visible={isLoading}
               title={translate('creatingAccount', TextTransform.CAPITAL)}
             />
-
           </Container>
-        )
+        );
       }}
     </Formik>
   );
@@ -279,4 +267,4 @@ const styles = {
   inputLabelStyle: {
     marginBottom: 0,
   },
-}
+};

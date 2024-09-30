@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // Modules
 import React, {
   useCallback,
@@ -5,7 +6,7 @@ import React, {
   useEffect,
   useRef,
   useState,
-  memo
+  memo,
 } from 'react';
 import { FlatList, ActivityIndicator, View } from 'react-native';
 import styled from 'styled-components/native';
@@ -40,7 +41,11 @@ import { ProductTypeInterface } from '@kanvas/core';
 // Assets
 import {} from 'assets/icons';
 import { EventRegister } from 'react-native-event-listeners';
-import { PRODUCT_TYPES_SLUGS, FLAG_IMAGE_NAME, COUNTRIES_ATTRIBUTE_NAME } from 'utils/constants';
+import {
+  PRODUCT_TYPES_SLUGS,
+  FLAG_IMAGE_NAME,
+  COUNTRIES_ATTRIBUTE_NAME,
+} from 'utils/constants';
 
 // Interface
 import { IFile, ICountriesAttribute } from 'interfaces/products-interface';
@@ -68,7 +73,6 @@ interface IFeedProps {
 }
 
 const ProductList = (props: IFeedProps) => {
-
   // Props
   const {
     isLoading = true,
@@ -95,7 +99,7 @@ const ProductList = (props: IFeedProps) => {
   const [loadingMore, setLoadingMore] = useState(false);
   const [hasError, setError] = useState(false);
 
-  // Const 
+  // Const
   const { ON_LOCAL_LIST_UPDATE } = LOCAL_LIST_EVENTS;
 
   // Get the list of products
@@ -103,10 +107,13 @@ const ProductList = (props: IFeedProps) => {
     try {
       const productTypesRes = await kanvasService.getProductTypes();
       const localType = productTypesRes?.productTypes?.data?.find(
-        (type: ProductTypeInterface) => type?.slug === productTypeSlug
+        (type: ProductTypeInterface) => type?.slug === productTypeSlug,
       );
       const productTypeId = localType ? localType?.id : 0;
-      const response = await kanvasService.getProductsByType(productTypeId, pageNumber);
+      const response = await kanvasService.getProductsByType(
+        productTypeId,
+        pageNumber,
+      );
 
       const { paginatorInfo, data } = response?.products;
 
@@ -140,10 +147,13 @@ const ProductList = (props: IFeedProps) => {
       setLoading(true);
       const productTypesRes = await kanvasService.getProductTypes();
       const localType = productTypesRes?.productTypes?.data?.find(
-        (type: ProductTypeInterface) => type?.slug === productTypeSlug
+        (type: ProductTypeInterface) => type?.slug === productTypeSlug,
       );
       const productTypeId = localType ? localType?.id : 0;
-      const response = await kanvasService.searchProducts(productTypeId, searchText.trim());
+      const response = await kanvasService.searchProducts(
+        productTypeId,
+        searchText.trim(),
+      );
 
       const { data } = response?.products;
 
@@ -159,15 +169,17 @@ const ProductList = (props: IFeedProps) => {
     }
   };
 
-  useEffect(() => () => {
-    setPage(1);
-    items.current = [];
-    pages_total.current = 0;
-    last_page.current = 0;
-    setLoading(true);
-    setLoadingMore(false);
-  }, []);
-
+  useEffect(
+    () => () => {
+      setPage(1);
+      items.current = [];
+      pages_total.current = 0;
+      last_page.current = 0;
+      setLoading(true);
+      setLoadingMore(false);
+    },
+    [],
+  );
 
   useEffect(() => {
     getProducts();
@@ -177,23 +189,22 @@ const ProductList = (props: IFeedProps) => {
     !loading && setLoading(true);
     const delayDebounceFn = setTimeout(() => {
       searchProducts();
-    }, 500)
+    }, 500);
     return () => clearTimeout(delayDebounceFn);
   }, [searchText]);
 
   useEffect(() => {
     const updateList = EventRegister.on(ON_LOCAL_LIST_UPDATE, () => {
       setLoading(true);
-        pages_total.current = 1;
-        setPage(1);
-        getProducts(1);
+      pages_total.current = 1;
+      setPage(1);
+      getProducts(1);
     });
 
     return () => {
       EventRegister.rm(updateList);
     };
   }, []);
-
 
   const loadMoreData = async () => {
     setLoadingMore(true);
@@ -206,7 +217,10 @@ const ProductList = (props: IFeedProps) => {
       return;
     }
 
-    if (newPageNumber > last_page.current && newPageNumber <= pages_total.current) {
+    if (
+      newPageNumber > last_page.current &&
+      newPageNumber <= pages_total.current
+    ) {
       getProducts(newPageNumber);
       pages_total.current = newPageNumber;
       setPage(newPageNumber);
@@ -221,62 +235,64 @@ const ProductList = (props: IFeedProps) => {
   };
 
   const onCardPress = (item: object) => {
-    trigger("impactLight", {});
+    trigger('impactLight', {});
   };
 
-  const renderItem = useCallback(({ item, index }) => {
-    const isFirst = (index === 0);
-    const isLast = (index === ((isSearching ? searchedItems.current.length : items.current.length)-1));
+  const renderItem = useCallback(
+    ({ item, index }) => {
+      const isFirst = index === 0;
+      const isLast =
+        index ===
+        (isSearching ? searchedItems.current.length : items.current.length) - 1;
 
-    if (productTypeSlug === PRODUCT_TYPES_SLUGS.LOCAL_SLUG) {
-      const flag = item?.files?.data?.find(
-        (file: IFile) => file?.name === FLAG_IMAGE_NAME
-      );
+      if (productTypeSlug === PRODUCT_TYPES_SLUGS.LOCAL_SLUG) {
+        const flag = item?.files?.data?.find(
+          (file: IFile) => file?.name === FLAG_IMAGE_NAME,
+        );
 
-      return (
-        <LocalCard
-          key={item.id}
-          isFirst={isFirst}
-          isLast={isLast}
-          label={item?.name}
-          flagImageUri={flag?.url}
-          onPress={() => onCardPress(item)}
-        />
-      );
-    }
+        return (
+          <LocalCard
+            key={item.id}
+            isFirst={isFirst}
+            isLast={isLast}
+            label={item?.name}
+            flagImageUri={flag?.url}
+            onPress={() => onCardPress(item)}
+          />
+        );
+      }
 
-    if (productTypeSlug === PRODUCT_TYPES_SLUGS.REGIONAL_SLUG) {
-      const countriesAttribute = item?.attributes?.find(
-        (attribute: ICountriesAttribute) => attribute?.name === COUNTRIES_ATTRIBUTE_NAME
-      );
+      if (productTypeSlug === PRODUCT_TYPES_SLUGS.REGIONAL_SLUG) {
+        const countriesAttribute = item?.attributes?.find(
+          (attribute: ICountriesAttribute) =>
+            attribute?.name === COUNTRIES_ATTRIBUTE_NAME,
+        );
 
-      return (
-        <RegionalCard
-          label={item?.name}
-          onPress={() => onCardPress(item)}
-          style={{ marginBottom: 8 }}
-          countriesQty={countriesAttribute?.value?.length || '0'}
-        />
-      );
-    }
+        return (
+          <RegionalCard
+            label={item?.name}
+            onPress={() => onCardPress(item)}
+            style={{ marginBottom: 8 }}
+            countriesQty={countriesAttribute?.value?.length || '0'}
+          />
+        );
+      }
 
-    return (
-      <></>
+      return <></>;
+    },
+    [isSearching],
+  );
+
+  const ListFooterComponent = () => {
+    loadingMore && (
+      <ActivityIndicator
+        color={DEFAULT_THEME.title}
+        style={{ marginVertical: 20 }}
+      />
     );
-  }, [isSearching]);
+  };
 
-  const ListFooterComponent = (showLoadear: boolean) => {
-    {
-      loadingMore && (
-        <ActivityIndicator
-          color={DEFAULT_THEME.title}
-          style={{ marginVertical: 20 }}
-        />
-      )
-    }
-  }
-
-  const keyExtractor = useCallback((item) => item.id.toString(), []);
+  const keyExtractor = useCallback(item => item.id.toString(), []);
 
   return (
     <Container>
@@ -287,47 +303,56 @@ const ProductList = (props: IFeedProps) => {
             loading={loading}
           /> */}
         </ErrorContainer>
-      ) : (<></>)}
+      ) : (
+        <></>
+      )}
 
       {loading && !hasError && (
         <ActivityIndicator size="small" color={DEFAULT_THEME.subtitle} />
       )}
 
-      {!loading && !hasError && (productTypeSlug != PRODUCT_TYPES_SLUGS.GLOBAL_SLUG) && !isSearching && (
-        <FlatList
-          data={items.current}
-          extraData={items.current}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          ref={flatListRef}
-          showsVerticalScrollIndicator={false}
-          onEndReached={loadMoreData}
-          scrollEventThrottle={16}
-          onEndReachedThreshold={2}
-          onRefresh={onRefresh}
-          refreshing={refreshing}
-          // ListEmptyComponent={ListEmptyComponent}
-          contentContainerStyle={{ borderRadius: 10 }}
-          ListFooterComponent={ListFooterComponent}
-        />
-      )}
+      {!loading &&
+        !hasError &&
+        productTypeSlug != PRODUCT_TYPES_SLUGS.GLOBAL_SLUG &&
+        !isSearching && (
+          <FlatList
+            data={items.current}
+            extraData={items.current}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            ref={flatListRef}
+            showsVerticalScrollIndicator={false}
+            onEndReached={loadMoreData}
+            scrollEventThrottle={16}
+            onEndReachedThreshold={2}
+            onRefresh={onRefresh}
+            refreshing={refreshing}
+            // ListEmptyComponent={ListEmptyComponent}
+            contentContainerStyle={{ borderRadius: 10 }}
+            ListFooterComponent={ListFooterComponent}
+          />
+        )}
 
-      {!loading && !hasError && (productTypeSlug != PRODUCT_TYPES_SLUGS.GLOBAL_SLUG) && isSearching && (
-        <FlatList
-          data={searchedItems.current}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          showsVerticalScrollIndicator={false}
-          scrollEventThrottle={16}
-          ListEmptyComponent={<SearchEmptyComponent />}
-          contentContainerStyle={{ borderRadius: 10 }}
-        />
-      )}
+      {!loading &&
+        !hasError &&
+        productTypeSlug != PRODUCT_TYPES_SLUGS.GLOBAL_SLUG &&
+        isSearching && (
+          <FlatList
+            data={searchedItems.current}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            showsVerticalScrollIndicator={false}
+            scrollEventThrottle={16}
+            ListEmptyComponent={<SearchEmptyComponent />}
+            contentContainerStyle={{ borderRadius: 10 }}
+          />
+        )}
 
-      {!loading && !hasError && (productTypeSlug === PRODUCT_TYPES_SLUGS.GLOBAL_SLUG) && (
-        <ProductVariants product={items?.current[0]} />
-      )}
-
+      {!loading &&
+        !hasError &&
+        productTypeSlug === PRODUCT_TYPES_SLUGS.GLOBAL_SLUG && (
+          <ProductVariants product={items?.current[0]} />
+        )}
     </Container>
   );
 };

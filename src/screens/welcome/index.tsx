@@ -60,7 +60,7 @@ const Button = styled.TouchableOpacity`
   margin-vertical: 8.5px;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 8px;
 `;
 
 const SkipButton = styled.TouchableOpacity`
@@ -81,15 +81,13 @@ export const Welcome = (props: ISignInProps) => {
   }, []);
 
   const skipButton = (
-    <SkipButton
-      onPress={() => navigation.navigate('HomeStack')}
-    >
+    <SkipButton onPress={() => navigation.navigate('HomeStack')}>
       <CustomText
         size={Typography.FONT_SIZE_18}
         align='center'
         weight='600'
-        color={DEFAULT_THEME.black}>
-        {translate('skipText', TextTransform.CAPITAL)}    
+        color={DEFAULT_THEME.primary}>
+        {translate('skipText', TextTransform.CAPITAL)}
       </CustomText>
     </SkipButton>
   );
@@ -108,7 +106,7 @@ export const Welcome = (props: ISignInProps) => {
       <BottomContainer>
         <TitlesContainer>
           <LocalizedLabel
-            localeKey="welcomeTitle"
+            localeKey='welcomeTitle'
             size={Typography.FONT_SIZE_40}
             lineHeight={Typography.LINE_HEIGHT_48}
             align='center'
@@ -121,8 +119,7 @@ export const Welcome = (props: ISignInProps) => {
             align='center'
             color={DEFAULT_THEME.black}
             weight='300'
-            style={{ marginTop: 17 }}
-          >
+            style={{ marginTop: 17 }}>
             {translate('welcomeSubtitle', TextTransform.CAPITAL)}
           </CustomText>
         </TitlesContainer>
@@ -131,7 +128,7 @@ export const Welcome = (props: ISignInProps) => {
             onPress={() => {
               navigation.navigate('LogIn');
             }}
-            style={{ backgroundColor: DEFAULT_THEME.black }}>
+            style={{ backgroundColor: DEFAULT_THEME.primary }}>
             <CustomText
               size={Typography.FONT_SIZE_20}
               weight='600'
@@ -144,27 +141,24 @@ export const Welcome = (props: ISignInProps) => {
             onPress={() => {
               navigation.navigate('RegisterEmail');
             }}
-            style={{ backgroundColor: DEFAULT_THEME.secondaryButton }}>
+            style={{
+              backgroundColor: DEFAULT_THEME.simMoreInfo,
+            }}>
             <CustomText
               size={Typography.FONT_SIZE_20}
               weight='600'
               align='center'
-              color={DEFAULT_THEME.black}>
+              color={DEFAULT_THEME.white}>
               {translate('register', TextTransform.CAPITAL)}
             </CustomText>
           </Button>
           {skipButton}
-
         </ButtonsContainer>
       </BottomContainer>
-      
-      {/* ================= Modals ================= */}
-      
-      <LoadingModal
-        visible={isLoading}
-        title={translate('signingIn', TextTransform.CAPITALIZE)}
-      />
 
+      {/* ================= Modals ================= */}
+
+      <LoadingModal visible={isLoading} title={translate('signingIn', TextTransform.CAPITALIZE)} />
     </Container>
   );
 };

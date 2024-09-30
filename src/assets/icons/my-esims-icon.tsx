@@ -3,15 +3,11 @@ import { SvgFromXml } from 'react-native-svg';
 import { Colors } from 'styles';
 
 const MyeSimsIcon = (props: any) => {
-  const {
-    color = Colors.BLACK,
-    width = 12,
-    height = 12,
-  } = props;
+  const { color = Colors.BLACK, size = 15 } = props;
   return (
     <SvgFromXml
       xml={`
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width=${size} height=${size} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1.66667 6.66667H5C5.91667 6.66667 6.66667 5.91667 6.66667 5V1.66667C6.66667 0.75 5.91667 0 5 0H1.66667C0.75 0 0 0.75 0 1.66667V5C0 5.91667 0.75 6.66667 1.66667 6.66667ZM1.66667 1.66667H5V5H1.66667V1.66667Z" fill=${color}/>
         <path d="M1.66667 15H5C5.91667 15 6.66667 14.25 6.66667 13.3334V10C6.66667 9.08337 5.91667 8.33337 5 8.33337H1.66667C0.75 8.33337 0 9.08337 0 10V13.3334C0 14.25 0.75 15 1.66667 15ZM1.66667 10H5V13.3334H1.66667V10Z" fill=${color}/>
         <path d="M8.33337 1.66667V5C8.33337 5.91667 9.08337 6.66667 10 6.66667H13.3334C14.25 6.66667 15 5.91667 15 5V1.66667C15 0.75 14.25 0 13.3334 0H10C9.08337 0 8.33337 0.75 8.33337 1.66667ZM13.3334 5H10V1.66667H13.3334V5Z" fill=${color}/>

@@ -24,9 +24,14 @@ interface ColorTheme {
   addFundsBg: string;
   variantSubtitle: string;
   disabledSearch: string;
+  cardBg: string;
+  simCardInfo: string;
+  disabledPrimary: string;
+  simMoreInfo: string;
+  settingsGray: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
-  primary: Colors.BLACK,
+  primary: Colors.LIGHT_BLUE,
   background: Colors.MAIN_BG,
   authBackground: Colors.WHITE,
   text: Colors.SOFT_BLACK,
@@ -41,6 +46,7 @@ export const DEFAULT_THEME: ColorTheme = {
   inputLabel: Colors.LABEL_GRAY,
   separatorText: Colors.GRAY,
   disabledButton: Colors.DISABLED_GRAY,
+  disabledPrimary: Colors.DISABLED_BLUE,
   title: Colors.BLACK,
   inputBg: Colors.WHITE,
   tabIconActive: Colors.BLACK,
@@ -49,4 +55,8 @@ export const DEFAULT_THEME: ColorTheme = {
   addFundsBg: Colors.LIGHT_BLUE,
   variantSubtitle: Colors.LIGHT_BLACK,
   disabledSearch: Colors.LIGHT_GRAY,
+  cardBg: Colors.CARD_GRAY,
+  simCardInfo: Colors.GRAY,
+  simMoreInfo: Colors.LIGHT_GREEN,
+  settingsGray: Colors.SETTINGS_GRAY,
 };

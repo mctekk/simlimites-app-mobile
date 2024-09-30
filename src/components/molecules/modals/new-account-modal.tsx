@@ -44,7 +44,7 @@ const ContinueButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   height: 57px;
-  border-radius: 50px;
+  border-radius: 8px;
   margin-top: 32px;
 `;
 
@@ -86,7 +86,7 @@ const NewAccountModal = ({
           color={DEFAULT_THEME.title}>
           {translate('accountCreated', TextTransform.CAPITAL)}
         </CustomText>
-        <Check width={130} height={130} />
+        <Check width={130} height={130} color={DEFAULT_THEME.primary} />
         <CustomText
           size={Typography.FONT_SIZE_18}
           lineHeight={Typography.FONT_SIZE_20}
@@ -122,7 +122,7 @@ const NewAccountModal = ({
         </CustomText>
         <ContinueButton
           onPress={closeModal}
-          style={{ backgroundColor: DEFAULT_THEME.black }}
+          style={{ backgroundColor: DEFAULT_THEME.primary }}
         >
           <CustomText
             size={Typography.FONT_SIZE_20}

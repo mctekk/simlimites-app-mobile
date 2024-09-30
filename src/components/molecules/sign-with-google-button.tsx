@@ -28,11 +28,11 @@ interface SocialButtonIconsProps {
 const Button = styled.TouchableOpacity`
   width: 100%;
   height: 62px;
-  border-color: ${DEFAULT_THEME.borderColor};
+  border-color: ${DEFAULT_THEME.primary};
   border-width: 1px;
   background-color: ${DEFAULT_THEME.white};
   margin-bottom: 13px;
-  border-radius: 5px;
+  border-radius: 8px;
   align-items: center;
   flex-direction: row;
   padding-horizontal: 25px;
@@ -41,7 +41,6 @@ const Button = styled.TouchableOpacity`
 const GIcon = () => <GoogleIcon />;
 
 const SignWithGoogle = (props: Partial<PillButtonProps, SocialButtonIconsProps>) => {
-
   const { isSmall = false, onLogin, textLocale = 'signInGoogle' } = props;
 
   const handleLogin = async () => {
@@ -64,7 +63,6 @@ const SignWithGoogle = (props: Partial<PillButtonProps, SocialButtonIconsProps>)
         // HERE: Implement the logic to handle the user data
         onLogin?.('google', userInfo?.idToken);
       }
-
     } catch (error) {
       if (error?.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log('SIGN_IN_CANCELLED');
@@ -85,7 +83,7 @@ const SignWithGoogle = (props: Partial<PillButtonProps, SocialButtonIconsProps>)
         {GIcon()}
         <CustomText
           size={Typography.FONT_SIZE_18}
-          weight='500'
+          weight="500"
           style={{ marginLeft: 20 }}
           color={DEFAULT_THEME.black}>
           {translate(textLocale, TextTransform.CAPITAL)}
