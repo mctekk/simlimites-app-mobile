@@ -3,10 +3,7 @@ import { SvgFromXml } from 'react-native-svg';
 import { Colors } from 'styles';
 
 const MyeSimsIcon = (props: any) => {
-  const {
-    color = Colors.BLACK,
-    size = 15,
-  } = props;
+  const { color = Colors.BLACK, size = 15 } = props;
   return (
     <SvgFromXml
       xml={`

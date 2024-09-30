@@ -97,7 +97,7 @@ export const RegisterName = (props: ISignInProps, ref: any) => {
   const { navigation, route } = props;
 
   // Params
-  const { email } = route.params;
+  const email = route?.params?.email;
 
   // States
   const [isLoading, setIsLoading] = useState(false);

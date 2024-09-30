@@ -1,16 +1,17 @@
+/* eslint-disable react-native/no-inline-styles */
 
 // Modules
-import React from "react";
-import styled from "styled-components/native";
-import FastImage from "react-native-fast-image";
+import React from 'react';
+import styled from 'styled-components/native';
+import FastImage from 'react-native-fast-image';
 
 // Atoms
 import CustomText from 'atoms/text';
 import { CardArrow } from 'assets/icons';
 
 // Styles
-import { Typography } from "styles";
-import { DEFAULT_THEME } from "styles/theme";
+import { Typography } from 'styles';
+import { DEFAULT_THEME } from 'styles/theme';
 
 interface ILocalCardProps {
   onPress?: () => void;
@@ -25,7 +26,7 @@ const Container = styled.TouchableOpacity`
   width: 100%;
   align-items: center;
   flex-direction: row;
-  backgroundColor: ${DEFAULT_THEME.authBackground};
+  background-color: ${DEFAULT_THEME.authBackground};
   justify-content: space-between;
   padding-horizontal: 24px;
   border-bottom-width: 1px;
@@ -44,7 +45,6 @@ const Flag = styled(FastImage)`
 `;
 
 const LocalCard = (props: ILocalCardProps) => {
-
   const { onPress, label, isFirst, isLast, flagImageUri } = props;
 
   const onCardPress = () => {
@@ -59,12 +59,9 @@ const LocalCard = (props: ILocalCardProps) => {
         borderTopRightRadius: isFirst ? 10 : 0,
         borderBottomLeftRadius: isLast ? 10 : 0,
         borderBottomRightRadius: isLast ? 10 : 0,
-      }}
-    >
+      }}>
       <LeftContainer>
-        <Flag
-          source={{ uri: flagImageUri || '' }}
-        />
+        <Flag source={{ uri: flagImageUri || '' }} />
         <CustomText
           size={Typography.FONT_SIZE_15}
           weight='600'
@@ -75,7 +72,7 @@ const LocalCard = (props: ILocalCardProps) => {
       </LeftContainer>
       <CardArrow />
     </Container>
-  )
+  );
 };
 
 export default LocalCard;

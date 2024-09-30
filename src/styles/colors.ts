@@ -23,3 +23,5 @@ export const LIGHT_BLUE = '#00B8F1';
 export const DISABLED_BLUE = 'rgba(0, 184, 241, 0.4)';
 export const LIGHT_BLACK = '#2D2D2D';
 export const CARD_GRAY = '#F7F7F7';
+export const LIGHT_GREEN = '#3CCB7F';
+export const SETTINGS_GRAY = '#2C2C2C';

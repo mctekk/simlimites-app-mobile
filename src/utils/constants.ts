@@ -28,3 +28,8 @@ export enum PRODUCT_TYPES_SLUGS {
   REGIONAL_SLUG = 'regional',
   GLOBAL_SLUG = 'global',
 }
+
+export enum UNREGISTERED_TYPES {
+  MY_ESIMS = 'my-esims',
+  PROFILE = 'profile',
+}
