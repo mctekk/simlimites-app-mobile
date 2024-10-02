@@ -12,6 +12,7 @@ import Header from 'components/molecules/header';
 import CheckoutVariantCard from 'components/molecules/checkout-variant-card';
 import CheckoutSummaryCard from 'components/molecules/checkout-summary-card';
 import CheckoutDeviceCard from 'components/molecules/checkout-device-card';
+import CheckRow from 'components/molecules/check-row';
 
 // Styles
 import { Typography } from 'styles';
@@ -126,6 +127,8 @@ export const Checkout = (props: ICheckoutProps) => {
         <CheckoutVariantCard variant={variant} product={product} flagUris={flagUris} />
         <CheckoutDeviceCard deviceSelected={deviceSelected} />
         <CheckoutSummaryCard variant={variant} product={product} flagUris={flagUris} />
+        <CheckRow isSelected={acceptCompatible} onCheckPress={()=>{setAcceptCompatible(!acceptCompatible)}} labelLocale='phoneCompatibleMsg'/>
+        <CheckRow isSelected={acceptUnlocked} onCheckPress={()=>{setAcceptUnlocked(!acceptUnlocked)}} labelLocale='phoneUnlockedMsg' />
       </Content>
       <Footer>
         <PurchaseButton
