@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { trigger } from 'react-native-haptic-feedback';
 
 // Styles
-import { Colors, Typography } from 'styles';
+import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
 // Atoms
@@ -32,6 +32,22 @@ const VariantsContainer = styled.View`
   margin-bottom: 25px;
 `;
 
+const PurchaseButton = styled.TouchableOpacity`
+  width: 100%;
+  padding-vertical: 12px;
+  background-color: ${DEFAULT_THEME.primary};
+  margin-top: 20px;
+  border-radius: 50px;
+  align-items: center;
+`;
+
+const ButtonContainer = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 25px;
+`;
+
 interface IProductVariantsProps {
   style?: object;
   product?: ProductInterface;
@@ -44,7 +60,7 @@ const ProductVariants = (props: IProductVariantsProps) => {
   // State
   const [includedCountries, setIncludedCountries] = useState([]);
   const [flagUris, setFlagUris] = useState(['']);
-  const [selectedVariantId, setSelectedVariantId] = useState('');
+  const [selectedVariant, setSelectedVariant] = useState({});
 
   // Hooks
   const navigation = useNavigation();
@@ -52,17 +68,19 @@ const ProductVariants = (props: IProductVariantsProps) => {
   const isLocal = product?.productsTypes?.slug == PRODUCT_TYPES_SLUGS.LOCAL_SLUG;
 
   useEffect(() => {
-    console.log("Product Variants:", product);
+    console.log('Product Variants:', product);
     !isLocal && getCountriesIncluded();
   }, []);
 
-  const getCountriesIncluded = async() => {
+  const getCountriesIncluded = async () => {
     const countriesAttribute = product?.attributes?.find(
-      (attribute: any) => attribute?.slug === 'countries'
+      (attribute: any) => attribute?.slug === 'countries',
     );
 
     if (countriesAttribute) {
-      const countriesIncluded = await kanvasService.getCountriesByIds(countriesAttribute?.value);
+      const countriesIncluded = await kanvasService.getCountriesByIds(
+        countriesAttribute?.value,
+      );
       setIncludedCountries(countriesIncluded?.countries?.data);
       setButtonFlags(countriesIncluded?.countries?.data);
     }
@@ -70,9 +88,10 @@ const ProductVariants = (props: IProductVariantsProps) => {
 
   const setButtonFlags = (countriesIncluded: any) => {
     let buttonFlags: string[] = [];
-    countriesIncluded?.length && countriesIncluded?.map((country: any) => {
-      buttonFlags?.push(country?.flag);
-    })
+    countriesIncluded?.length &&
+      countriesIncluded?.map((country: any) => {
+        buttonFlags?.push(country?.flag);
+      });
     // ** enmanuel-mctekk **
     // ** Commented until Max adds flags to countries in @kanvas/core **
     //setFlagUris(buttonFlags);
@@ -80,28 +99,27 @@ const ProductVariants = (props: IProductVariantsProps) => {
   };
 
   const onVariantPress = (variant: VariantInterface, isSelected: boolean) => {
-    trigger("impactLight", {});
-    isSelected ?
-      setSelectedVariantId('') :
-      setSelectedVariantId(variant?.id);
+    trigger('impactLight', {});
+    isSelected ? setSelectedVariant({}) : setSelectedVariant(variant);
+    console.log(variant)
   };
 
   return (
     <Container style={style}>
       <VariantsContainer>
-        {product?.variants && product?.variants?.map((variant: VariantInterface, index: number) => {
-          const isSelected = selectedVariantId === variant?.id;
+        {product?.variants &&
+          product?.variants?.map((variant: VariantInterface, index: number) => {
+            const isSelected = selectedVariant?.id === variant?.id;
 
-          return (
-            <VariantCard
-              key={index}
-              label={variant?.name}
-              price={variant?.channel?.price}
-              onPress={() => onVariantPress(variant, isSelected)}
-              isSelected={isSelected}
-            />
-          )
-        })}
+            return (
+              <VariantCard
+                key={index}
+                variant={variant}
+                onPress={() => onVariantPress(variant, isSelected)}
+                isSelected={isSelected}
+              />
+            );
+          })}
       </VariantsContainer>
       <CustomText
         size={Typography.FONT_SIZE_12}
@@ -111,11 +129,13 @@ const ProductVariants = (props: IProductVariantsProps) => {
         {translate('countriesIncluded', TextTransform.CAPITAL)}
       </CustomText>
       <CountriesCard
-        label={isLocal
-          ? product.name
-          : translate('countriesCoverage', TextTransform.CAPITAL, {
-            interpolate: { number: includedCountries?.length }
-          })}
+        label={
+          isLocal
+            ? product.name
+            : translate('countriesCoverage', TextTransform.CAPITAL, {
+                interpolate: { number: includedCountries?.length },
+              })
+        }
         isLocal={isLocal}
         flagImageUris={flagUris}
         style={{ marginBottom: 12 }}
@@ -128,9 +148,22 @@ const ProductVariants = (props: IProductVariantsProps) => {
         onPress={() => {}}
         iconComponent={<DetaileSimsIcon />}
       />
+      <PurchaseButton
+        disabled={!selectedVariant?.id}
+        onPress={() => navigation?.navigate('Checkout', { variant: selectedVariant, product: product, flagUris: flagUris })}
+        style={{
+          backgroundColor: !selectedVariant?.id
+            ? DEFAULT_THEME.disabledPrimary
+            : DEFAULT_THEME.primary,
+        }}>
+        <CustomText size={Typography.FONT_SIZE_20} weight='700' color={DEFAULT_THEME.white}>
+          {`${translate('buySelectedPlan', TextTransform.CAPITAL)} $${
+            selectedVariant?.channel?.price ? selectedVariant?.channel?.price : '0'
+          }`}
+        </CustomText>
+      </PurchaseButton>
     </Container>
   );
 };
 
 export default ProductVariants;
-
