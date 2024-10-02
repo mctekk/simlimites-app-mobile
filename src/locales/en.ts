@@ -132,4 +132,9 @@ export default {
   checkDeviceMsg: 'Please check if your mobile is eSIM compatible before checkout.',
   confirmYourDevice: 'Confirm your device',
   registerToBuyPlans: 'Register to buy plans',
+  total: 'total',
+  orderSummary: 'Order summary',
+  eSimCost: 'eSIM cost',
+  phoneCompatibleMsg: 'My phone is compatible with eSIM',
+  phoneUnlockedMsg: 'My phone is factory unlocked',
 };
