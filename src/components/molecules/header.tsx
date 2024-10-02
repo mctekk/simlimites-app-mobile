@@ -79,7 +79,7 @@ const IconContainer = styled.TouchableOpacity`
   width: 40px;
   align-items: center;
   justify-content: center;
-  margin-left: 15px;
+  margin-left: 0px;
   margin-right: 0px;
 `;
 
@@ -109,7 +109,7 @@ const Header = (props: IProps) => {
 
   return (
     <Container style={style}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle='dark-content' />
       {leftButtonComponent ? (
         <>{leftButtonComponent}</>
       ) : (
@@ -117,17 +117,21 @@ const Header = (props: IProps) => {
           {hasBackButton ? (
             <>
               {closeButtonType === 'BACK' ? (
-                <BackButton
-                  onPress={onBackPress}
-                  disabled={diableBackButton}
-                  backIconColor={backIconColor}
-                />
+                <IconContainer>
+                  <BackButton
+                    onPress={onBackPress}
+                    disabled={diableBackButton}
+                    backIconColor={backIconColor}
+                  />
+                </IconContainer>
               ) : (
-                <CloseButton
-                  onPress={onBackPress}
-                  disabled={diableBackButton}
-                  backIconColor={backIconColor}
-                />
+                <IconContainer>
+                  <CloseButton
+                    onPress={onBackPress}
+                    disabled={diableBackButton}
+                    backIconColor={backIconColor}
+                  />
+                </IconContainer>
               )}
             </>
           ) : (
@@ -140,7 +144,7 @@ const Header = (props: IProps) => {
         <CustomHeader>{customHeader}</CustomHeader>
       ) : (
         <TouchableWithoutFeedback {...buttonTitleProps}>
-          <Title {...titleProps} numberOfLines={1} ellipsizeMode="tail">
+          <Title {...titleProps} numberOfLines={1} ellipsizeMode='tail'>
             {title}
           </Title>
         </TouchableWithoutFeedback>

@@ -29,6 +29,11 @@ export enum PRODUCT_TYPES_SLUGS {
   GLOBAL_SLUG = 'global',
 }
 
+export enum VARIANT_ATTRIBUTE_SLUGS {
+  DURATION_SLUG = 'variant-duration',
+  TYPE_SLUG = 'variant-type',
+}
+
 export enum UNREGISTERED_TYPES {
   MY_ESIMS = 'my-esims',
   PROFILE = 'profile',

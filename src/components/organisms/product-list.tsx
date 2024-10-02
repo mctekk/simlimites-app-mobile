@@ -1,13 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // Modules
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-  memo,
-} from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState, memo } from 'react';
 import { FlatList, ActivityIndicator, View } from 'react-native';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
@@ -110,10 +103,7 @@ const ProductList = (props: IFeedProps) => {
         (type: ProductTypeInterface) => type?.slug === productTypeSlug,
       );
       const productTypeId = localType ? localType?.id : 0;
-      const response = await kanvasService.getProductsByType(
-        productTypeId,
-        pageNumber,
-      );
+      const response = await kanvasService.getProductsByType(productTypeId, pageNumber);
 
       const { paginatorInfo, data } = response?.products;
 
@@ -150,10 +140,7 @@ const ProductList = (props: IFeedProps) => {
         (type: ProductTypeInterface) => type?.slug === productTypeSlug,
       );
       const productTypeId = localType ? localType?.id : 0;
-      const response = await kanvasService.searchProducts(
-        productTypeId,
-        searchText.trim(),
-      );
+      const response = await kanvasService.searchProducts(productTypeId, searchText.trim());
 
       const { data } = response?.products;
 
@@ -217,10 +204,7 @@ const ProductList = (props: IFeedProps) => {
       return;
     }
 
-    if (
-      newPageNumber > last_page.current &&
-      newPageNumber <= pages_total.current
-    ) {
+    if (newPageNumber > last_page.current && newPageNumber <= pages_total.current) {
       getProducts(newPageNumber);
       pages_total.current = newPageNumber;
       setPage(newPageNumber);
@@ -242,13 +226,10 @@ const ProductList = (props: IFeedProps) => {
     ({ item, index }) => {
       const isFirst = index === 0;
       const isLast =
-        index ===
-        (isSearching ? searchedItems.current.length : items.current.length) - 1;
+        index === (isSearching ? searchedItems.current.length : items.current.length) - 1;
 
       if (productTypeSlug === PRODUCT_TYPES_SLUGS.LOCAL_SLUG) {
-        const flag = item?.files?.data?.find(
-          (file: IFile) => file?.name === FLAG_IMAGE_NAME,
-        );
+        const flag = item?.files?.data?.find((file: IFile) => file?.name === FLAG_IMAGE_NAME);
 
         return (
           <LocalCard
@@ -264,8 +245,7 @@ const ProductList = (props: IFeedProps) => {
 
       if (productTypeSlug === PRODUCT_TYPES_SLUGS.REGIONAL_SLUG) {
         const countriesAttribute = item?.attributes?.find(
-          (attribute: ICountriesAttribute) =>
-            attribute?.name === COUNTRIES_ATTRIBUTE_NAME,
+          (attribute: ICountriesAttribute) => attribute?.name === COUNTRIES_ATTRIBUTE_NAME,
         );
 
         return (
@@ -285,10 +265,7 @@ const ProductList = (props: IFeedProps) => {
 
   const ListFooterComponent = () => {
     loadingMore && (
-      <ActivityIndicator
-        color={DEFAULT_THEME.title}
-        style={{ marginVertical: 20 }}
-      />
+      <ActivityIndicator color={DEFAULT_THEME.title} style={{ marginVertical: 20 }} />
     );
   };
 
@@ -308,7 +285,7 @@ const ProductList = (props: IFeedProps) => {
       )}
 
       {loading && !hasError && (
-        <ActivityIndicator size="small" color={DEFAULT_THEME.subtitle} />
+        <ActivityIndicator size='small' color={DEFAULT_THEME.subtitle} />
       )}
 
       {!loading &&
@@ -348,11 +325,9 @@ const ProductList = (props: IFeedProps) => {
           />
         )}
 
-      {!loading &&
-        !hasError &&
-        productTypeSlug === PRODUCT_TYPES_SLUGS.GLOBAL_SLUG && (
-          <ProductVariants product={items?.current[0]} />
-        )}
+      {!loading && !hasError && productTypeSlug === PRODUCT_TYPES_SLUGS.GLOBAL_SLUG && (
+        <ProductVariants product={items?.current[0]} />
+      )}
     </Container>
   );
 };
