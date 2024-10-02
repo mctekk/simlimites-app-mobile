@@ -131,4 +131,5 @@ export default {
   price: 'price',
   checkDeviceMsg: 'Please check if your mobile is eSIM compatible before checkout.',
   confirmYourDevice: 'Confirm your device',
+  registerToBuyPlans: 'Register to buy plans',
 };

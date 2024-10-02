@@ -131,4 +131,5 @@ export default {
   price: 'precio',
   checkDeviceMsg: 'Verifique si su teléfono móvil es compatible con eSIM antes de realizar el pago.',
   confirmYourDevice: 'Confirma tu dispositivo',
+  registerToBuyPlans: 'Regístrate para comprar planes',
 };
