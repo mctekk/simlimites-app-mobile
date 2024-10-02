@@ -1,5 +1,5 @@
 // Modules
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 import { trigger } from 'react-native-haptic-feedback';
@@ -22,6 +22,9 @@ import { ProductInterface, VariantInterface } from '@kanvas/core';
 import kanvasService from 'core/services/kanvas-service';
 import { PRODUCT_TYPES_SLUGS } from 'utils/constants';
 import { DUMMY_FLAGS_URLS } from 'utils/dummy-data';
+
+// Context
+import { UserContext } from 'components/context/user-context';
 
 const Container = styled.ScrollView``;
 
@@ -65,6 +68,9 @@ const ProductVariants = (props: IProductVariantsProps) => {
   // Hooks
   const navigation = useNavigation();
 
+  // Context
+  const { isUserLogged } = useContext(UserContext);
+
   const isLocal = product?.productsTypes?.slug == PRODUCT_TYPES_SLUGS.LOCAL_SLUG;
 
   useEffect(() => {
@@ -100,8 +106,10 @@ const ProductVariants = (props: IProductVariantsProps) => {
 
   const onVariantPress = (variant: VariantInterface, isSelected: boolean) => {
     trigger('impactLight', {});
-    isSelected ? setSelectedVariant({}) : setSelectedVariant(variant);
-    console.log(variant)
+    if (isUserLogged) {
+      isSelected ? setSelectedVariant({}) : setSelectedVariant(variant);
+    }
+    console.log(variant);
   };
 
   return (
@@ -149,17 +157,24 @@ const ProductVariants = (props: IProductVariantsProps) => {
         iconComponent={<DetaileSimsIcon />}
       />
       <PurchaseButton
-        disabled={!selectedVariant?.id}
-        onPress={() => navigation?.navigate('Checkout', { variant: selectedVariant, product: product, flagUris: flagUris })}
+        disabled={!selectedVariant?.id && isUserLogged}
+        onPress={() =>
+          isUserLogged
+            ? navigation?.navigate('Checkout', {variant: selectedVariant, product: product, flagUris: flagUris})
+            : navigation.navigate('RegisterEmail', { showLogin: true })
+        }
         style={{
-          backgroundColor: !selectedVariant?.id
-            ? DEFAULT_THEME.disabledPrimary
-            : DEFAULT_THEME.primary,
+          backgroundColor:
+            !selectedVariant?.id && isUserLogged
+              ? DEFAULT_THEME.disabledPrimary
+              : DEFAULT_THEME.primary,
         }}>
         <CustomText size={Typography.FONT_SIZE_20} weight='700' color={DEFAULT_THEME.white}>
-          {`${translate('buySelectedPlan', TextTransform.CAPITAL)} $${
-            selectedVariant?.channel?.price ? selectedVariant?.channel?.price : '0'
-          }`}
+          {isUserLogged
+            ? `${translate('buySelectedPlan', TextTransform.CAPITAL)} $${
+                selectedVariant?.channel?.price ? selectedVariant?.channel?.price : '0'
+              }`
+            : translate('registerToBuyPlans', TextTransform.CAPITAL)}
         </CustomText>
       </PurchaseButton>
     </Container>
