@@ -11,7 +11,7 @@ import BackArrow from 'assets/icons/back-arrow';
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
-interface ICheckoutVariantCardProps {
+interface ICheckoutDeviceCardProps {
   deviceSelected?: any;
 }
 
@@ -22,7 +22,7 @@ const Container = styled.View`
   margin-bottom: 32px;
   width: 32%;
   border-radius: 10px;
-  border-width: 2px;
+  border-width: 1px;
   width: 100%;
 `;
 
@@ -36,7 +36,7 @@ const ArrowContainer = styled.View`
   margin-left: 6px;
 `;
 
-const CheckoutVariantCard = (props: ICheckoutVariantCardProps) => {
+const CheckoutDeviceCard = (props: ICheckoutDeviceCardProps) => {
   const { deviceSelected } = props;
 
   return (
@@ -65,4 +65,4 @@ const CheckoutVariantCard = (props: ICheckoutVariantCardProps) => {
   );
 };
 
-export default CheckoutVariantCard;
+export default CheckoutDeviceCard;
