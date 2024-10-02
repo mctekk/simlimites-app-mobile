@@ -58,7 +58,7 @@ const VariantCard = (props: IVariantCardProps) => {
   return (
     <Container
       onPress={onCardPress}
-      style={{ borderColor: isSelected ? DEFAULT_THEME.black : DEFAULT_THEME.transparent }}>
+      style={{ borderColor: isSelected ? DEFAULT_THEME.primary : DEFAULT_THEME.transparent }}>
       <CustomText
         size={isIphoneSE() || isIphone14() ? Typography.FONT_SIZE_22 : Typography.FONT_SIZE_28}
         weight='700'
