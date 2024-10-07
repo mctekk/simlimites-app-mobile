@@ -16,3 +16,6 @@ export { default as CardArrow } from './card-arrow';
 export { default as CloseIconv2 } from './close-icon-v2';
 export { default as EditIcon } from './edit-icon';
 export { default as DefaultProfileIcon } from './default-profile-icon';
+export { default as SafariIcon } from './safari-icon';
+export { default as ShareIconV2 } from './share-icon-v2';
+export { default as ReloadIcon } from './reload-icon';
