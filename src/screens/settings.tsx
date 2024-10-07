@@ -126,7 +126,7 @@ export const SettingsItemList = [
       {
         title: translate('myPlans', TextTransform.CAPITALIZE),
         key: 'myPlans',
-        goTo: '',
+        goTo: 'MyeSims',
         icon: () => <MyeSimsIcon size={18} />,
       },
       {
