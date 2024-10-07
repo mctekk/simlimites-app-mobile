@@ -3,10 +3,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 // Modules
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import styled from 'styled-components/native';
 import { SectionList, SafeAreaView } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import Config from 'react-native-config';
 
 // Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
@@ -23,12 +24,15 @@ import Header from 'components/molecules/header';
 import SettingsItem from 'components/molecules/settings-item';
 import UnregisteredCard from 'components/molecules/unregistered-card';
 
+// Organisms
+import InAppBrowser from 'components/organisms/in-app-browser';
+
 // Styles
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
 // Utils
-import { isIphoneX } from 'utils/iphone-helpers';
+import { isIphoneX, isIphoneSE } from 'utils/iphone-helpers';
 
 // Constants
 import { UNREGISTERED_TYPES } from 'utils/constants';
@@ -88,7 +92,7 @@ const ListFooterContainer = styled.View`
 `;
 
 const FooterContainer = styled.View`
-  bottom: ${isIphoneX() ? 40 : 100}px;
+  bottom: ${isIphoneX() ? 40 : (isIphoneSE() ? 0 : 100)}px;
 `;
 
 const FooterButton = styled.TouchableOpacity`
@@ -122,7 +126,7 @@ export const SettingsItemList = [
       {
         title: translate('myPlans', TextTransform.CAPITALIZE),
         key: 'myPlans',
-        goTo: '',
+        goTo: 'MyeSims',
         icon: () => <MyeSimsIcon size={18} />,
       },
       {
@@ -153,16 +157,22 @@ export const SettingsItemList = [
         title: translate('userGuide', TextTransform.CAPITALIZE),
         key: 'userGuide',
         goTo: '',
+        browserLink: Config.USER_GUIDE_LINK,
+        browserTitleLocale: 'userGuide',
       },
       {
         title: translate('aboutUs', TextTransform.CAPITALIZE),
         key: 'aboutUs',
         goTo: '',
+        browserLink: Config.ABOUT_US_LINK,
+        browserTitleLocale: 'aboutUs',
       },
       {
         title: translate('termsAndConditions', TextTransform.CAPITALIZE),
         key: 'termsAndConditions',
         goTo: '',
+        browserLink: Config.TERMS_AND_CONDITIONS_LINK,
+        browserTitleLocale: 'termsAndConditions',
       },
     ],
     headerStyle: {
@@ -176,6 +186,9 @@ export const Settings = (props: ISettingsProps) => {
   // Props
   const { navigation } = props;
 
+  // States
+  const [openBrowser, setOpenBrowser] = useState({ visible: false, url: '', title: '' });
+
   // Context
   const { signOut } = useContext(AuthContext);
   const { userData, isUserLogged } = useContext(UserContext);
@@ -188,6 +201,17 @@ export const Settings = (props: ISettingsProps) => {
     }
   };
 
+  const handleItemPress = async (item?: any) => {
+    if (item?.browserLink?.length) {
+      openInAppBrowser(item?.browserLink, translate(item?.browserTitleLocale, TextTransform.CAPITAL));
+      return;
+    }
+    if (item?.goTo?.length) {
+      navigation.navigate(item?.goTo);
+      return;
+    }
+  };
+
   const renderItem = useCallback(({ item, index, section }) => {
     const isFirst = index === 0;
     const isLast = index === (section?.data?.length - 1);
@@ -197,7 +221,7 @@ export const Settings = (props: ISettingsProps) => {
         key={index}
         title={item.title}
         icon={item.icon}
-        onPress={() => navigation.navigate(item.goTo ?? '')}
+        onPress={() => handleItemPress(item)}
         isFirst={isFirst}
         isLast={isLast}
       />
@@ -242,6 +266,15 @@ export const Settings = (props: ISettingsProps) => {
       return userData?.photo?.url;
     }
     return '';
+  };
+
+  const openInAppBrowser = (url: string, title: string) => {
+    const inAppBrowserOptions = {
+      url,
+      title,
+      visible: !openBrowser.visible,
+    };
+    setOpenBrowser(inAppBrowserOptions);
   };
 
   return (
@@ -307,6 +340,15 @@ export const Settings = (props: ISettingsProps) => {
           />
         )}
       </Content>
+
+      {/* Modals */}
+      <InAppBrowser
+        visible={openBrowser.visible}
+        url={openBrowser.url}
+        title={openBrowser.title}
+        onClose={() => setOpenBrowser({ visible: !openBrowser.visible, url: '', title: '' })}
+      />
+
     </Container>
   );
 };
