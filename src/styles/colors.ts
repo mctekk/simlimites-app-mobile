@@ -25,3 +25,4 @@ export const LIGHT_BLACK = '#2D2D2D';
 export const CARD_GRAY = '#F7F7F7';
 export const LIGHT_GREEN = '#3CCB7F';
 export const SETTINGS_GRAY = '#2C2C2C';
+export const WARNING_RED = '#F04438';
