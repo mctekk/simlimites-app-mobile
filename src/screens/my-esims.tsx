@@ -142,7 +142,7 @@ export const MyeSims = (props: IMyeSimsProps) => {
       <SafeAreaView />
       <ScreenHeader
         hasBackButton={false}
-        title={isUserLogged ? '' : translate('myeSims', TextTransform.CAPITALIZE)}
+        title={isUserLogged ? '' : translate('myeSims', TextTransform.CAPITAL)}
         titleProps={{
           style: {
             textAlign: 'center',

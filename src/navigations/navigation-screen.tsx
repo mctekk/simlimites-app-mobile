@@ -1,14 +1,15 @@
 // Screen
-import { ChangePassword } from "screens/change-password";
-import { EditProfile } from "screens/edit-profile";
-import { Home } from "screens/home";
-import { Inventory } from "screens/invetory";
-import { Notifications } from "screens/notifications";
-import { LogIn } from "screens/log-in";
-import { RegisterPassword } from "screens/register-password";
-import { RegisterEmail } from "screens/register-email";
-import { RegisterName } from "screens/register-name";
-import { MyeSims } from "screens/my-esims";
+import { ChangePassword } from 'screens/change-password';
+import { EditProfile } from 'screens/edit-profile';
+import { Home } from 'screens/home';
+import { Checkout } from 'screens/checkout';
+import { Inventory } from 'screens/invetory';
+import { Notifications } from 'screens/notifications';
+import { LogIn } from 'screens/log-in';
+import { RegisterPassword } from 'screens/register-password';
+import { RegisterEmail } from 'screens/register-email';
+import { RegisterName } from 'screens/register-name';
+import { MyeSims } from 'screens/my-esims';
 
 const navigationDefaultOptions = {
   headerShown: false,
@@ -77,6 +78,13 @@ export const navigationScreen = [
     options: {
       navigationDefaultOptions,
       presentation: 'modal',
+    },
+  },
+  {
+    name: 'Checkout',
+    screen: Checkout,
+    options: {
+      navigationDefaultOptions,
     },
   },
 ];
