@@ -143,7 +143,7 @@ export const SettingsItemList = [
       {
         title: translate('changePassword', TextTransform.CAPITALIZE),
         key: 'changePassword',
-        goTo: 'ChangePassword',
+        //goTo: 'ChangePassword',
       },
     ],
     headerStyle: {
@@ -179,6 +179,19 @@ export const SettingsItemList = [
       marginTop: 50,
     },
   },
+  {
+    title: '',
+    data: [
+      {
+        title: translate('logout', TextTransform.CAPITALIZE),
+        key: 'logout',
+        goTo: 'logout',
+      },
+    ],
+    headerStyle: {
+      marginTop: 10,
+    },
+  },
 ];
 
 
@@ -207,6 +220,10 @@ export const Settings = (props: ISettingsProps) => {
       return;
     }
     if (item?.goTo?.length) {
+      if (item?.goTo === 'logout') {
+        handleLogout();
+        return;
+      };
       navigation.navigate(item?.goTo);
       return;
     }
@@ -215,6 +232,7 @@ export const Settings = (props: ISettingsProps) => {
   const renderItem = useCallback(({ item, index, section }) => {
     const isFirst = index === 0;
     const isLast = index === (section?.data?.length - 1);
+    const showArrow = (item?.key !== 'logout');
 
     return (
       <SettingsItem
@@ -224,6 +242,7 @@ export const Settings = (props: ISettingsProps) => {
         onPress={() => handleItemPress(item)}
         isFirst={isFirst}
         isLast={isLast}
+        showRightIcon={showArrow}
       />
     );
   }, []);
@@ -234,27 +253,6 @@ export const Settings = (props: ISettingsProps) => {
         title={title}
         style={headerStyle}
       />
-    );
-  }, []);
-
-  const ListFooterComponent = useCallback(() => {
-    return (
-      <ListFooterContainer>
-        <FooterContainer>
-          <FooterButton
-            onPress={handleLogout}
-          >
-            <SettingsItem
-              title={translate('logout', TextTransform.CAPITALIZE)}
-              onPress={handleLogout}
-              showRightIcon={false}
-              isFirst
-              isLast
-            />
-          </FooterButton>
-        </FooterContainer>
-
-      </ListFooterContainer>
     );
   }, []);
 
@@ -308,7 +306,9 @@ export const Settings = (props: ISettingsProps) => {
               </ProfileImageContainer>
               <UserNameText>{userData?.firstname} {userData?.lastname}</UserNameText>
             </UserInfoContainer>
-            <EditButton onPress={() => navigation.navigate('EditProfile')}>
+            <EditButton
+              //onPress={() => navigation.navigate('EditProfile')}
+            >
               <EditIcon />
               <CustomText
                 color={DEFAULT_THEME.white}
@@ -327,9 +327,9 @@ export const Settings = (props: ISettingsProps) => {
               keyExtractor={keyExtractor}
               showsVerticalScrollIndicator={false}
               scrollEnabled={false}
-              ListFooterComponent={ListFooterComponent}
               style={{
                 backgroundColor: DEFAULT_THEME.background,
+                paddingBottom: 50,
               }}
             />
           </>
