@@ -11,7 +11,7 @@ import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
 // Utils
-import { isIphoneSE, isIphone14 } from 'utils/iphone-helpers';
+import { isIphoneSE, isRegularIphone } from 'utils/iphone-helpers';
 
 // Interface
 import { VariantInterface, AttributesInterface } from '@kanvas/core';
@@ -60,7 +60,7 @@ const VariantCard = (props: IVariantCardProps) => {
       onPress={onCardPress}
       style={{ borderColor: isSelected ? DEFAULT_THEME.primary : DEFAULT_THEME.transparent }}>
       <CustomText
-        size={isIphoneSE() || isIphone14() ? 22 : 28}
+        size={isIphoneSE() || isRegularIphone() ? 22 : 28}
         weight='700'
         style={{ marginBottom: 1 }}
         color={DEFAULT_THEME.title}>
