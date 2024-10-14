@@ -39,6 +39,7 @@ const Content = styled.View`
 
 const Title = styled(Text)`
   font-size: ${Typography.FONT_SIZE_15}px;
+  line-height: ${Typography.FONT_SIZE_15}px;
   color: ${DEFAULT_THEME.black};
   font-weight: 500;
 `;

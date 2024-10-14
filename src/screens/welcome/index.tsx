@@ -52,7 +52,9 @@ const ImageContainer = styled.View`
 
 const TitlesContainer = styled.View``;
 
-const ButtonsContainer = styled.View``;
+const ButtonsContainer = styled.View`
+  align-items: center;
+`;
 
 const Button = styled.TouchableOpacity`
   width: 335px;
@@ -107,8 +109,8 @@ export const Welcome = (props: ISignInProps) => {
         <TitlesContainer>
           <LocalizedLabel
             localeKey='welcomeTitle'
-            size={Typography.FONT_SIZE_40}
-            lineHeight={Typography.LINE_HEIGHT_48}
+            size={40}
+            lineHeight={48}
             align='center'
             color={DEFAULT_THEME.title}
             weight='800'
