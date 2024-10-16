@@ -143,7 +143,7 @@ export const SettingsItemList = [
       {
         title: translate('changePassword', TextTransform.CAPITALIZE),
         key: 'changePassword',
-        //goTo: 'ChangePassword',
+        goTo: 'ChangePassword',
       },
     ],
     headerStyle: {

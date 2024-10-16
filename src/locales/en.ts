@@ -137,4 +137,6 @@ export default {
   eSimCost: 'eSIM cost',
   phoneCompatibleMsg: 'My phone is compatible with eSIM',
   phoneUnlockedMsg: 'My phone is factory unlocked',
+  changePasswordError: 'An error occurred while updating your password',
+  changePasswordMsg: 'Password updated successfully',
 };
