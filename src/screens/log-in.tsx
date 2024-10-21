@@ -39,7 +39,7 @@ import { client } from 'core/kanvas_client';
 import { AUTH_TOKEN, SAVED_EMAIL } from 'utils/constants';
 
 // Utils
-import { isIphoneSE, isIphone14 } from 'utils/iphone-helpers';
+import { isIphoneSE } from 'utils/iphone-helpers';
 
 // Context
 import { AuthContext } from 'components/context/auth-context';

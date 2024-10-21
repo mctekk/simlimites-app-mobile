@@ -138,4 +138,6 @@ export default {
   eSimCost: 'Costo eSIM',
   phoneCompatibleMsg: 'Mi teléfono es compatible con eSIM',
   phoneUnlockedMsg: 'Mi teléfono está desbloqueado de fábrica',
+  changePasswordError: 'Se produjo un error al actualizar tu contraseña',
+  changePasswordMsg: 'Contraseña actualizada correctamente',
 };

@@ -210,7 +210,7 @@ export const RegisterEmail = (props: ISignInProps, ref: any) => {
                 <ScreenHeader />
                 <Content>
                   <CustomText
-                    size={Typography.FONT_SIZE_25}
+                    size={25}
                     style={{ marginBottom: 15 }}
                     weight='700'
                     color={DEFAULT_THEME.title}>

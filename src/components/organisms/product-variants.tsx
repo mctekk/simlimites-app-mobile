@@ -169,7 +169,7 @@ const ProductVariants = (props: IProductVariantsProps) => {
               ? DEFAULT_THEME.disabledPrimary
               : DEFAULT_THEME.primary,
         }}>
-        <CustomText size={Typography.FONT_SIZE_20} weight='700' color={DEFAULT_THEME.white}>
+        <CustomText size={20} weight='700' color={DEFAULT_THEME.white}>
           {isUserLogged
             ? `${translate('buySelectedPlan', TextTransform.CAPITAL)} $${
                 selectedVariant?.channel?.price ? selectedVariant?.channel?.price : '0'

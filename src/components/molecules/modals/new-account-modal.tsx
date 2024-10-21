@@ -12,7 +12,7 @@ import { TextTransform, translate } from 'atoms/localized-label';
 
 // Assets
 import { Check, NextArrow } from 'assets/icons';
-import { isIphoneSE, isIphone14 } from 'utils/iphone-helpers';
+import { isIphoneSE, isRegularIphone } from 'utils/iphone-helpers';
 
 // Styles
 import { Typography } from 'styles';
@@ -29,7 +29,7 @@ interface IProps {
 const Container = styled.View`
   height: 100%;
   background-color: ${DEFAULT_THEME.white};
-  padding-top: ${(isIphone14() || isIphoneSE()) ? '80' : '170'}px;
+  padding-top: ${(isRegularIphone() || isIphoneSE()) ? '80' : '170'}px;
   align-items: center;
 `;
 
@@ -52,7 +52,7 @@ const ContinueButton = styled.TouchableOpacity`
 const IconContainer = styled.View`
   position: absolute;
   align-self: flex-end;
-  padding-right: ${(isIphone14() || isIphoneSE()) ? '20' : '50'}px;
+  padding-right: ${(isRegularIphone() || isIphoneSE()) ? '20' : '40'}px;
 `;
 
 const NewAccountModal = ({
@@ -126,7 +126,7 @@ const NewAccountModal = ({
           style={{ backgroundColor: DEFAULT_THEME.primary }}
         >
           <CustomText
-            size={Typography.FONT_SIZE_20}
+            size={20}
             lineHeight={Typography.FONT_SIZE_24}
             weight='600'
             color={DEFAULT_THEME.white}>

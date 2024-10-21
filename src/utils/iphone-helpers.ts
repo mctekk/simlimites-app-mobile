@@ -48,6 +48,20 @@ export function isIphone14() {
   );
 }
 
+export function isIphone16() {
+  const dimen = Dimensions.get('window');
+  return (
+    Platform.OS === 'ios' &&
+    !Platform.isPad &&
+    !Platform.isTV &&
+    (dimen.height === 956 || dimen.width === 440)
+  );
+}
+
+export function isRegularIphone() {
+  return isIphone14() || isIphone16;
+}
+
 export function ifIphoneX(iphoneXStyle: any, regularStyle: any) {
   if (isIphoneX() || isIphone14Pro()) {
     return iphoneXStyle;
